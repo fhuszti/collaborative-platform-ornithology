@@ -6,10 +6,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class CoreController extends Controller
+class AdminController extends Controller
 {
     /**
-     * @Route("/", name="core_home")
+     * @Route("/admin", name="admin_home")
      * @Method("GET")
      */
     public function indexAction()
