@@ -3,10 +3,13 @@ core:
     type:     annotation
     prefix:   /
 
-user:
-    resource: "@UserBundle/Controller/"
+admin:
+    resource: "@AppBundle/Controller/AdminController.php"
     type:     annotation
-    prefix:   /
+    prefix:   /admin/
 
+login_check:
+    path: /verif_connexion
 
-
+logout:
+    path: /deconnexion
