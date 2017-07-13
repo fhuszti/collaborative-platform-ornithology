@@ -1,6 +1,20 @@
-app:
-    resource: "@AppBundle/Controller/"
+user:
+    resource: "@UserBundle/Controller/"
     type:     annotation
     prefix:   /
 
+core:
+    resource: "@AppBundle/Controller/CoreController.php"
+    type:     annotation
+    prefix:   /
 
+admin:
+    resource: "@AppBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /admin/
+
+login_check:
+    path: /verif_connexion
+
+logout:
+    path: /deconnexion
