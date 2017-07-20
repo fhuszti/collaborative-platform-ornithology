@@ -33,5 +33,3 @@ services:
         resource: '../../src/UserBundle/Controller/'
         public: true
         tags: ['controller.service_arguments']
-
-
