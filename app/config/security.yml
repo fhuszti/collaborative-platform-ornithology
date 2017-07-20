@@ -33,3 +33,4 @@ security:
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/(observation|profil), roles: ROLE_USER }
