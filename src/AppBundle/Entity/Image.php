@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,18 +29,10 @@ class Image
     private $image;
 
      /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Observation",mappedBy="image")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Observation",inversedBy="images")
      * @ORM\JoinColumn(nullable=true)
      */
     private $observation;
-
-    /**
-     * @var 
-     *
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="images", cascade={"persist"})
-     * @Assert\Valid()
-     */
-    private $user;
 
 
     /**
@@ -100,29 +91,5 @@ class Image
     public function getObservation()
     {
         return $this->Observation;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \UserBundle\Entity\User $user
-     *
-     * @return Image
-     */
-    public function setUser(\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \UserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 }
