@@ -20,7 +20,7 @@ class ObservationType extends AbstractType
             'label' => 'DATE*',
             'html5' => false,
             'widget' => 'single_text',
-        ))
+      ))
       ->add('birdName', TextType::class, array(
                 'label' => 'NOM DE L\'OISEAU'
       ));
