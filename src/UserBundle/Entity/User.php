@@ -97,7 +97,6 @@ class User implements UserInterface
 
 
 
-
     /**
      * Get id
      *
