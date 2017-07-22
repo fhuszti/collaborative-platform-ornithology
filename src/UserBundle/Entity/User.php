@@ -3,13 +3,19 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use AppBundle\Entity\Image;
+use AppBundle\Entity\Observation;
 
 /**
  * User
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"})
  */
 class User implements UserInterface
 {
@@ -63,6 +69,33 @@ class User implements UserInterface
      * @ORM\Column(name="roles", type="array")
      */
     private $roles = array();
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Observation", mappedBy="user", cascade={"persist"})
+     * @Assert\Valid()
+     */
+    private $observations;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="user", cascade={"persist"})
+     * @Assert\Valid()
+     */
+    private $images;
+
+
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->roles = array();
+        $this->observations = new ArrayCollection();
+        $this->images = new ArrayCollection();
+    }
+
+
 
 
     /**
@@ -218,6 +251,81 @@ class User implements UserInterface
     {
         return $this->roles;
     }
+
+    /**
+     * Add an Observation
+     *
+     * @param \AppBundle\Entity\Observation $observation
+     *
+     * @return Observation
+     */
+    public function addObservation(Observation $observation)
+    {
+        $this->observations[] = $observation;
+
+        $observation->setUser($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove an Observation
+     *
+     * @param \AppBundle\Entity\Observation $observation
+     */
+    public function removeObservation(Observation $observation)
+    {
+        $this->observations->removeElement($observation);
+    }
+
+    /**
+     * Get Observations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObservations()
+    {
+        return $this->observations;
+    }
+
+    /**
+     * Add an Image
+     *
+     * @param \AppBundle\Entity\Image $image
+     *
+     * @return Image
+     */
+    public function addImage(Image $image)
+    {
+        $this->images[] = $image;
+
+        $image->setUser($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove an Image
+     *
+     * @param \AppBundle\Entity\Image $image
+     */
+    public function removeImage(Image $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get Images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+
+
 
     /**
      * Mandatory, from UserInterface
