@@ -1,31 +1,37 @@
 <?php
-/namespace UserBundle\DataFixtures\ORM;
+
+namespace UserBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use UserBundle\Entity\User;
 
 class LoadUser implements FixtureInterface {
+    private function generateUser($firstname, $surname, $email, $role) {
+        $user = new User;
+
+        // Le prénom de l'utilisateur et le mot de passe sont identiques pour l'instant
+        $user->setFirstName($firstname);
+        $user->setPassword($firstname);
+
+        $user->setSurname($surname);
+
+        $user->setEmail($email);
+
+        $user->setRoles(array($role));
+
+        return $user;
+    }
+
     public function load(ObjectManager $manager) {
-        // Les noms d'utilisateurs à créer
-        $listNames = array('Alexandre', 'Marine', 'Anna');
+        $user1 = $this->generateUser('Alex', 'Dodo', 'alex@email.fr', 'ROLE_USER');
+        $manager->persist($user1);
 
-        foreach ($listNames as $name) {
-            // On crée l'utilisateur
-            $user = new User;
+        $user2 = $this->generateUser('Chloé', 'Jean', 'chloe@email.fr', 'ROLE_ADMIN');
+        $manager->persist($user2);
 
-            // Le nom d'utilisateur et le mot de passe sont identiques pour l'instant
-            $user->setUsername($name);
-            $user->setPassword($name);
-
-            // On ne se sert pas du sel pour l'instant
-            $user->setSalt('');
-            // On définit uniquement le role ROLE_USER qui est le role de base
-            $user->setRoles(array('ROLE_USER'));
-
-            // On le persiste
-            $manager->persist($user);
-        }
+        $user3 = $this->generateUser('Flo', 'Montagne', 'flo@email.fr', 'ROLE_SUDO_ADMIN');
+        $manager->persist($user3);
 
         // On déclenche l'enregistrement
         $manager->flush();
