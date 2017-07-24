@@ -168,6 +168,7 @@ class Observation
     }
 
     /**
+<<<<<<< HEAD
      * Set date
      *
      * @param \DateTime $date
@@ -192,6 +193,8 @@ class Observation
     }
 
     /**
+=======
+>>>>>>> Mise en place de l'upload d'image
      * Set birdName
      *
      * @param string $birdName

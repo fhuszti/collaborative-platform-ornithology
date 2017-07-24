@@ -27,6 +27,16 @@ class ObservationController extends Controller
 			$formBuilder->handleRequest($request);
 
 			if ($formBuilder->isValid()) {
+			$file = $observation->getImage();      
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('images_directory'),
+                $fileName
+            );
+
+            $observation->setImage($fileName);
+
+
 				$em = $this->getDoctrine()->getManager();
 
 				$em->persist($observation);
