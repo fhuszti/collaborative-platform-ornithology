@@ -56,12 +56,6 @@ class Bird
      */
     private $commonName;
 
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Observation", mappedBy="bird", cascade={"persist"}))
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $observations;
-
 
     /**
      * Get id

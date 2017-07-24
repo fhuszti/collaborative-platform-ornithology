@@ -54,14 +54,7 @@ class Observation
      * @ORM\Column(name="comment", type="string", length=255, nullable=true)
      */
     private $comment;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bird",inversedBy="observations")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $bird;
-
-       
+      
 
 
     /**
