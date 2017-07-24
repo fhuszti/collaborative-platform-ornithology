@@ -5,6 +5,8 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Form\ObservationType;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use AppBundle\Entity\Observation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -16,7 +18,7 @@ class ObservationController extends Controller
      * @Route("/observation", name="app_observation")
      * @Method("GET")
      */
-    public function formAction()
+    public function formAction(Request $request)
     {
 		$observation = new Observation();
 		$formBuilder = $this->get('form.factory')->create(ObservationType::class, $observation);
@@ -27,7 +29,7 @@ class ObservationController extends Controller
 			if ($formBuilder->isValid()) {
 				$em = $this->getDoctrine()->getManager();
 
-				$em->persist($commande);
+				$em->persist($observation);
 				$em->flush();     
 			}
 
