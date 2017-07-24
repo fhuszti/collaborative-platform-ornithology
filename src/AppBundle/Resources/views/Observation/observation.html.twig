@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('bundles/app/css/main.css') }}">
     <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -14,15 +14,16 @@
     <div id="map" style="width: 500px; height: 250px;"></div>
     {{ form_start(form) }}
     {{ form_errors(form) }}
-    {{ form_row(form.comment) }}
-    {{ form_row(form.date) }}
+    {{ form_row(form.longitude, { 'label_attr': {'class': 'longitude'} }) }}
+    {{ form_row(form.lattitude, { 'label_attr': {'class': 'lattitude'} }) }}
     {{ form_row(form.birdName) }}
-    {{ form_row(form.longitude) }}
-    {{ form_row(form.lattitude) }}
+    {{ form_row(form.date) }}
+    {{ form_row(form.comment) }}
     {{ form_row(form.save) }}
     {{ form_rest(form) }}
     {{ form_end(form) }}
 
+  <script src="{{asset('bundles/app/js/datepicker.js') }}"></script>
   <script>
   function initialize() {
     var myLatlng = new google.maps.LatLng(48.862725, 2.287592000000018);
