@@ -4,6 +4,8 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Form\ObservationType;
+use AppBundle\Entity\Observation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormBuilder;
@@ -17,7 +19,7 @@ class ObservationController extends Controller
     public function formAction()
     {
 		$observation = new Observation();
-		$formBuilder = $this->get('form.factory')->create(CommandeType::class, $observation);
+		$formBuilder = $this->get('form.factory')->create(ObservationType::class, $observation);
 
 		if ($request->isMethod('POST')) {
 			$formBuilder->handleRequest($request);
