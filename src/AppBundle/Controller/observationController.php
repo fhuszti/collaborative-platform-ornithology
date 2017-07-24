@@ -28,11 +28,10 @@ class ObservationController extends Controller
 			$formBuilder->handleRequest($request);
 
 			if ($formBuilder->isValid()) {
-			$file = $observation->getImage();      
+				$file = $observation->getImage();      
 
-        	$fileName = $fileUploader->upload($file);
-            $observation->setImage($fileName);
-
+	        	$fileName = $fileUploader->upload($file);
+	            $observation->setImage($fileName);
 
 				$em = $this->getDoctrine()->getManager();
 
