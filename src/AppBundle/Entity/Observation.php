@@ -61,11 +61,7 @@ class Observation
      */
     private $bird;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User",inversedBy="observations")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $user;
+       
 
 
     /**
