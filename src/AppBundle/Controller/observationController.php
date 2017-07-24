@@ -8,6 +8,7 @@ use AppBundle\Form\ObservationType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use AppBundle\Entity\Observation;
+use AppBundle\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormBuilder;
@@ -18,7 +19,7 @@ class ObservationController extends Controller
      * @Route("/observation", name="app_observation")
 	 * @Method({"GET", "POST"})
      */
-    public function formAction(Request $request)
+    public function formAction(Request $request, FileUploader $fileUploader)
     {
 		$observation = new Observation();
 		$formBuilder = $this->get('form.factory')->create(ObservationType::class, $observation);
@@ -28,12 +29,8 @@ class ObservationController extends Controller
 
 			if ($formBuilder->isValid()) {
 			$file = $observation->getImage();      
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move(
-                $this->getParameter('images_directory'),
-                $fileName
-            );
 
+        	$fileName = $fileUploader->upload($file);
             $observation->setImage($fileName);
 
 
