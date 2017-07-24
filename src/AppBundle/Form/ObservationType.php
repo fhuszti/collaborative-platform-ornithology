@@ -22,6 +22,12 @@ class ObservationType extends AbstractType
             'html5' => false,
             'widget' => 'single_text',
       ))
+      ->add('longitude', TextType::class, array(
+                'label' => 'longitude'
+      ))
+      ->add('lattitude', TextType::class, array(
+                'label' => 'lattitude'
+      ))
       ->add('birdName', TextType::class, array(
                 'label' => 'NOM DE L\'OISEAU'
       ))

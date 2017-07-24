@@ -11,17 +11,14 @@
     </script> 
   </head>
   <body>
-    Lat:
-    <input id="lat" name="lat"/>Long:
-    <input id="long" name="long"/>
-    <br />
-    <br />
     <div id="map" style="width: 500px; height: 250px;"></div>
     {{ form_start(form) }}
     {{ form_errors(form) }}
     {{ form_row(form.comment) }}
     {{ form_row(form.date) }}
     {{ form_row(form.birdName) }}
+    {{ form_row(form.longitude) }}
+    {{ form_row(form.lattitude) }}
     {{ form_row(form.save) }}
     {{ form_rest(form) }}
     {{ form_end(form) }}
@@ -45,13 +42,13 @@
     });
 
     google.maps.event.addListener(marker, 'dragend', function(event) {
-      document.getElementById("lat").value = event.latLng.lat();
-      document.getElementById("long").value = event.latLng.lng();
+      document.getElementById("observation_longitude").value = event.latLng.lat();
+      document.getElementById("observation_lattitude").value = event.latLng.lng();
     });
 
     google.maps.event.addListener(map, 'click', function(event) {
-      document.getElementById("lat").value = event.latLng.lat();
-      document.getElementById("long").value = event.latLng.lng();
+      document.getElementById("observation_longitude").value = event.latLng.lat();
+      document.getElementById("observation_lattitude").value = event.latLng.lng();
       marker.setPosition(event.latLng);
     });
   }

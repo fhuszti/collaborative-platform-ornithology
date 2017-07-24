@@ -80,6 +80,14 @@ class Observation
      * Set loc
      *
      * @param string $longitude
+<<<<<<< HEAD
+     *
+     * @return Observation
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+=======
      *
      * @return Observation
      */
@@ -98,6 +106,41 @@ class Observation
     public function getLongitude()
     {
         return $this->longitude;
+    }
+
+    /**
+     * Set lattiude
+     *
+     * @param string $lattitude
+     *
+     * @return Observation
+     */
+    public function setLattitude($lattitude)
+    {
+        $this->lattitude = $lattitude;
+>>>>>>> Mise en place des champs longitude et lattitude
+
+        return $this;
+    }
+
+    /**
+<<<<<<< HEAD
+     * Get longitude
+     *
+     * @return string
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+=======
+     * Get lattiude
+     *
+     * @return string
+     */
+    public function getLattitude()
+    {
+        return $this->lattitude;
+>>>>>>> Mise en place des champs longitude et lattitude
     }
 
     /**
