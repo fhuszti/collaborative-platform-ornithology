@@ -1,14 +1,97 @@
-{{ form_start(form) }}
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyB1Z4LA0_Q-qH3Sfq-vIr3lShYnIwS1KUw&libraries=places">
+    </script> 
+  </head>
+  <body>
+    Lat:
+    <input id="lat" name="lat"/>Long:
+    <input id="long" name="long"/>
+    <br />
+    <br />
+    <div id="map" style="width: 500px; height: 250px;"></div>
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.comment) }}
+    {{ form_row(form.date) }}
+    {{ form_row(form.birdName) }}
+    {{ form_row(form.save) }}
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
 
-{{ form_errors(form) }}
+  <script>
+  function initialize() {
+    var myLatlng = new google.maps.LatLng(48.862725, 2.287592000000018);
 
-{{ form_row(form.comment) }}
-{{ form_row(form.date) }}
+    var myOptions = {
+      zoom: 8,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
 
-{{ form_row(form.birdName) }}
+    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+    var marker = new google.maps.Marker({
+      draggable: true,
+      position: myLatlng,
+      map: map,
+      title: "Your location"
+    });
+
+    google.maps.event.addListener(marker, 'dragend', function(event) {
+      document.getElementById("lat").value = event.latLng.lat();
+      document.getElementById("long").value = event.latLng.lng();
+    });
+
+    google.maps.event.addListener(map, 'click', function(event) {
+      document.getElementById("lat").value = event.latLng.lat();
+      document.getElementById("long").value = event.latLng.lng();
+      marker.setPosition(event.latLng);
+    });
+  }
+  google.maps.event.addDomListener(window, "load", initialize());
+
+  function initMap() {
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 48.862725, lng: 2.287592000000018},
+            zoom: 6
+          });
+          var infoWindow = new google.maps.InfoWindow({map: map});
+
+          // Try HTML5 geolocation.
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+              var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+
+              infoWindow.setPosition(pos);
+              infoWindow.setContent('Location found.');
+              map.setCenter(pos);
+            }, function() {
+              handleLocationError(true, infoWindow, map.getCenter());
+            });
+          } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+          }
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          infoWindow.setPosition(pos);
+          infoWindow.setContent(browserHasGeolocation ?
+                                'Error: The Geolocation service failed.' :
+                                'Error: Your browser doesn\'t support geolocation.');
+        }
+    </script>
+  </body>
+</html>
 
 
-{{ form_row(form.save) }}
-
-{{ form_rest(form) }}
-{{ form_end(form) }}
