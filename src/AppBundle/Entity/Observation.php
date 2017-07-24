@@ -43,10 +43,12 @@ class Observation
     private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="image", cascade={"persist"}))
+     * @var string
+     *
+     * @ORM\Column(name="image")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $images;
+    private $image;
 
     /**
      * @var string
@@ -147,30 +149,6 @@ class Observation
     }
 
     /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Observation
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
      * Set birdName
      *
      * @param string $birdName
@@ -225,37 +203,13 @@ class Observation
         $this->images = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Add image
-     *
-     * @param \AppBundle\Entity\Image $image
-     *
-     * @return Observation
-     */
-    public function addImage(\AppBundle\Entity\Image $image)
+    public function setImage($file)
     {
-        $this->images[] = $image;
-
-        return $this;
+        $this->image = $file;
     }
 
-    /**
-     * Remove image
-     *
-     * @param \AppBundle\Entity\Image $image
-     */
-    public function removeImage(\AppBundle\Entity\Image $image)
+    public function getImage()
     {
-        $this->images->removeElement($image);
-    }
-
-    /**
-     * Get images
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getImages()
-    {
-        return $this->images;
+        return $this->image;
     }
 }
