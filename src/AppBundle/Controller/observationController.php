@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormBuilder;
 
-class observationController extends Controller
+class ObservationController extends Controller
 {
     /**
      * @Route("/observation", name="app_observation")
