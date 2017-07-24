@@ -20,11 +20,29 @@
     {{ form_row(form.date) }}
     {{ form_row(form.comment) }}
     {{ form_row(form.image) }}
+    <img id="blah" src="#" />
     {{ form_row(form.save) }}
     {{ form_rest(form) }}
     {{ form_end(form) }}
 
   <script src="{{asset('bundles/app/js/datepicker.js') }}"></script>
+  <script>
+  function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#observation_image").change(function(){
+        readURL(this);
+    });
+  </script>
   <script>
   function initialize() {
     var myLatlng = new google.maps.LatLng(48.862725, 2.287592000000018);
