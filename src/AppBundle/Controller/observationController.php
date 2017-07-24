@@ -16,7 +16,7 @@ class ObservationController extends Controller
 {
     /**
      * @Route("/observation", name="app_observation")
-     * @Method("GET")
+	 * @Method({"GET", "POST"})
      */
     public function formAction(Request $request)
     {
@@ -33,7 +33,7 @@ class ObservationController extends Controller
 				$em->flush();     
 			}
 
-			return $this->redirectToRoute('');
+			// return $this->redirectToRoute('');
 		}
 
 		return $this->render('AppBundle:Observation:observation.html.twig', array(
