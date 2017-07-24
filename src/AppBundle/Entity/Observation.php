@@ -24,9 +24,16 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\Column(name="loc", type="string", length=255)
+     * @ORM\Column(name="longitude", type="string", length=255)
      */
-    private $loc;
+    private $longitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lattitude", type="string", length=255)
+     */
+    private $lattitude;
 
     /**
      * @var \DateTime
@@ -70,25 +77,49 @@ class Observation
     /**
      * Set loc
      *
-     * @param string $loc
+     * @param string $longitude
      *
      * @return Observation
      */
-    public function setLoc($loc)
+    public function setLongitude($longitude)
     {
-        $this->loc = $loc;
+        $this->longitude = $longitude;
 
         return $this;
     }
 
     /**
-     * Get loc
+     * Get longitude
      *
      * @return string
      */
-    public function getLoc()
+    public function getLongitude()
     {
-        return $this->loc;
+        return $this->longitude;
+    }
+
+    /**
+     * Set lattiude
+     *
+     * @param string $lattitude
+     *
+     * @return Observation
+     */
+    public function setLattitude($lattitude)
+    {
+        $this->lattitude = $lattitude;
+
+        return $this;
+    }
+
+    /**
+     * Get lattiude
+     *
+     * @return string
+     */
+    public function getLattitude()
+    {
+        return $this->lattitude;
     }
 
     /**
