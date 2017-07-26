@@ -16,11 +16,11 @@ services:
         # but if a service is unused, it's removed anyway
         exclude: '../../src/AppBundle/{Entity,Repository}'
 
-    # UserBundle\:
-    #     resource: '../../src/UserBundle/*'
-    #     # you can exclude directories or files
-    #     # but if a service is unused, it's removed anyway
-    #     exclude: '../../src/UserBundle/{Entity,Repository}'
+    UserBundle\:
+        resource: '../../src/UserBundle/*'
+        # you can exclude directories or files
+        # but if a service is unused, it's removed anyway
+        exclude: '../../src/UserBundle/{Entity,Repository}'
 
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
@@ -29,7 +29,9 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    # UserBundle\Controller\:
-    #     resource: '../../src/UserBundle/Controller/'
-    #     public: true
-    #     tags: ['controller.service_arguments']
+    UserBundle\Controller\:
+        resource: '../../src/UserBundle/Controller/'
+        public: true
+        tags: ['controller.service_arguments']
+
+
