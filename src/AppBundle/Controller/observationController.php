@@ -30,8 +30,6 @@ class ObservationController extends Controller
 			if ($formBuilder->isValid()) {
 				$observation->getImage()->upload();      
 
-				Tinify\fromFile("unoptimized.png")->toFile("optimized.png");
-
 				$em = $this->getDoctrine()->getManager();
 
 				$em->persist($observation);
