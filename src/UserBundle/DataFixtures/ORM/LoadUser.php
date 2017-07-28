@@ -5,6 +5,8 @@ namespace UserBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use UserBundle\Entity\User;
+use AppBundle\Entity\Observation;
+use AppBundle\Entity\Image;
 
 class LoadUser implements FixtureInterface {
     private function generateUser($firstname, $surname, $email, $role) {
@@ -19,6 +21,16 @@ class LoadUser implements FixtureInterface {
         $user->setEmail($email);
 
         $user->setRoles(array($role));
+
+        $user->setPassword('');
+
+        $user->setUsername($email);
+
+        $user->setUsernameCanonical($email);
+
+        $user->setEmailCanonical($email);
+
+        $user->setEnabled(true);
 
         return $user;
     }
