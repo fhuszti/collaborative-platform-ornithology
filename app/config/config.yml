@@ -9,6 +9,9 @@ parameters:
     locale: fr
     images_directory: '%kernel.project_dir%/web/uploads/images'
 
+tinypng:
+    api_key: 'YN-tD6vaVHxYTx8XcfBLKFrlzXwwxgLi'
+
 framework:
     #esi: ~
     #translator: { fallbacks: ['%locale%'] }
