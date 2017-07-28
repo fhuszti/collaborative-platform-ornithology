@@ -5,22 +5,12 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FileUploader
 {
-    private $targetDir;
-
-    public function __construct($targetDir)
-    {
-        $this->targetDir = $targetDir;
-    }
+    const FORCE_PETITE = '%kernel.project_dir%/web/uploads/images';
 
     public function upload(UploadedFile $file)
     {
         $fileName = md5(uniqid()).'.'.$file->guessExtension();
-        $file->move($this->getTargetDir(), $fileName);
+        $file->move(self::FORCE_PETITE, $fileName);
         return $fileName;
-    }
-
-    public function getTargetDir()
-    {
-        return $this->targetDir;
     }
 }

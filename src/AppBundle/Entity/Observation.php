@@ -45,7 +45,7 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\Column(name="image")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", inversedBy="observation", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $image;
@@ -76,18 +76,8 @@ class Observation
         return $this->id;
     }
 
+
     /**
-     * Set loc
-     *
-     * @param string $longitude
-<<<<<<< HEAD
-     *
-     * @return Observation
-     */
-    public function setLongitude($longitude)
-    {
-        $this->longitude = $longitude;
-=======
      *
      * @return Observation
      */
@@ -118,44 +108,9 @@ class Observation
     public function setLattitude($lattitude)
     {
         $this->lattitude = $lattitude;
->>>>>>> Mise en place des champs longitude et lattitude
-
         return $this;
     }
 
-    /**
-<<<<<<< HEAD
-     * Get longitude
-     *
-     * @return string
-     */
-    public function getLongitude()
-    {
-        return $this->longitude;
-=======
-     * Get lattiude
-     *
-     * @return string
-     */
-    public function getLattitude()
-    {
-        return $this->lattitude;
->>>>>>> Mise en place des champs longitude et lattitude
-    }
-
-    /**
-     * Set lattiude
-     *
-     * @param string $lattitude
-     *
-     * @return Observation
-     */
-    public function setLattitude($lattitude)
-    {
-        $this->lattitude = $lattitude;
-
-        return $this;
-    }
 
     /**
      * Get lattiude
@@ -167,8 +122,9 @@ class Observation
         return $this->lattitude;
     }
 
+
+
     /**
-<<<<<<< HEAD
      * Set date
      *
      * @param \DateTime $date
@@ -193,8 +149,6 @@ class Observation
     }
 
     /**
-=======
->>>>>>> Mise en place de l'upload d'image
      * Set birdName
      *
      * @param string $birdName

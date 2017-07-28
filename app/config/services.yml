@@ -1,4 +1,7 @@
 services:
+    AppBundle\Service\FileUploader:
+        arguments:
+            $targetDir: '%images_directory%'
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services
@@ -15,6 +18,7 @@ services:
         # you can exclude directories or files
         # but if a service is unused, it's removed anyway
         exclude: '../../src/AppBundle/{Entity,Repository}'
+        exclude: '../../src/AppBundle/Service/FileUploader.php'
 
     UserBundle\:
         resource: '../../src/UserBundle/*'
@@ -33,5 +37,7 @@ services:
         resource: '../../src/UserBundle/Controller/'
         public: true
         tags: ['controller.service_arguments']
+
+
 
 

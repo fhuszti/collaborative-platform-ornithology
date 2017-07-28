@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Image
@@ -29,11 +30,33 @@ class Image
     private $image;
 
      /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Observation",inversedBy="images")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Observation",inversedBy="image")
      * @ORM\JoinColumn(nullable=true)
      */
     private $observation;
 
+    private $file;
+
+    const FORCE_PETITE = '%kernel.project_dir%/web/uploads/images';
+
+    public function upload()
+    {
+        $name = $this->file->getClientOriginalName();
+        $this->file->move(self::FORCE_PETITE, $name);
+        $this->image = md5(uniqid()).'.'.$name;
+        return;
+    }
+
+
+    public function getFile()
+    {
+    return $this->file;
+    }
+
+    public function setFile(UploadedFile $file = null)
+    {
+    $this->file = $file;
+    }
 
     /**
      * Get id
