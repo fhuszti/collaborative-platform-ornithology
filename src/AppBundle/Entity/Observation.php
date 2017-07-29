@@ -53,9 +53,9 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\Column(name="birdName", type="string", length=255)
+     * @ORM\Column(name="bird_name", type="string", length=255)
      */
-    private $birdName;
+    private $bird_name;
 
     /**
      * @var string
@@ -63,8 +63,21 @@ class Observation
      * @ORM\Column(name="comment", type="string", length=255, nullable=true)
      */
     private $comment;
-      
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="seen", type="boolean")
+     */
+    private $seen;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="satus", type="boolean", nullable=true)
+     */
+    private $satus;
+      
 
     /**
      * Get id
@@ -122,8 +135,6 @@ class Observation
         return $this->lattitude;
     }
 
-
-
     /**
      * Set date
      *
@@ -146,30 +157,6 @@ class Observation
     public function getDate()
     {
         return $this->date;
-    }
-
-    /**
-     * Set birdName
-     *
-     * @param string $birdName
-     *
-     * @return Observation
-     */
-    public function setBirdName($birdName)
-    {
-        $this->birdName = $birdName;
-
-        return $this;
-    }
-
-    /**
-     * Get birdName
-     *
-     * @return string
-     */
-    public function getBirdName()
-    {
-        return $this->birdName;
     }
 
     /**
@@ -211,5 +198,77 @@ class Observation
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set seen
+     *
+     * @param boolean $seen
+     *
+     * @return Observation
+     */
+    public function setSeen($seen)
+    {
+        $this->seen = $seen;
+
+        return $this;
+    }
+
+    /**
+     * Get seen
+     *
+     * @return boolean
+     */
+    public function getSeen()
+    {
+        return $this->seen;
+    }
+
+    /**
+     * Set satus
+     *
+     * @param boolean $satus
+     *
+     * @return Observation
+     */
+    public function setSatus($satus)
+    {
+        $this->satus = $satus;
+
+        return $this;
+    }
+
+    /**
+     * Get satus
+     *
+     * @return boolean
+     */
+    public function getSatus()
+    {
+        return $this->satus;
+    }
+
+    /**
+     * Set birdName
+     *
+     * @param string $birdName
+     *
+     * @return Observation
+     */
+    public function setBirdName($birdName)
+    {
+        $this->bird_name = $birdName;
+
+        return $this;
+    }
+
+    /**
+     * Get birdName
+     *
+     * @return string
+     */
+    public function getBirdName()
+    {
+        return $this->bird_name;
     }
 }

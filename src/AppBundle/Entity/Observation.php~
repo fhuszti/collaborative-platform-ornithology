@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -54,9 +53,9 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\Column(name="birdName", type="string", length=255)
+     * @ORM\Column(name="bird_name", type="string", length=255)
      */
-    private $birdName;
+    private $bird_name;
 
     /**
      * @var string
@@ -66,18 +65,19 @@ class Observation
     private $comment;
 
     /**
-     * @var 
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="observations", cascade={"persist"})
-     * @Assert\Valid()
+     * @ORM\Column(name="seen", type="boolean")
      */
-    private $user;
+    private $seen;
 
-
-
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="satus", type="boolean", nullable=true)
+     */
+    private $satus;
       
-
 
     /**
      * Get id
@@ -89,10 +89,8 @@ class Observation
         return $this->id;
     }
 
+
     /**
-     * Set loc
-     *
-     * @param string $longitude
      *
      * @return Observation
      */
@@ -123,9 +121,9 @@ class Observation
     public function setLattitude($lattitude)
     {
         $this->lattitude = $lattitude;
-
         return $this;
     }
+
 
     /**
      * Get lattiude
@@ -136,6 +134,8 @@ class Observation
     {
         return $this->lattitude;
     }
+
+
 
     /**
      * Set date
@@ -161,29 +161,7 @@ class Observation
         return $this->date;
     }
 
-    /**
-     * Set birdName
-     *
-     * @param string $birdName
-     *
-     * @return Observation
-     */
-    public function setBirdName($birdName)
-    {
-        $this->birdName = $birdName;
 
-        return $this;
-    }
-
-    /**
-     * Get birdName
-     *
-     * @return string
-     */
-    public function getBirdName()
-    {
-        return $this->birdName;
-    }
 
     /**
      * Set comment
@@ -224,5 +202,53 @@ class Observation
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set seen
+     *
+     * @param boolean $seen
+     *
+     * @return Observation
+     */
+    public function setSeen($seen)
+    {
+        $this->seen = $seen;
+
+        return $this;
+    }
+
+    /**
+     * Get seen
+     *
+     * @return boolean
+     */
+    public function getSeen()
+    {
+        return $this->seen;
+    }
+
+    /**
+     * Set satus
+     *
+     * @param boolean $satus
+     *
+     * @return Observation
+     */
+    public function setSatus($satus)
+    {
+        $this->satus = $satus;
+
+        return $this;
+    }
+
+    /**
+     * Get satus
+     *
+     * @return boolean
+     */
+    public function getSatus()
+    {
+        return $this->satus;
     }
 }
