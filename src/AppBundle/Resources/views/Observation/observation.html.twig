@@ -13,7 +13,9 @@
   </head>
   <body>
     <div id="containerObservation">
-      <div id="map" style="height: 500px;"></div>
+      <div id="map" style="display:none; height: 500px;"></div>
+      <input type="button" value="Afficher la carte" onclick="show()" />
+      <input type="button" value="Se géolocaliser" onclick="initMap()" />
         {{ form_start(form) }}
         {{ form_errors(form) }}
         {{ form_row(form.longitude, { 'label_attr': {'class': 'longitude'} }) }}
@@ -62,7 +64,10 @@
     });
   </script>
   <script>
-  function initialize() {
+  function show() {
+
+    $('div#map').show(1000);
+
     var myLatlng = new google.maps.LatLng(48.862725, 2.287592000000018);
 
     var myOptions = {
@@ -106,6 +111,10 @@
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
               };
+
+          document.getElementById("observation_longitude").value = position.coords.latitude,
+          document.getElementById("observation_lattitude").value = position.coords.longitude
+
 
               infoWindow.setPosition(pos);
               infoWindow.setContent('Location found.');
