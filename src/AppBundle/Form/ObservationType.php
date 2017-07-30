@@ -34,6 +34,7 @@ class ObservationType extends AbstractType
                 'label' => 'NOM DE L\'OISEAU'
       ))
       ->add('image', ImageType::class, array(
+                'label' => 'PHOTO'
       ))
       ->add('save', SubmitType::class, array(
             'label' => 'Soumettre',

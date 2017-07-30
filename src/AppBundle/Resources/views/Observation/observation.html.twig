@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="{{asset('bundles/app/css/main.css') }}">
+    <link rel="stylesheet" href="{{asset('bundles/app/css/observation.css') }}">
     <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -12,31 +12,84 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
+  <div class="row">
+  <div class="col-lg-4">
     <div id="containerObservation">
       <div id="map"></div>
-      <div id="expand-map">Expand</div>
-      <input type="button" value="Se géolocaliser" onclick="initMap()" />
-      <input type="button" value="Se géser" onclick="ioo()" />
+      <div class="row">
+        <div class="col-lg-6">
+          <a href="" type="button"  onclick="initMap()">
+            <div id="buttonGeolocation">
+              <p></p>          
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a href="" type="button"  onclick="ioo()">
+            <div id="buttonDisplayMap">
+              <p></p>          
+            </div>
+          </a>
+        </div>
+      </div>
         {{ form_start(form) }}
         {{ form_errors(form) }}
         {{ form_row(form.longitude, { 'label_attr': {'class': 'longitude'} }) }}
         {{ form_row(form.lattitude, { 'label_attr': {'class': 'lattitude'} }) }}
       <div id="birdName">
-        {{ form_row(form.birdName) }}
-        <hr >
+        <div class="row">
+          <div class="col-lg-12">
+            {{ form_label(form.birdName) }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            {{ form_widget(form.birdName) }}
+            <hr >
+          </div>
+        </div>
       </div>
       <div id="date">
-        {{ form_row(form.date) }}
-         <hr>
+        <div class="row">
+          <div class="col-lg-12">
+            {{ form_label(form.date) }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            {{ form_widget(form.date) }}
+            <hr >
+          </div>
+        </div>
       </div>
       <div id="comment">
-        {{ form_row(form.comment) }}
-         <hr/>
+        <div class="row">
+          <div class="col-lg-12">
+            {{ form_label(form.comment) }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            {{ form_widget(form.comment) }}
+            <hr >
+          </div>
+        </div>
       </div>
       <div id="image">
-        {{ form_row(form.image) }}
-        <img id="aperçuImage" src="#" />
-        <hr>
+        <div class="row">
+          <div class="col-lg-12">
+            {{ form_label(form.image) }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            {{ form_widget(form.image) }}
+            <div id="imageBlock">
+            <img id="aperçuImage" src="#" />
+            <hr >
+            </div>
+          </div>
+        </div>
       </div>
       <div id="save">
         {{ form_row(form.save) }}
@@ -45,6 +98,7 @@
         {{ form_rest(form) }}
         {{ form_end(form) }}
     </div>
+  </div>
 
     <script src="{{asset('bundles/app/js/datepicker.js') }}"></script>
     <script src="{{asset('bundles/app/js/previewImage.js') }}"></script>
