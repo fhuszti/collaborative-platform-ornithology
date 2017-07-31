@@ -43,7 +43,6 @@ class Observation
     private $date;
 
     /**
-     * @var string
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", inversedBy="observation", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
@@ -74,9 +73,9 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\Column(name="satus", type="boolean", nullable=true)
+     * @ORM\Column(name="status", type="boolean", nullable=true)
      */
-    private $satus;
+    private $status;
       
 
     /**
@@ -231,9 +230,9 @@ class Observation
      *
      * @return Observation
      */
-    public function setSatus($satus)
+    public function setStatus($status)
     {
-        $this->satus = $satus;
+        $this->status = $status;
 
         return $this;
     }
@@ -243,9 +242,9 @@ class Observation
      *
      * @return boolean
      */
-    public function getSatus()
+    public function getStatus()
     {
-        return $this->satus;
+        return $this->status;
     }
 
     /**

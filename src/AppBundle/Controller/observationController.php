@@ -29,7 +29,7 @@ class ObservationController extends Controller
 
 			if ($formBuilder->isValid()) {
 				$observation->getImage()->upload();      
-
+				$observation->setSeen(0);
 				$em = $this->getDoctrine()->getManager();
 
 				$em->persist($observation);
