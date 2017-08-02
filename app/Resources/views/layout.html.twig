@@ -21,6 +21,7 @@
                 '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'
                 '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
                 'bundles/app/css/main.css'
+                'bundles/app/css/second-menu.css'
                 'bundles/app/css/footer.css' %}
                 <link rel="stylesheet" href="{{ asset_url }}" type="text/css">
             {% endstylesheets %}
@@ -38,9 +39,17 @@
         <div>
             {{ include('header.html.twig') }}
 
-            <div id="wrapper" role="main" class="container">
-                {% block body %}
-                {% endblock %}
+            <div class="container" id="wrapper">
+                <div id="content" role="main"{% if homepage is not defined %} class="col-sm-10"{% endif %}>
+                    {% block body %}
+                    {% endblock %}
+                </div>
+
+                {% if homepage is not defined %}
+                    <div class="hidden-xs col-sm-2" id="second-menu">
+                        {{ include('second-menu.html.twig') }}
+                    </div>
+                {% endif %}
             </div>
 
             {{ include('footer.html.twig') }}
