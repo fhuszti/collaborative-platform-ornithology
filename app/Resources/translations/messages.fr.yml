@@ -1,3 +1,27 @@
 core:
     site:
         title: Nos Amis les Oiseaux
+        logo: Nos Amis les Oiseaux
+    footer:
+        left_links:
+            search:
+                link: Rechercher un oiseau
+                title: Rechercher un oiseau
+            observations:
+                link: Partager ses observations
+                title: Partager ses observations
+            project:
+                link: Participer au projet
+                title: Participer au projet
+        copyright: © 2017 nosamislesoiseaux.fr
+        right_links:
+            legal:
+                link: Mentions légales
+                title: Mentions légales
+            status:
+                link: Statuts
+                title: Statuts
+            agency:
+                link: WebAgency
+                title: Agence WebAgency
+

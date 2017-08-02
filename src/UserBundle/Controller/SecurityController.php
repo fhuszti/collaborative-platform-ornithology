@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class SecurityController extends Controller
 {
     /**
-     * @Route("/connexion", name="core_home")
+     * @Route("/connexion", name="core_connexion")
      * @Method("GET")
      */
     public function loginAction()

@@ -19,7 +19,8 @@
         {% block stylesheets %}
             {% stylesheets filter='cssrewrite, ?scssphp'
                 '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'
-                '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css' %}
+                '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
+                'bundles/app/css/footer.css' %}
                 <link rel="stylesheet" href="{{ asset_url }}" type="text/css">
             {% endstylesheets %}
         {% endblock %}
@@ -33,10 +34,10 @@
     </head>
 
     <body role="document">
-        <div class="container">
+        <div>
             {{ include('header.html.twig') }}
 
-            <div id="wrapper" role="main">
+            <div id="wrapper" role="main" class="container">
                 {% block body %}
                 {% endblock %}
             </div>

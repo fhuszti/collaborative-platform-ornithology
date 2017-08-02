@@ -14,6 +14,6 @@ class CoreController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AppBundle:Default:index.html.twig');
+        return $this->render('core/index.html.twig');
     }
 }
