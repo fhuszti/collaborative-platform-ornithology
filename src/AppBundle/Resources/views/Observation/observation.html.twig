@@ -32,7 +32,7 @@
           </a>
         </div>
       </div>
-        {{ form_start(form) }}
+        {{ form_start(form, { 'attr': {'onsubmit':'validateForm();'} }) }}
         {{ form_errors(form) }}
         {{ form_row(form.longitude, { 'label_attr': {'class': 'longitude'} }) }}
         {{ form_row(form.lattitude, { 'label_attr': {'class': 'lattitude'} }) }}
@@ -104,6 +104,12 @@
     <script src="{{asset('bundles/app/js/previewImage.js') }}"></script>
     <script src="{{asset('bundles/app/js/geolocation.js') }}"></script>
     <script src="{{asset('bundles/app/js/marker.js') }}"></script>
+    <script type="text/javascript">
+      function validateForm() {
+    $('#containerObservation').hide();
+
+}
+    </script>
   </body>
 </html>
 
