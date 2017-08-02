@@ -1,0 +1,32 @@
+#footer {
+	padding: 10px 20px;
+	margin: 0;
+	background-color: #fff;
+}
+
+
+
+
+
+
+
+#footer-logo {
+	text-align: center;
+}
+#footer img {
+	max-width: 95%;
+	max-height: 95%;
+}
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+	#footer {
+		background-color: #f8f8f8;
+		text-align: center;
+	}
+}
