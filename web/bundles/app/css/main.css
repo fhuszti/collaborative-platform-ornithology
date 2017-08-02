@@ -35,3 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 .modal {
   font-family: 'Lane Narrow Regular', 'OpenSans Regular', Arial, Helvetica, Verdana, Times, "Times New Roman", sans-serif;
 }
+
+#wrapper {
+  margin-bottom: 48px;
+}
