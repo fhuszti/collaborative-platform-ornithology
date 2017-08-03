@@ -36,6 +36,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Lane Narrow Regular', 'OpenSans Regular', Arial, Helvetica, Verdana, Times, "Times New Roman", sans-serif;
 }
 
+a {
+  color: #888;
+}
+
 #wrapper {
   margin-top: 48px;
   margin-bottom: 48px;
