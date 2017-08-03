@@ -8,21 +8,21 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Doctrine\ORM\EntityManager;
+use AppBundle\Entity\Bird;
 class AjaxController extends Controller
 {
 
     /**
-     * @Route("/ajax/find/{search}", name="search")
+     * @Route("/find/", name="search")
      */
-    public function availabilityAction(Request $request)
+    public function searchAction(Request $request)
     {
-      if ($request->isXmlHttpRequest()) {
+       $search = $request->query->get('search');
+       $data = $this->getDoctrine()
+       ->getRepository(Bird::class)
+       ->findOneByfamily($search);
 
-          return new JsonResponse(array('data' => array()));
-
-      }
-      else {
-        throw new NotFoundHttpException('Ce n\'est pas une requette ajax');
-      }
+        return new Response($data->getFullName());
     }
 }
