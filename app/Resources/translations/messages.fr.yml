@@ -28,4 +28,18 @@ core:
 
     login:
         title: Connexion
+        register_button: Créer un compte
+        email:
+            label: Adresse email
+            placeholder: exemple@email.fr
+        password:
+            label: Mot de passe
+            placeholder: Votre mot de passe
+        remember_me: Se souvenir de moi
+        submit: Connexion
+        forgotten_pass: Mot de passe oublié ?
+        modal:
+            title: Réinitialiser son mot de passe
+            content: Nous allons vous envoyer un email afin de confirmer votre identité, puis nous réinitialiserons votre mot de passe.
+            button: Réinitialiser
 
