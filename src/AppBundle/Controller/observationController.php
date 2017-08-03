@@ -33,7 +33,15 @@ class ObservationController extends Controller
 				$em = $this->getDoctrine()->getManager();
 
 				$em->persist($observation);
-				$em->flush();     
+				$em->flush();
+
+				$dir = '%kernel.project_dir%/web/uploads/images/';
+				$image = $observation->getImage()->getImage();
+				\Tinify\setKey("YN-tD6vaVHxYTx8XcfBLKFrlzXwwxgLi");
+				$source = \Tinify\fromFile($dir.$image);
+				$source->toFile($dir."/optimized/".$image);
+
+				unlink('%kernel.project_dir%/web/uploads/images/'.$image ) ;   
 			}
 
 			// return $this->redirectToRoute('');

@@ -37,16 +37,15 @@ class Image
 
     private $file;
 
-    const FORCE_PETITE = '%kernel.project_dir%/web/uploads/images';
+    const PATH = '%kernel.project_dir%/web/uploads/images';
 
     public function upload()
     {
-        $name = $this->file->getClientOriginalName();
-        $this->file->move(self::FORCE_PETITE, $name);
-        $this->image = md5(uniqid()).'.'.$name;
+        $name = md5(uniqid()).'.'.$this->file->getClientOriginalName();
+        $this->file->move(self::PATH, $name);
+        $this->image = $name;
         return;
     }
-
 
     public function getFile()
     {
