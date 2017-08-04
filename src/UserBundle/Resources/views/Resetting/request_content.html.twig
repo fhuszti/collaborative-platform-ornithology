@@ -1,6 +1,6 @@
 {{ 'core.login.modal.content'|trans }}
 
-<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request" id="login_forgotten-pass-modal-form">
     <div class="form-group">
         <label for="username" class="col-sm-4">
         	{{ 'core.login.email.label'|trans }}
@@ -10,6 +10,8 @@
 		</div>
     </div>
     <div>
-        <input type="submit" value="{{ 'core.login.modal.button'|trans }}" class="btn btn-warning" />
+        <button type="submit" class="btn btn-warning" id="login_forgotten-pass-modal-button" data-loading-text="<span class='glyphicon glyphicon-repeat'></span>">
+        	{{ 'core.login.modal.button'|trans }}
+        </button>
     </div>
 </form>
