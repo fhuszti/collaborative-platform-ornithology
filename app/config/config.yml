@@ -87,4 +87,6 @@ fos_user:
     user_class:    UserBundle\Entity\User    # La classe de l'entité User que nous utilisons
     from_email:
         address: "%mailer_user%"
-        sender_name: "%mailer_user%"
+        sender_name: "Nos Amis les Oiseaux"
+    service:
+        mailer: fos_user.mailer.twig_swift

@@ -1,0 +1,15 @@
+{{ 'core.login.modal.content'|trans }}
+
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+    <div class="form-group">
+        <label for="username" class="col-sm-4">
+        	{{ 'core.login.email.label'|trans }}
+        </label>
+        <div class="col-sm-8">
+			<input type="text" id="username" name="username" placeholder="{{ 'core.login.email.placeholder'|trans }}" required="required" />
+		</div>
+    </div>
+    <div>
+        <input type="submit" value="{{ 'core.login.modal.button'|trans }}" class="btn btn-warning" />
+    </div>
+</form>

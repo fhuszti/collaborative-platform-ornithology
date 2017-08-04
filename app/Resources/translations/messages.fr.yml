@@ -40,6 +40,6 @@ core:
         forgotten_pass: Mot de passe oublié ?
         modal:
             title: Réinitialiser son mot de passe
-            content: Nous allons vous envoyer un email afin de confirmer votre identité, puis nous réinitialiserons votre mot de passe.
+            content: Nous allons vous envoyer un email afin de confirmer votre identité, puis vous pourrez créer un nouveau mot de passe.
             button: Réinitialiser
 

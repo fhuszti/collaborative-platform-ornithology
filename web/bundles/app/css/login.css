@@ -60,7 +60,7 @@
 	margin-top: 30px;
 	text-align: right;
 }
-#login_content .modal input {
+#login_content .modal [type="text"] {
 	width: 90%;
 }
 #login_content .modal-body {
