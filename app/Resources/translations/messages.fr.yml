@@ -2,6 +2,9 @@ core:
     site:
         title: Nos Amis les Oiseaux
         logo: Nos Amis les Oiseaux
+    find:
+        input_find: Tapez le nom de l'oiseau
+        button_find: Rechercher
     footer:
         left_links:
             search:

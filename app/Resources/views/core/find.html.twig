@@ -1,6 +1,40 @@
 {% extends 'layout.html.twig' %}
 {% set homepage = true %}
 {% block body %}
-    page de recherche
+    {{ form_start(form) }}
+    {{ form_widget(form.myfind) }}
+    {{ form_end(form) }}
+<br/>
+<div class="container">
+  <div class="list-group" id="results">
+  </div>
+</div>
 {% endblock %}
+{% block javascripts %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>
 
+$(document).ready(function(){
+	$('#form_myfind').keyup(function() {
+
+	  var value = $(this).val();
+	  	if(value == '') {
+	  		$('#results').empty();
+  		}
+  		else {
+	      $.ajax({
+	         url : '{{ path('search') }}', 
+	         type : 'GET', 
+	         data : 'search=' + value,
+	         success: function(reponse) { 
+	     		$('#results').empty();
+				Object.keys(reponse).forEach(function(key) {
+				    $('#results').prepend('<a href="#" class="list-group-item">'+ reponse[key].name +'</a>');
+				});
+	          }
+	      });
+  		}
+	});
+});
+</script>
+{% endblock %}

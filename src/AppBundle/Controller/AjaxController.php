@@ -18,11 +18,20 @@ class AjaxController extends Controller
      */
     public function searchAction(Request $request)
     {
-       $search = $request->query->get('search');
-       $data = $this->getDoctrine()
-       ->getRepository(Bird::class)
-       ->findOneByfamily($search);
+      if ($request->isXmlHttpRequest()) {
+         $search = $request->query->get('search');
+         $data = $this->getDoctrine()
+         ->getRepository(Bird::class)
+         ->MyFindBy($search);
 
-        return new Response($data->getFullName());
+         foreach ($data as $bird) {
+            $output[] = array('id' => $bird->getId(), 'name' => $bird->getCommonName());
+         }
+         return new JsonResponse($output);
+
+      }
+      else {
+        throw new NotFoundHttpException('Ce n\'est pas une requette ajax');
+      }
     }
 }
