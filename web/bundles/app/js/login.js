@@ -1,0 +1,19 @@
+$(function() {
+	
+	//Manage AJAX for modal display with Forgotten Password feature
+	function modalOpening() {
+		//when clicking on the Forgotten Password link
+		$('#login_forgotten-link').on('click', function(e){
+			//just load the reset request form into the modal body
+			$('#login_forgotten-pass-modal-body').load($(e.target).data('action'));
+		});
+	}
+
+
+
+
+
+
+
+	modalOpening();
+});
