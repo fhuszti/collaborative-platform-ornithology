@@ -1,4 +1,12 @@
-{% trans_default_domain 'FOSUserBundle' %}
+<div class="col-xs-12 nao_title">
+	<div class="col-xs-10 col-sm-6">
+		<h1>{{ 'core.register.title'|trans|upper }}</h1>
+	</div>
+
+	<div class="hidden-xs col-sm-2 nao_title-icon">
+
+	</div>
+</div>
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
