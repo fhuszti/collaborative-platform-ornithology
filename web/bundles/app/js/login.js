@@ -15,6 +15,8 @@ $(function() {
 					//we change the submit button to loading state
 					$('#login_forgotten-pass-modal-button').button('loading');
 					$('#login_forgotten-pass-modal-button>span:first-child').addClass('btn-loading');
+
+					//AJAX call using POST
 				});
 			});
 		});
