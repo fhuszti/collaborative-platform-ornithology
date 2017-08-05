@@ -32,7 +32,7 @@
           </a>
         </div>
       </div>
-        {{ form_start(form, { 'attr': {'onsubmit':'validateForm();'} }) }}
+        {{ form_start(form) }}
         {{ form_errors(form) }}
         {{ form_row(form.longitude, { 'label_attr': {'class': 'longitude'} }) }}
         {{ form_row(form.lattitude, { 'label_attr': {'class': 'lattitude'} }) }}
@@ -105,12 +105,35 @@
     <script src="{{asset('bundles/app/js/geolocation.js') }}"></script>
     <script src="{{asset('bundles/app/js/marker.js') }}"></script>
     <script type="text/javascript">
-      function validateForm() {
-    $('#containerObservation').hide();
+      $("#observation").submit(function(e) {
+        e.preventDefault();
+        var donnees = $(this).serialize();
+        $.ajax({
+          url : '{{ path('app_observation') }}',
+          type : 'POST', 
+          data : donnees,
+          success : function(){
 
-}
+            // if(data !== null) {
+            $( "#containerObservation" ).hide();
+            // $( "#containerThanks" ).hide();
+
+            // alert('success !!!'+ data);
+          }
+        });
+      });
     </script>
   </body>
 </html>
 
 
+<!-- {{ form_start(form, { 'attr': {'onsubmit':'validateForm();'} }) }} -->
+<!-- 'observation_longitude=' + observation_longitude + '&observation_lattitude=' + observation_lattitude + '&observation_birdName=' + observation_birdName + '&observation_date=' + observation_date + '&observation_comment=' + observation_comment + '&observation_image=' + observation_image, -->
+
+<!-- // /* VALUES */
+      //  var longitude = $("#observation_longitude").val();
+      //  var lattitude = $("#observation_lattitude").val();
+      //  var birdName = $("#observation_birdName").val();
+      //  var date = $("#observation_date").val();
+      //  var comment = $("#observation_comment").val();
+      //  var image = $("#observation_image").val(); -->

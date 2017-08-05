@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="{{asset('bundles/app/css/observation.css') }}">
+    <link rel="stylesheet" href="{{asset('bundles/app/css/home.css') }}">
     <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -14,15 +14,30 @@
   <body>
     <div id="sliderHome" class="container-fluid">
         <div class="row">
-            <div class="col-lg-12">
+            <div id="slider" class="col-lg-12">
                 <div id="carousel" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carousel" data-slide-to="0" class="active"></li>
                         <li data-target="#carousel" data-slide-to="1"></li>
+                        <li data-target="#carousel" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">              
-                        <div class="item active"> <img src=""></div>
-                        <div class="item"> <img src="" alt="Image"></div>
+                        <div class="item active"> 
+                            {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+                                <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/home/slide-observation.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+                            {% endimage %}
+                        </div>
+                        <div class="item">
+                            {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+                                <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/home/slide-project.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+                            {% endimage %}
+                        </div>
+                        <div class="item">
+                            {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+                                <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/home/slide-search.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+                            {% endimage %}
+                        </div>
+                    </div>
                     </div>
                     <a class="left carousel-control" href="#carousel" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left"></span>
@@ -39,30 +54,48 @@
             <div class="col-lg-4">
                 <div class="divLink">
                     <div class="icon">
+                        {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+                            <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/home/home-observation.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+                        {% endimage %}
                     </div>
                     <div class="titleBlocHome">
+                        <p>{{ 'home.site.title1'|trans|upper }}</p>
+                        <hr id="line" />
                     </div>
                     <div class="blocTextHome">
+                        <p>{{ 'home.site.p1'|trans }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="divLink">
                     <div class="icon">
+                        {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+                            <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/home/home-project.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+                        {% endimage %}
                     </div>
                     <div class="titleBlocHome">
+                        <p>{{ 'home.site.title2'|trans|upper }}</p>
+                        <hr id="line" />
                     </div>
                     <div class="blocTextHome">
+                        <p>{{ 'home.site.p2'|trans }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="divLink">
                     <div class="icon">
+                        {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+                            <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/home/home-search.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+                        {% endimage %}
                     </div>
                     <div class="titleBlocHome">
+                        <p>{{ 'home.site.title3'|trans|upper }}</p>
+                        <hr id="line" />
                     </div>
                     <div class="blocTextHome">
+                        <p>{{ 'home.site.p3'|trans }}</p>
                     </div>
                 </div>
             </div>
@@ -71,37 +104,53 @@
             <div class="col-lg-4">
                 <div class="divLink">
                     <div class="icon">
+                        {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+                            <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/home/home-register.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+                        {% endimage %}
                     </div>
                     <div class="titleBlocHome">
+                        <p>{{ 'home.site.title4'|trans|upper }}</p>
+                        <hr id="line" />
                     </div>
                     <div class="blocTextHome">
+                        <p>{{ 'home.site.p4'|trans }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="divLink">
                     <div class="icon">
+                        {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+                            <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/home/home-profile.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+                        {% endimage %}
                     </div>
                     <div class="titleBlocHome">
+                        <p>{{ 'home.site.title5'|trans|upper }}</p>
+                        <hr id="line" />
                     </div>
                     <div class="blocTextHome">
+                        <p>{{ 'home.site.p5'|trans }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-xs-12">
                 <div class="divLink">
                     <div class="icon">
+                        {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+                            <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/home/home-contact.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+                        {% endimage %}
                     </div>
                     <div class="titleBlocHome">
+                        <p>{{ 'home.site.title6'|trans|upper }}</p>
+                        <hr id="line" />
                     </div>
                     <div class="blocTextHome">
+                        <p>{{ 'home.site.p6'|trans }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 
   </body>
 </html>

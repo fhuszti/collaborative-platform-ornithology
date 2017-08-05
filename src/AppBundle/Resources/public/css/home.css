@@ -1,0 +1,43 @@
+/*Bloc home*/
+.divLink {
+	height: 350px;
+	border: 1px solid black;
+	margin-bottom: 75px;
+}
+
+.titleBlocHome {
+	text-align: center;
+	background-color: #F4F4F4;
+	height: 100px;
+}
+
+.blocTextHome {
+	text-align: center;
+	background-color: #F4F4F4;
+	height: 150px;
+}
+
+.icon {
+	text-align: center;
+	height: 100px;
+}
+
+#mainBlocHome {
+	padding: 75px 25px 75px 25px;
+	background-image: url( "http://assets.fhuszti.tech/nao/home/home-bg.png" );
+	background-size: cover;
+}
+
+#slider {
+	padding: 0px;
+}
+
+.icon {
+	display: flex;
+	justify-content: center;
+}
+
+.icon img {
+	height: 100px;
+	width: 100px;
+}
