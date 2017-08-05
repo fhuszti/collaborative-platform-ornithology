@@ -92,3 +92,5 @@ core:
             content: Nous allons vous envoyer un email afin de confirmer votre identité, puis vous pourrez créer un nouveau mot de passe.
             button: Réinitialiser
 
+    register:
+        title: Inscription
