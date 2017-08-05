@@ -8,9 +8,16 @@
 	</div>
 </div>
 
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
-    </div>
-{{ form_end(form) }}
+<div class="col-xs-12 well" id="register_content">
+	{{ form_start(form, {
+		'method': 'post',
+		'action': path('fos_user_registration_register'),
+		'attr': {'class': 'fos_user_registration_register'}
+	}) }}
+	    {{ form_widget(form) }}
+	    
+	    <div>
+	        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+	    </div>
+	{{ form_end(form) }}
+</div>
