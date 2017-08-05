@@ -44,3 +44,20 @@ a {
   margin-top: 48px;
   margin-bottom: 48px;
 }
+
+.nao_title, .nao_title>div:first-child {
+  padding-left: 0;
+}
+.nao_title h1 {
+  border-bottom: 3px solid green;
+  margin: 0;
+  padding-bottom: 5px;
+}
+.nao_title-icon {
+  width: 51px;
+  height: 51px;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+
