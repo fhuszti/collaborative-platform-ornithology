@@ -1,0 +1,23 @@
+<h2>{{ bird.commonName }}</h2><br/>
+{{ 'core.bird.desc.family'|trans }} : {{ bird.family }} <br/>
+{{ 'core.bird.desc.rang'|trans }} : {{ bird.rank }} <br/>
+{{ 'core.bird.desc.name_latin'|trans }} : {{ bird.latinName }} <br/>
+{{ 'core.bird.desc.full_name'|trans }} : {{ bird.fullName }} <br/>
+{{ 'core.bird.desc.common_name'|trans }} : {{ bird.commonName }} <br/>
+</div>
+<hr>
+<div id="maps"></div>
+<hr>
+<h1>OBSERVATION</h1><br/>
+
+ <script>
+var map;
+function initMap() {
+	map = new google.maps.Map(document.getElementById('maps'), {
+	  center: {lat: 48.890004, lng: 2.397932},
+	  zoom: 8
+	});
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYM7ehj93A-AEdTDupTMEL7wAgOHWCTxA&callback=initMap"
+async defer></script>

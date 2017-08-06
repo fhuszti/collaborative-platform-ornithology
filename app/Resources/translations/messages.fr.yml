@@ -5,6 +5,13 @@ core:
     find:
         input_find: Tapez le nom de l'oiseau
         button_find: Rechercher
+    bird:
+        desc:
+            family: Famille
+            rang: Rang
+            name_latin: Nom latin
+            full_name: Nom complet
+            common_name: Nom(s) Commun(s)
     footer:
         left_links:
             search:

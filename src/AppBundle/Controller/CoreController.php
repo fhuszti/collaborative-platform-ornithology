@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use AppBundle\Entity\Bird;
 
 class CoreController extends Controller
 {
@@ -45,5 +46,22 @@ class CoreController extends Controller
 	    }
 
 	    return $this->render('core/find.html.twig', array('form' => $form->createView()));
+	}
+    /**
+     * @Route("/bird/{id}", name="bird")
+     */
+    public function birdAction($id)
+	{
+	    $bird = $this->getDoctrine()
+	        ->getRepository(Bird::class)
+	        ->find($id);
+
+	    if (!$bird) {
+	        throw $this->createNotFoundException(
+	            'Cet ID ne correspond à aucun oiseau.'
+	        );
+	    }
+
+	    return $this->render('core/bird.html.twig', array('bird' => $bird));
 	}
 }

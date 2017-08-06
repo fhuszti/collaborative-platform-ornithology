@@ -25,7 +25,12 @@ class AjaxController extends Controller
          ->MyFindBy($search);
 
          foreach ($data as $bird) {
-            $output[] = array('id' => $bird->getId(), 'name' => $bird->getCommonName());
+
+            $url = $this->get('router')->generate(
+                'bird', // 1er argument : le nom de la route
+                array('id' => $bird->getId())    // 2e argument : les valeurs des paramètres
+            );
+            $output[] = array('link' => $url, 'name' => $bird->getCommonName());
          }
          return new JsonResponse($output);
 

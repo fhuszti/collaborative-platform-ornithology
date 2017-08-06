@@ -1,24 +1,24 @@
 {% extends 'layout.html.twig' %}
 {% set homepage = true %}
 {% block body %}
-    {{ form_start(form) }}
-    {{ form_widget(form.myfind) }}
-    {{ form_end(form) }}
-<br/>
-<div class="container">
+<div class="container" id="container">
+
+	{{ form_start(form) }}
+	{{ form_widget(form.myfind) }}
+	{{ form_end(form) }}
+	<br/>
   <div class="list-group" id="results">
   </div>
 </div>
 {% endblock %}
-{% block javascripts %}
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+{% block script %}
 <script>
 
 $(document).ready(function(){
 	$('#form_myfind').keyup(function() {
 
 	  var value = $(this).val();
-	  	if(value == '') {
+	  	if(value === '') {
 	  		$('#results').empty();
   		}
   		else {
@@ -29,12 +29,20 @@ $(document).ready(function(){
 	         success: function(reponse) { 
 	     		$('#results').empty();
 				Object.keys(reponse).forEach(function(key) {
-				    $('#results').prepend('<a href="#" class="list-group-item">'+ reponse[key].name +'</a>');
+				    $('#results').prepend('<a href="'+ reponse[key].link +'" class="list-group-item theFind">'+ reponse[key].name +'</a>');
 				});
 	          }
 	      });
   		}
 	});
+
+});
+
+$("#results").on("click", "a.theFind", function(){
+	var href = $(this).attr('href');
+    $('#container').empty();
+    $('#container').load(href);
+    return false;
 });
 </script>
 {% endblock %}
