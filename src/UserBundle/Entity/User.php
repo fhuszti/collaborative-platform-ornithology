@@ -33,6 +33,15 @@ class User extends FOSUser
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
+     * 
+     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=2,
+     *     max=255,
+     *     minMessage="core.validation.user.firstname.min",
+     *     maxMessage="core.validation.user.firstname.max",
+     *     groups={"Registration", "Profile"}
+     * )
      */
     private $firstName;
 
@@ -40,6 +49,15 @@ class User extends FOSUser
      * @var string
      *
      * @ORM\Column(name="surname", type="string", length=255)
+     *
+     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=2,
+     *     max=255,
+     *     minMessage="core.validation.user.surname.min",
+     *     maxMessage="core.validation.user.surname.max",
+     *     groups={"Registration", "Profile"}
+     * )
      */
     private $surname;
 
