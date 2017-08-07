@@ -1,7 +1,7 @@
 #footer {
 	padding: 10px 20px;
 	margin: 0;
-	background-color: #fff;
+	background-image: url("http://assets.fhuszti.tech/nao/footer/footer-bg.png");
 	height: 100%;
 	max-height: 160px;
 }
