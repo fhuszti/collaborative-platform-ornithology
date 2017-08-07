@@ -4,3 +4,54 @@
 	padding-right: 50px;
 	font-size: 1.2em;
 }
+#register_content form {
+	margin-top: 40px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+#register_content form div[class*="alert-danger"]:last-of-type {
+	margin-bottom: 40px;
+}
+#register_content form input {
+	margin-bottom: 20px;
+}
+#register_content form [type="submit"] {
+	margin-bottom: 0;
+}
+#register_content #register_submit-group {
+	text-align: center;
+}
+
+
+
+
+
+
+
+@media (max-width: 991px) {
+	#register_content {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	#register_content form {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+@media (max-width: 767px) {
+	#content, #wrapper {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	h1 {
+		font-size: 2em;
+		padding-left: 20px;
+	}
+
+	#register_content form {
+		margin-top: 20px;
+	}
+	#register_content form label {
+		margin-bottom: 15px;
+	}
+}
