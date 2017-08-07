@@ -13,7 +13,6 @@
 	margin-top: 40px;
 	padding-left: 50px;
 	padding-right: 50px;
-	text-align: right;
 }
 #login_content form input {
 	margin-bottom: 30px;
@@ -31,18 +30,17 @@
 #login_content #login_forgotten-pass-link {
 	margin-bottom: 30px;
 	margin-top: 40px;
-	text-align: left;
-}
-#login_content .modal {
-	text-align: left;
 }
 #login_content .modal .form-group {
 	margin-bottom: 0;
 	margin-top: 30px;
-	text-align: right;
 }
 #login_content .modal-body {
 	text-align: center;
+}
+#login_content #login_modal-submit-group {
+	margin-top: 0;
+	margin-bottom: 30px;
 }
 #login_content #login_forgotten-pass-modal-button {
 	min-width: 100px;
@@ -85,19 +83,13 @@
 		padding-left: 20px;
 	}
 
-	#login_content form {
-		text-align: left;
-	}
 	#login_content form label {
 		margin-bottom: 15px;
 	}
 	#login_content .modal .form-group {
 		text-align: left;
 	}
-	#login_content .modal [type="text"] {
-		width: 100%;
-	}
-	#login_content form div:last-child {
+	#login_content #login_modal-submit-group, #login_content form div:last-child {
 		text-align: center;
 	}
 }
