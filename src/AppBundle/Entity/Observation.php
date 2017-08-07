@@ -54,9 +54,9 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\Column(name="birdName", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $birdName;
+    private $name;
 
     /**
      * @var string
@@ -72,6 +72,13 @@ class Observation
      * @Assert\Valid()
      */
     private $user;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bird", inversedBy="observations")
+     */
+    private $bird;
 
 
 
