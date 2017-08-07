@@ -16,7 +16,7 @@ class RegistrationType extends AbstractType
         $builder->add('firstName', TextType::class, array(
                     'label' => 'core.firstname.label',
                     'label_attr' => array(
-                        'class' => 'col-xs-12 control-label'
+                        'class' => 'col-sm-4 control-label'
                     ),
                     'attr' => array(
                         'class' => 'form-control input-lg',
@@ -31,7 +31,7 @@ class RegistrationType extends AbstractType
                 ->add('surname', TextType::class, array(
                     'label' => 'core.surname.label',
                     'label_attr' => array(
-                        'class' => 'col-xs-12 control-label'
+                        'class' => 'col-sm-4 control-label'
                     ),
                     'attr' => array(
                         'class' => 'form-control input-lg',
@@ -46,7 +46,7 @@ class RegistrationType extends AbstractType
                 ->add('email', EmailType::class, array(
                     'label' => 'core.email.label',
                     'label_attr' => array(
-                        'class' => 'col-xs-12 control-label'
+                        'class' => 'col-sm-4 control-label'
                     ),
                     'attr' => array(
                         'class' => 'form-control input-lg',
@@ -66,7 +66,7 @@ class RegistrationType extends AbstractType
                     'first_options' => array(
                         'label' => 'core.pass.label',
                         'label_attr' => array(
-                            'class' => 'col-xs-12 control-label'
+                            'class' => 'col-sm-4 control-label'
                         ),
                         'attr' => array(
                             'class' => 'form-control input-lg',
@@ -78,7 +78,7 @@ class RegistrationType extends AbstractType
                     'second_options' => array(
                         'label' => 'core.pass.confirm',
                         'label_attr' => array(
-                            'class' => 'col-xs-12 control-label'
+                            'class' => 'col-sm-4 control-label'
                         ),
                         'attr' => array(
                             'class' => 'form-control input-lg',
