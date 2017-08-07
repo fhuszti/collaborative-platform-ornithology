@@ -45,19 +45,23 @@ a {
   margin-bottom: 48px;
 }
 
-.nao_title, .nao_title>div:first-child {
+.nao_title {
+  padding: 10px 10px;
+  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px outset #eee;
+}
+.nao_title>div:first-child {
   padding-left: 0;
 }
 .nao_title h1 {
-  border-bottom: 3px solid green;
+  border-bottom: 3px solid black;
   margin: 0;
   padding-bottom: 5px;
 }
-.nao_title-icon {
-  width: 51px;
-  height: 51px;
-  border: 1px solid black;
-  border-radius: 25px;
+.nao_title-icon img {
+  max-width: 51px;
+  max-height: 51px;
 }
 
 
