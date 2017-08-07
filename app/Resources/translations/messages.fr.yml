@@ -92,12 +92,12 @@ core:
             label: Mot de passe
             placeholder: Votre mot de passe
         remember_me: Se souvenir de moi
-        submit: Connexion
+        submit: Se connecter
         forgotten_pass: Mot de passe oublié ?
         modal:
             title: Réinitialiser son mot de passe
             content: Nous allons vous envoyer un email afin de confirmer votre identité, puis vous pourrez créer un nouveau mot de passe.
-            button: Réinitialiser
+            button: Valider
 
     register:
         title: Inscription
