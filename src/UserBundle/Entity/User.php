@@ -34,7 +34,7 @@ class User extends FOSUser
      *
      * @ORM\Column(name="firstName", type="string", length=255)
      * 
-     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+     * @Assert\NotBlank(message="core.validation.user.firstname.blank", groups={"Registration", "Profile"})
      * @Assert\Length(
      *     min=2,
      *     max=255,
@@ -50,7 +50,7 @@ class User extends FOSUser
      *
      * @ORM\Column(name="surname", type="string", length=255)
      *
-     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+     * @Assert\NotBlank(message="core.validation.user.surname.blank", groups={"Registration", "Profile"})
      * @Assert\Length(
      *     min=2,
      *     max=255,
@@ -148,6 +148,9 @@ class User extends FOSUser
     public function setEmail($email)
     {
         $this->email = $email;
+
+        //we update the Username too
+        $this->setUsername($email);
 
         return $this;
     }
