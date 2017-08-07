@@ -1,0 +1,15 @@
+core:
+    firstname:
+        label: Prénom
+        placeholder: 'ex.: Jean'
+    surname:
+        label: Nom
+        placeholder: 'ex.: Dupont'
+    email:
+        label: Adresse email
+        placeholder: exemple@email.fr
+    pass:
+        label: Mot de passe
+        placeholder: Votre mot de passe
+        confirm: Confirmer le mot de passe
+        mismatch: Le contenu des deux champs de mot de passe doit être identique.
