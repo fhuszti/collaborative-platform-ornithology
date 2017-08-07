@@ -9,9 +9,6 @@
 	padding-left: 50px;
 	padding-right: 50px;
 }
-#register_content form div[class*="alert-danger"]:last-of-type {
-	margin-bottom: 40px;
-}
 #register_content form input {
 	margin-bottom: 20px;
 }
