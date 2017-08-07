@@ -94,6 +94,7 @@ core:
 
     register:
         title: Inscription
+        submit: Créer mon compte
 
     validation:
         user:

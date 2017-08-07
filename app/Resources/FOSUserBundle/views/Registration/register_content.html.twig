@@ -12,12 +12,66 @@
 	{{ form_start(form, {
 		'method': 'post',
 		'action': path('fos_user_registration_register'),
-		'attr': {'class': 'fos_user_registration_register'}
+		'attr': {
+			'class': 'fos_user_registration_register form-horizontal'
+		}
 	}) }}
-	    {{ form_widget(form) }}
+        {% if form_errors(form.firstName) %}
+            {{ form_errors(form.firstName) }}
+        {% endif %}
+        {% if form_errors(form.surname) %}
+            {{ form_errors(form.surname) }}
+        {% endif %}
+        {% if form_errors(form.email) %}
+            {{ form_errors(form.email) }}
+        {% endif %}
+        {% if form_errors(form.plainPassword.first) %}
+            {{ form_errors(form.plainPassword.first) }}
+        {% endif %}
+        {% if form_errors(form.plainPassword.second) %}
+            {{ form_errors(form.plainPassword.second) }}
+        {% endif %}
+        {% if form_errors(form) %}
+            {{ form_errors(form) }}
+        {% endif %}
+
+        <div class="form-group">
+            {{ form_label(form.firstName) }}
+            <div class="col-sm-8">
+            	{{ form_widget(form.firstName) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.surname) }}
+            <div class="col-sm-8">
+            	{{ form_widget(form.surname) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.email) }}
+            <div class="col-sm-8">
+            	{{ form_widget(form.email) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.plainPassword.first) }}
+            <div class="col-sm-8">
+            	{{ form_widget(form.plainPassword.first) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.plainPassword.second) }}
+            <div class="col-sm-8">
+            	{{ form_widget(form.plainPassword.second) }}
+            </div>
+        </div>
 	    
-	    <div>
-	        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+	    <div class="form-group">
+	        <input type="submit" class="btn btn-default" value="{{ 'core.register.submit'|trans }}" />
 	    </div>
 	{{ form_end(form) }}
 </div>
