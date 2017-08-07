@@ -56,6 +56,12 @@ class Bird
      */
     private $commonName;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Observation", mappedBy="bird", cascade={"persist"})
+     * @Assert\Valid()
+     */
+    private $observations;
+
 
     /**
      * Get id
