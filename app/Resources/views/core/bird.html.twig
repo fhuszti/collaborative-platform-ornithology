@@ -8,15 +8,58 @@
 <hr>
 <div id="maps"></div>
 <hr>
-<h1>OBSERVATION</h1><br/>
+<h1>{{ 'core.bird.observation.title'|trans }}</h1><br/>
 
  <script>
 var map;
 function initMap() {
+	var zoneMarqueurs = new google.maps.LatLngBounds()
+	var tableauMarqueurs = [		
+		{ lat:47.325371, lng:1.044195 },	
+		{ lat:47.345627, lng:0.894806 },	
+		{ lat:47.334488, lng:0.944717 },	
+		{ lat:47.331615, lng:1.129307 },	
+		{ lat:47.270981, lng:1.375158 },	
+		{ lat:47.290585, lng:1.346169 },	
+		{ lat:47.330112, lng:0.995293 },	
+		{ lat:47.339272, lng:1.175795 },	
+		{ lat:47.307144, lng:1.318617 },	
+		{ lat:47.328671, lng:1.288072 },	
+		{ lat:47.344994, lng:1.212090 },	
+		{ lat:47.357315, lng:0.831850 },	
+		{ lat:47.342327,lng: 1.245060 }
+	];
 	map = new google.maps.Map(document.getElementById('maps'), {
-	  center: {lat: 48.890004, lng: 2.397932},
-	  zoom: 8
+	  center: { lat: 47.389982, lng: 0.688877 },
+	  zoom: 8,
+	  mapTypeId: google.maps.MapTypeId.ROADMAP
 	});
+
+	for( var i = 0, I = tableauMarqueurs.length; i < I; i++ ) {
+
+		var latlng = tableauMarqueurs[i],							//	var latlng = tableauMarqueurs[i],
+			latitude = latlng["lat"],								//		latitude = latlng[0],
+			longitude = latlng["lng"];								//		longitude = latlng[1];
+	
+		var optionsMarqueur = {
+			map: map,
+			position: new google.maps.LatLng( latitude, longitude ),
+			title: 'point numero ' + i
+		};
+		var marqueur = new google.maps.Marker( optionsMarqueur );
+		zoneMarqueurs.extend( marqueur.getPosition() );
+		var content = "<h3>Latitude : " + latitude +  '</h3>' + "longitude: " + longitude    
+
+  		var infowindow = new google.maps.InfoWindow()
+		google.maps.event.addListener(marqueur,'click', (function(marqueur,content,infowindow){ 
+		        return function() {
+		           infowindow.setContent(content);
+		           infowindow.open(map,marqueur);
+		        };
+		    })(marqueur,content,infowindow));
+
+	}
+	map.fitBounds( zoneMarqueurs );
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYM7ehj93A-AEdTDupTMEL7wAgOHWCTxA&callback=initMap"

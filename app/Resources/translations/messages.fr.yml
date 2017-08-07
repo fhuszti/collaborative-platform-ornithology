@@ -12,6 +12,8 @@ core:
             name_latin: Nom latin
             full_name: Nom complet
             common_name: Nom(s) Commun(s)
+        observation:
+            title: OBSERVATIONS
     footer:
         left_links:
             search:
