@@ -8,7 +8,9 @@ core:
         search: Rechercher un oiseau
         contact: Nous contacter
         register: S'inscrire
+        profile: Voir son profil
         login: Se connecter
+        logout: Se déconnecter
 
     footer:
         left_links:
