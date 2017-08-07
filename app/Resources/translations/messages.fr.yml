@@ -3,6 +3,13 @@ core:
         title: Nos Amis les Oiseaux
         logo: Nos Amis les Oiseaux
 
+    second-menu:
+        observation: Laisser une observation
+        search: Rechercher un oiseau
+        contact: Nous contacter
+        register: S'inscrire
+        login: Se connecter
+
     footer:
         left_links:
             search:
