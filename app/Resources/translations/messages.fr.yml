@@ -28,6 +28,13 @@ core:
         login: Se connecter
         logout: Se déconnecter
 
+    second-menu:
+        observation: Laisser une observation
+        search: Rechercher un oiseau
+        contact: Nous contacter
+        register: S'inscrire
+        login: Se connecter
+
     footer:
         left_links:
             search:
