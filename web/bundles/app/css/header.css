@@ -1,0 +1,74 @@
+/*Header*/
+#header-middle-text {
+	padding-top: 85px;
+}
+
+#header-birds-text {
+	padding-top: 15px;
+}
+
+#image-right {
+	border-right: 1px solid #DFDCD2;
+	padding-right: 50px;
+
+}
+
+#images {
+	height: 250px;
+}
+
+#navigationLogin {
+	background-color: #FEFAEE;
+	border-color: #FEFAEE;
+}
+
+#logo {
+	padding-top: 30px;
+	padding-left: 20px;
+}
+
+header {
+	background-color: #FEFAEE;
+	height: 300px;
+}
+
+/*NavBar*/
+li {
+	width: 150px;
+}
+
+li #alink {
+	background-color: #FEFAEE;
+}
+
+a {
+	font-size: 1.2em;
+}
+
+#links {
+	border:none;
+}
+
+#icon-bar {
+	background-color: #DFDCD2;
+}
+
+@media all and (max-width: 767px) {
+
+	#logo {
+		display: flex;
+		justify-content: center;
+	}
+
+	#header-middle-text {
+		display: none;
+	}
+
+	#header-birds-text {
+		display: none;
+	}
+
+	#image-right {
+		display: none;
+	}
+}

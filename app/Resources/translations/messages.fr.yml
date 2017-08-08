@@ -35,3 +35,29 @@ core:
                 link: WebAgency
                 title: Agence WebAgency
 
+    header: 
+        links:
+            project:
+                link: Le projet
+                title: Le projet
+            observation: 
+                link: Observation
+                title: Observation
+            search: 
+                link: Recherche
+                title: Recherche
+            contact: 
+                link: Contact
+                title: Contact
+            registration: 
+                link: Inscription
+                title: Inscription
+            login: 
+                link: Connexion
+                title: Connexion
+            logout:
+                link: Deconnexion
+                title: Deconnexion
+
+
+
