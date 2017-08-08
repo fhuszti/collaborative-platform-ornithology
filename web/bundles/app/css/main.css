@@ -72,6 +72,6 @@ a {
 
 @media (max-width: 767px) {
   #wrapper {
-    margin-bottom: 0;
+    margin-bottom: 30px;
   }
 }

@@ -10,20 +10,26 @@ body {
 	padding-left: 50px;
 	padding-right: 50px;
 	font-size: 1.2em;
+	background-color: rgb(200, 229, 238);
+	background-color: rgba(200, 229, 238, 0.95);
 }
 #register_content form {
-	margin-top: 40px;
+	margin-top: 70px;
 	padding-left: 50px;
 	padding-right: 50px;
 }
-#register_content form input {
-	margin-bottom: 20px;
+#register_content form input:not([type="submit"]) {
+	margin-bottom: 15px;
+	width: 90%;
 }
-#register_content form [type="submit"] {
-	margin-bottom: 0;
-}
+
 #register_content #register_submit-group {
 	text-align: center;
+	margin-bottom: 70px;
+	margin-top: 40px;
+}
+#register_content #register_submit-group input {
+	padding: 20px;
 }
 
 
@@ -53,9 +59,12 @@ body {
 	}
 
 	#register_content form {
-		margin-top: 20px;
+		margin-top: 40px;
 	}
 	#register_content form label {
 		margin-bottom: 15px;
+	}
+	#register_content form input:not([type="submit"]) {
+		width: 100%;
 	}
 }
