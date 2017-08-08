@@ -12,6 +12,7 @@ body {
 	font-size: 1.2em;
 	background-color: rgb(200, 229, 238);
 	background-color: rgba(200, 229, 238, 0.95);
+	border: 1px outset #eee;
 }
 #register_content form {
 	margin-top: 70px;
@@ -62,7 +63,7 @@ body {
 		margin-top: 40px;
 	}
 	#register_content form label {
-		margin-bottom: 15px;
+		margin-bottom: 5px;
 	}
 	#register_content form input:not([type="submit"]) {
 		width: 100%;
