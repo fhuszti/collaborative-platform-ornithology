@@ -16,6 +16,7 @@ body {
 	padding-right: 50px;
 	font-size: 1.2em;
 	background-color: rgb(187, 223, 180);
+	background-color: rgba(187, 223, 180, 0.95);
 	border: 1px outset #eee;
 }
 #login_content form {
