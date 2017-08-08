@@ -10,18 +10,18 @@
 	</div>
 </div>
 
-{% if error %}
-    <div class="alert alert-warning">
-    	{{ error.messageKey|trans(error.messageData, 'security') }}
-    </div>
-{% endif %}
-
 <div class="col-xs-12" id="login_content">
 	<div id="login_btn-register" class="row">
 		<a href="{{ path('fos_user_registration_register') }}" title="{{ 'core.login.register_button'|trans }}" class="btn btn-info">
 			{{ 'core.login.register_button'|trans }}
 		</a>
 	</div>
+
+	{% if error %}
+	    <div class="alert alert-warning login_error">
+	    	{{ error.messageKey|trans(error.messageData, 'security') }}
+	    </div>
+	{% endif %}
 
 	<form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal">
 	    {% if csrf_token %}
