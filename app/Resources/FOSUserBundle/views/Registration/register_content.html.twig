@@ -10,7 +10,7 @@
 	</div>
 </div>
 
-<div class="col-xs-12 well" id="register_content">
+<div class="col-xs-12" id="register_content">
 	{{ form_start(form, {
 		'method': 'post',
 		'action': path('fos_user_registration_register'),
@@ -73,7 +73,7 @@
         </div>
 	    
 	    <div class="form-group" id="register_submit-group">
-	        <input type="submit" class="btn btn-default" value="{{ 'core.register.submit'|trans }}" />
+	        <input type="submit" class="btn btn-info btn-lg" value="{{ 'core.register.submit'|trans }}" />
 	    </div>
 	{{ form_end(form) }}
 </div>
