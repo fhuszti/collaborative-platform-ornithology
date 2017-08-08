@@ -24,15 +24,21 @@ class AjaxController extends Controller
          ->getRepository(Bird::class)
          ->MyFindBy($search);
 
-         foreach ($data as $bird) {
+         if ($data) {
 
-            $url = $this->get('router')->generate(
-                'bird', // 1er argument : le nom de la route
-                array('id' => $bird->getId())    // 2e argument : les valeurs des paramètres
-            );
-            $output[] = array('link' => $url, 'name' => $bird->getCommonName());
-         }
-         return new JsonResponse($output);
+             foreach ($data as $bird) {
+
+                $url = $this->get('router')->generate(
+                    'bird', // 1er argument : le nom de la route
+                    array('id' => $bird->getId())    // 2e argument : les valeurs des paramètres
+                );
+                $output[] = array('link' => $url, 'name' => $bird->getCommonName());
+             }
+             return new JsonResponse($output);
+        }
+        else {
+            return new JsonResponse(array('error' => 'true'));
+        }
 
       }
       else {

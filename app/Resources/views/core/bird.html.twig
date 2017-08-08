@@ -1,3 +1,5 @@
+<a href="{{ path('find') }}" id="precedent">Retourez aux résultats de la recherche</a><br />
+<hr>
 <h2>{{ bird.commonName }}</h2><br/>
 {{ 'core.bird.desc.family'|trans }} : {{ bird.family }} <br/>
 {{ 'core.bird.desc.rang'|trans }} : {{ bird.rank }} <br/>
@@ -61,6 +63,17 @@ function initMap() {
 	}
 	map.fitBounds( zoneMarqueurs );
 }
+$('#precedent').click(function(e){
+    e.preventDefault();
+    $('#container_fiche').empty();
+    $('#container_find').show('slow');
+    return false;
+});
+if (typeof google === 'object' && typeof google.maps === 'object') {
+ 	initMap()
+}
+else {
+	jQuery.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBYM7ehj93A-AEdTDupTMEL7wAgOHWCTxA&callback=initMap")
+}
+
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYM7ehj93A-AEdTDupTMEL7wAgOHWCTxA&callback=initMap"
-async defer></script>

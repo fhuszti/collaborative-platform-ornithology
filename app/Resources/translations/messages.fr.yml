@@ -5,6 +5,9 @@ core:
     find:
         input_find: Tapez le nom de l'oiseau
         button_find: Rechercher
+        msg:
+            nofind: Aucuns résultats ne correspond à cette recherche
+            error: Une erreur est survenue, veuillez réessayer
     bird:
         desc:
             family: Famille
