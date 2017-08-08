@@ -49,13 +49,14 @@ if ($request->isXmlHttpRequest()) {
 				$em->persist($observation);
 				$em->flush();
 
-				// $dir = '%kernel.project_dir%/web/uploads/images/';
-				// $image = $observation->getImage()->getImage();
-				// \Tinify\setKey("YN-tD6vaVHxYTx8XcfBLKFrlzXwwxgLi");
-				// $source = \Tinify\fromFile($dir.$image);
-				// $source->toFile($dir."/optimized/".$image);
-
-				// unlink('%kernel.project_dir%/web/uploads/images/'.$image ) ; 
+			// if (Null !==  $observation->getImage()->getImage()) {
+			// 	$dir = '%kernel.project_dir%/web/uploads/images/';
+			// 	$image = $observation->getImage()->getImage();
+			// 	\Tinify\setKey("YN-tD6vaVHxYTx8XcfBLKFrlzXwwxgLi");
+			// 	$source = \Tinify\fromFile($dir.$image);
+			// 	$source->toFile($dir."/optimized/".$image);
+			// 	unlink('%kernel.project_dir%/web/uploads/images/'.$image ) ; 
+			// }
 				return new JsonResponse(array('status'=>'success'));
 			}
 }

@@ -109,19 +109,10 @@
     <script type="text/javascript">
    $("form").on("submit",function(e) {
         e.preventDefault();
-        // var longitude = $("#observation_longitude").val();
-        // var lattitude = $("#observation_lattitude").val();
-        // var birdName = $("#observation_birdName").val();
-        // var date = $("#observation_date").val();
-        // var comment = $("#observation_comment").val();
-        // var image = $("#observation_image_file").val();
-        // var $this = $(this);
         var form = $(this);
         var values = {};   
         $.each( form.serializeArray(), function(i, field) {    
          values[field.name] = field.value;   });
-        console.log(form);
-        console.log(values);
         $.ajax({
           url : '{{ path('app_observation') }}',
           type : 'POST', 
@@ -129,7 +120,8 @@
           data : values,
           success :function(e) {
             console.log(e);
-              // $("#containerObservation").hide();
+              $("#containerObservation").hide(1000);
+               $("#containerObservation").show(1000);
           }
         });
         });
