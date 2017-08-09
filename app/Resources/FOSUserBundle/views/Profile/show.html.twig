@@ -1,5 +1,27 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
+{% block title %}
+    {{ 'core.profile.title'|trans }} - {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% stylesheets filter='cssrewrite, ?scssphp'
+        'bundles/app/css/profile.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block fos_user_content %}
-{% include "@FOSUser/Profile/show_content.html.twig" %}
+	{% include "@FOSUser/Profile/show_content.html.twig" %}
 {% endblock fos_user_content %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts filter='?jsqueeze'
+        'bundles/app/js/profile.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
