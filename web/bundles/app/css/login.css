@@ -1,5 +1,5 @@
 body {
-	background-image: url("http://assets.fhuszti.tech/nao/home/home-bg.png");
+	background-image: url("http://assets.fhuszti.tech/nao/login/login-bg.jpg");
   	background-size: cover;
   	background-position: center center;
   	background-repeat: no-repeat;
@@ -71,13 +71,6 @@ body {
 }
 #login_content #login_forgotten-pass-modal-button {
 	min-width: 150px;
-}
-.btn-loading {
-  animation: spin 2s linear infinite;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }
 
 

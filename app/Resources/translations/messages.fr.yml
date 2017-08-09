@@ -2,6 +2,7 @@ core:
     site:
         title: Nos Amis les Oiseaux
         logo: Nos Amis les Oiseaux
+        alt_img: Image de décoration
 
     second-menu:
         observation: Laisser une observation
@@ -55,6 +56,29 @@ core:
     register:
         title: Inscription
         submit: Créer mon compte
+
+    profile:
+        title: Mon Espace
+        block1:
+            header: Profil
+            content:
+                title: Informations
+                surname: Nom
+                firstname: Prénom
+                email: Adresse email
+                password: Mot de passe
+                edit: Modifier
+        block2:
+            header: Observations
+            content: 
+        block3:
+            header: Photos
+            content: 
+        modal:
+            email:
+                title: Changer d'adresse email
+            password:
+                title: Changer de mot de passe
 
     validation:
         user:
