@@ -60,6 +60,13 @@ class Observation
     /**
      * @var string
      *
+     * @ORM\Column(name="status", type="boolean", nullable=true)
+     */
+    private $status;
+
+    /**
+     * @var string
+     *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", inversedBy="observation", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      * @Assert\Valid()
@@ -218,6 +225,30 @@ class Observation
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * Set status
+     *
+     * @param boolean $status
+     *
+     * @return Observation
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return bool
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     public function setImage(\AppBundle\Entity\Image $image = null)
