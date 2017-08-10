@@ -17,7 +17,8 @@ class ObservationType extends AbstractType
   {
     $builder
       ->add('comment', TextareaType::class, array(
-            'label' => 'COMMENTAIRE (Facultatif)'
+            'label' => 'COMMENTAIRE (Facultatif)',
+            'required' => false
       ))
       ->add('date', DateType::class, array(
             'label' => 'DATE*',
@@ -25,16 +26,17 @@ class ObservationType extends AbstractType
             'widget' => 'single_text',
       ))
       ->add('longitude', TextType::class, array(
-                'label' => 'longitude'
+            'label' => 'longitude'
       ))
       ->add('lattitude', TextType::class, array(
-                'label' => 'lattitude'
+            'label' => 'lattitude'
       ))
       ->add('birdName', TextType::class, array(
-                'label' => 'NOM DE L\'OISEAU'
+            'label' => 'NOM DE L\'OISEAU'
       ))
       ->add('image', ImageType::class, array(
-                'label' => 'PHOTO'
+            'label' => 'PHOTO',
+            // 'required' => false
       ))
       ->add('save', SubmitType::class, array(
             'label' => 'Soumettre',
@@ -48,3 +50,7 @@ class ObservationType extends AbstractType
     ));
   }
 }
+
+
+
+ 

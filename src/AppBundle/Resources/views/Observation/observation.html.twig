@@ -12,120 +12,214 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
-  <div class="row">
-  <div class="col-lg-4">
-    <div id="containerObservation">
-      <div id="map"></div>
-      <div class="row">
-        <div class="col-xs-6">
-          <a href="#" type="button"  onclick="initMap()">
-            <div id="buttonGeolocation">
-              <p></p>          
-            </div>
-          </a>
+  <div id="containerPageObs" class="col-lg-12">
+    <div class="row">
+      <div id="title" class="col-lg-offset-1 col-lg-8">
+        <div id="k">
+          <p>Observation</p>
+          <div id="imgObs">
+            {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+              <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/second-menu/observation.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+            {% endimage %}
+          </div>
         </div>
-        <div class="col-xs-6">
-          <a href="#" type="button"  onclick="ioo()">
-            <div id="buttonDisplayMap">
-              <p></p>          
-            </div>
-          </a>
-        </div>
+        <hr id="underline"  class="col-lg-8"/>
       </div>
-      <!-- {% form_theme form 'bootstrap_3_layout.html.twig' %} -->
+    </div>
+    <div class="row">
+      <div id="containerObservation" class="col-lg-offset-1 col-lg-8">
+        <div id="firstCorner" class="cornerSeparation">
+          {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+            <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/separator-angle.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+          {% endimage %}
+        </div>
+        <div id="locationTitle" class="col-sm-offset-1">
+          <p>LOCALITE *: Déplacer le marqueur sur la carte pour localiser le lieu de l'observation</p>
+        </div>
+        <div id="map"></div>
+        <div class="row">
+          <div class="col-xs-6">
+            <a href="#" type="button"  onclick="initMap()">
+              <div id="buttonGeolocation">
+                <p></p>          
+              </div>
+            </a>
+          </div>
+          <div class="col-xs-6">
+            <a href="#" type="button"  onclick="ioo()">
+              <div id="buttonDisplayMap">
+                <p></p>          
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- {% form_theme form 'bootstrap_3_layout.html.twig' %} -->
         {{ form_start(form) }}
         {{ form_errors(form) }}
         {{ form_row(form.longitude, { 'label_attr': {'class': 'longitude'} }) }}
         {{ form_row(form.lattitude, { 'label_attr': {'class': 'lattitude'} }) }}
-      <div id="birdName">
-        <div class="row">
-          <div class="col-lg-12">
-            {{ form_label(form.birdName) }}
+        <div id="birdName">
+          <div class="row">
+            <div class="cornerSeparation">
+              {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+                <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/separator-angle.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+              {% endimage %}
+            </div>
+            <div class="col-sm-offset-1">
+              {{ form_label(form.birdName) }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-offset-3 col-sm-8">
+              {{ form_widget(form.birdName) }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-offset-3 col-sm-8">
+            <div class="list-group" id="results">
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-12">
-            {{ form_widget(form.birdName) }}
-            <hr >
+        <div id="date">
+          <div class="row">
+            <div class="cornerSeparation">
+              {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+                <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/separator-angle.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+              {% endimage %}
+            </div>
+            <div class="col-sm-offset-1"">
+              {{ form_label(form.date) }}
+            </div>
           </div>
-        </div>
-      </div>
-      <div id="date">
-        <div class="row">
-          <div class="col-lg-12">
-            {{ form_label(form.date) }}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            {{ form_widget(form.date) }}
-            <hr >
-          </div>
-        </div>
-      </div>
-      <div id="comment">
-        <div class="row">
-          <div class="col-lg-12">
-            {{ form_label(form.comment) }}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            {{ form_widget(form.comment) }}
-            <hr >
-          </div>
-        </div>
-      </div>
-      <div id="image">
-        <div class="row">
-          <div class="col-lg-12">
-            {{ form_widget(form.image) }}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            {{ form_label(form.image) }}
-            <div id="imageBlock">
-            <img id="aperçuImage" src="#" alt="" />
-            <hr >
+          <div class="row">
+            <div class="col-xs-12 col-sm-offset-3 col-sm-8">
+              {{ form_widget(form.date) }}
             </div>
           </div>
         </div>
+        <div id="comment">
+          <div class="row">
+            <div class="cornerSeparation">
+              {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+                <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/separator-angle.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+              {% endimage %}
+            </div>
+            <div class="col-sm-offset-1">
+              {{ form_label(form.comment) }}
+            </div>
+          </div>
+          <div class="row">
+            <div id="textarea" class="col-xs-12 col-sm-offset-1 col-sm-10">
+              {{ form_widget(form.comment) }}
+            </div>
+          </div>
+        </div>
+        <div id="image">
+          <div class="row">
+            <div class="col-sm-offset-1">
+              <div class="cornerSeparation">
+                {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+                  <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/separator-angle.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+                {% endimage %}
+            </div>
+              {{ form_label(form.image) }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-offset-1 col-sm-2">
+              {{ form_widget(form.image) }}
+            </div>
+            <div id="imageBlock" class="col-sm-offset-2 col-sm-4">
+              <img id="aperçuImage" src="#" alt="" />
+            </div>   
+          </div>
+        </div>
+        <div id="save" class="col-sm-offset-4 col-sm-4">
+          {{ form_row(form.save) }}
+        </div>
+          {{ form_rest(form) }}
+          {{ form_end(form) }}
       </div>
-      <div id="save">
-        {{ form_row(form.save) }}
-        <hr>
+      <div id="thanks" class="col-lg-offset-1 col-lg-8">
+        <p>Merci !</p>
+        <p>Votre observation vient d'être envoyée, elle va être soumise à validation par nos profesionnels avant édition sur notre site.</p>
+        <p>Vous serez notifié de sa validation dans vorte espace personnel.</p>
+        <div id="blocNewObservationButton" class="col-sm-offset-4 col-sm-4">
+          <a href="#" type="button" >
+            <div id="newObservationButton">
+               Saisir une autre observation
+            </div>
+          </a>
+        </div>
       </div>
-        {{ form_rest(form) }}
-        {{ form_end(form) }}
-
     </div>
   </div>
+  <script src="{{asset('bundles/app/js/datepicker.js') }}"></script>
+  <script src="{{asset('bundles/app/js/previewImage.js') }}"></script>
+  <script src="{{asset('bundles/app/js/geolocation.js') }}"></script>
+  <script src="{{asset('bundles/app/js/marker.js') }}"></script>
+  <script src="{{asset('bundles/app/js/map.js') }}"></script>
+  <script src="{{asset('bundles/app/js/ajax.js') }}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClMpsB5o4zV5aVVxdivP39F_QuXZ5RSEM&libraries=places&callback=initAutocomplete"
+         async defer></script>
+  <script type="text/javascript">
+    $("form").on("submit",function(e) {
+      e.preventDefault();
+      var form = $(this);
+      var values = {};   
+      $.each( form.serializeArray(), function(i, field) { 
 
-    <script src="{{asset('bundles/app/js/datepicker.js') }}"></script>
-    <script src="{{asset('bundles/app/js/previewImage.js') }}"></script>
-    <script src="{{asset('bundles/app/js/geolocation.js') }}"></script>
-    <script src="{{asset('bundles/app/js/marker.js') }}"></script>
-    <script type="text/javascript">
-   $("form").on("submit",function(e) {
-        e.preventDefault();
-        var form = $(this);
-        var values = {};   
-        $.each( form.serializeArray(), function(i, field) {    
-         values[field.name] = field.value;   });
+       values[field.name] = field.value;   });
         $.ajax({
           url : '{{ path('app_observation') }}',
           type : 'POST', 
-          // dataType: "json",
           data : values,
           success :function(e) {
-            console.log(e);
-              $("#containerObservation").hide(1000);
-               $("#containerObservation").show(1000);
-          }
-        });
-        });
+            $("#containerObservation").hide(1000,function(){
+            $("#thanks").show(1000);
+          });
+      }
+      });
+    });
     </script>
+<!--     <script>
+$(document).ready(function(){
+  $('#observation_birdName').keyup(function() {
+    var value = $(this).val();
+      if(value === '' || value.length < 3) {
+        $('#results').empty();
+      }
+      else {
+        $.ajax({
+           url : '{{ path('search') }}', 
+           type : 'GET', 
+           data : 'search=' + value,
+           success: function(reponse) { 
+          $('#results').empty();
+            if (reponse.error) {
+              $('#results').prepend('<p>{{ 'core.find.msg.nofind'|trans }}</p>');
+            }
+            else {
+          Object.keys(reponse).forEach(function(key) {
+              $('#results').prepend('<a href="'+ reponse[key].link +'" class="list-group-item theFind">'+ reponse[key].name +'</a>');
+          });
+            }
+            },
+             error: function() { 
+                $('#results').empty();
+                $('#results').html('<p>{{ 'core.find.msg.error'|trans }}</p>');
+                }
+        });
+      }
+  });
+});
+$("#results").on("click", "a.theFind", function(){
+  var href = $(this).attr('href');
+    $('#container_find').hide('slow');
+    $('#container_fiche').load(href);
+    $('#container_fiche').show('slow');
+    return false;
+});
+</script> -->
   </body>
 </html>
 

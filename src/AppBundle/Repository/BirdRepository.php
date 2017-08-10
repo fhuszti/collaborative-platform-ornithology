@@ -10,4 +10,18 @@ namespace AppBundle\Repository;
  */
 class BirdRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function myFindBy($search)
+	{
+	  $qb = $this->createQueryBuilder('a');
+	  $qb
+	    ->orWhere('a.family LIKE :search')
+	    ->orWhere('a.common_name LIKE :search')
+	    ->setParameter('search', $search.'%')
+	    ->setMaxResults(20)
+	  ;
+	  return $qb
+	    ->getQuery()
+	    ->getResult()
+	  ;
+	}
 }

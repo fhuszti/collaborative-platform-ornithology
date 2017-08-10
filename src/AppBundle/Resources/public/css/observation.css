@@ -1,31 +1,36 @@
-#containerObservation {
-	background-color: #EDEDED;
+@media all and (max-width: 768px) {
+ 
+	#containerObservation {
+		background-color: #F2F1EF;
+	}
+
+	#buttonGeolocation {
+		background-color: #80CFF4;
+		height: 100px;
+	}
+
+	#buttonDisplayMap {
+		background-color: #80CFF4;
+		height: 100px;
+	}
+
+	#observation_longitude, .longitude, #observation_lattitude, .lattitude {
+		display: none;
+	}
+
+	input, textarea {
+		width: 100%;
+	}
+
+	#imageBlock {
+		height: 50px;
+	}
+
+	img {
+	  width:100%;
+	  height:100%;
+	  display:block;
+	}
+
 }
 
-#buttonGeolocation {
-	background-color: red;
-	height: 50px;
-}
-
-#buttonDisplayMap {
-	background-color: red;
-	height: 50px;
-}
-
-#observation_longitude, .longitude, #observation_lattitude, .lattitude {
-	display: none;
-}
-
-input, textarea {
-	width: 100%;
-}
-
-#imageBlock {
-	height: 250px;
-}
-
-img {
-  width:100%;
-  height:100%;
-  display:block;
-}
