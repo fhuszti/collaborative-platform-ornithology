@@ -46,13 +46,6 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="comment", type="string", length=255, nullable=true)
      */
     private $comment;
@@ -177,30 +170,6 @@ class Observation
     public function getDate()
     {
         return $this->date;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Observation
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
