@@ -22,6 +22,12 @@
 	border-color: #FEFAEE;
 }
 
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus  {
+	color: #777;
+	text-decoration: underline;
+	text-decoration-color: #B1DFF1;
+}
+
 #logo {
 	padding-top: 30px;
 	padding-left: 20px;
