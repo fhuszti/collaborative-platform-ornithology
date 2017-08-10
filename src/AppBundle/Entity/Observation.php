@@ -46,17 +46,9 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", inversedBy="observation", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $image;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="birdName", type="string", length=255)
-     */
-    private $birdName;
+    private $name;
 
     /**
      * @var string
@@ -66,12 +58,31 @@ class Observation
     private $comment;
 
     /**
+     * @var string
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", inversedBy="observation", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     * @Assert\Valid()
+     */
+    private $image;
+
+    /**
      * @var 
      *
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="observations", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      * @Assert\Valid()
      */
     private $user;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bird", inversedBy="observations", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
+     */
+    private $bird;
 
 
 
@@ -162,27 +173,27 @@ class Observation
     }
 
     /**
-     * Set birdName
+     * Set name
      *
-     * @param string $birdName
+     * @param string $name
      *
      * @return Observation
      */
-    public function setBirdName($birdName)
+    public function setName($name)
     {
-        $this->birdName = $birdName;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get birdName
+     * Get name
      *
      * @return string
      */
-    public function getBirdName()
+    public function getName()
     {
-        return $this->birdName;
+        return $this->name;
     }
 
     /**
@@ -208,17 +219,15 @@ class Observation
     {
         return $this->comment;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
-    public function setImage($file)
+    public function setImage(\AppBundle\Entity\Image $image = null)
     {
-        $this->image = $file;
+        $this->image = $image;
+
+        if ( !is_null($image) )
+            $image->setObservation($this);
+
+        return $this;
     }
 
     public function getImage()
@@ -248,5 +257,31 @@ class Observation
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set bird
+     *
+     * @param \AppBundle\Entity\Bird $bird
+     *
+     * @return Observation
+     */
+    public function setBird(\AppBundle\Entity\Bird $bird)
+    {
+        $this->bird = $bird;
+
+        $bird->addObservation($this);
+
+        return $this;
+    }
+
+    /**
+     * Get bird
+     *
+     * @return \AppBundle\Entity\Bird
+     */
+    public function getBird()
+    {
+        return $this->bird;
     }
 }
