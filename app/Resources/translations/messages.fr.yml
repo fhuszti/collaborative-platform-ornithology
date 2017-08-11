@@ -2,6 +2,22 @@ core:
     site:
         title: Nos Amis les Oiseaux
         logo: Nos Amis les Oiseaux
+        icon: icon
+    
+    home:
+        title1: J'ai observé un oiseau
+        title2: Le Projet
+        title3: Quel est cet oiseau ?
+        title4: M'inscrire
+        title5: Mon escpace
+        title6: Nous contacter
+        p1: Vous pouvez partager ici l'endroit où vous l'avez vu, vos observations, ainsi que vos photos et nous aider à compléter notre plateforme!
+        p2: La présentation en détail de notre proget, pour qui? où? pourquoi? comment participer?
+        p3: Vous recherchez des informations sur un oiseau? Son nom, son espèce, ses lieux de vie, des photos? Nos filtres de recherche et la base de donnée c'est ici!
+        p4: Rejoignez nous en deux clics et participez à notre plateforme collaboartive !
+        p5: Retrouvez toutes vos informations, l'historique de vos observations, vos photos, et vos oiseaux favoris
+        p6: Besoins d'infos, remarques, envie d'échanger, n'hésitez pas à nous contacter !
+
 
     second-menu:
         observation: Laisser une observation
