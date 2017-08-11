@@ -2,55 +2,8 @@ core:
     site:
         title: Nos Amis les Oiseaux
         logo: Nos Amis les Oiseaux
-        icon: icon
+        alt_img: Image de décoration
     
-    home:
-        title1: J'ai observé un oiseau
-        title2: Le Projet
-        title3: Quel est cet oiseau ?
-        title4: M'inscrire
-        title5: Mon escpace
-        title6: Nous contacter
-        p1: Vous pouvez partager ici l'endroit où vous l'avez vu, vos observations, ainsi que vos photos et nous aider à compléter notre plateforme!
-        p2: La présentation en détail de notre proget, pour qui? où? pourquoi? comment participer?
-        p3: Vous recherchez des informations sur un oiseau? Son nom, son espèce, ses lieux de vie, des photos? Nos filtres de recherche et la base de donnée c'est ici!
-        p4: Rejoignez nous en deux clics et participez à notre plateforme collaboartive !
-        p5: Retrouvez toutes vos informations, l'historique de vos observations, vos photos, et vos oiseaux favoris
-        p6: Besoins d'infos, remarques, envie d'échanger, n'hésitez pas à nous contacter !
-
-
-    second-menu:
-        observation: Laisser une observation
-        search: Rechercher un oiseau
-        contact: Nous contacter
-        register: S'inscrire
-        profile: Voir son profil
-        login: Se connecter
-        logout: Se déconnecter
-
-    footer:
-        left_links:
-            search:
-                link: Rechercher un oiseau
-                title: Rechercher un oiseau
-            observations:
-                link: Partager ses observations
-                title: Partager ses observations
-            project:
-                link: Participer au projet
-                title: Participer au projet
-        copyright: © 2017 nosamislesoiseaux.fr
-        right_links:
-            legal:
-                link: Mentions légales
-                title: Mentions légales
-            status:
-                link: Statuts
-                title: Statuts
-            agency:
-                link: WebAgency
-                title: Agence WebAgency
-
     header: 
         project:
             link: En savoir plus sur le projet
@@ -76,6 +29,62 @@ core:
         logout:
             link: Se déconnecter
             value: Déconnexion
+
+    footer:
+        left_links:
+            search:
+                link: Rechercher un oiseau
+                title: Rechercher un oiseau
+            observations:
+                link: Partager ses observations
+                title: Partager ses observations
+            project:
+                link: Participer au projet
+                title: Participer au projet
+        copyright: © 2017 nosamislesoiseaux.fr
+        right_links:
+            legal:
+                link: Mentions légales
+                title: Mentions légales
+            status:
+                link: Statuts
+                title: Statuts
+            agency:
+                link: WebAgency
+                title: Agence WebAgency
+
+    second-menu:
+        observation: Laisser une observation
+        search: Rechercher un oiseau
+        contact: Nous contacter
+        register: S'inscrire
+        profile: Voir son profil
+        login: Se connecter
+        logout: Se déconnecter
+
+    home:
+        block_obs:
+            title: J'ai observé un oiseau
+            text: Vous pouvez partager ici l'endroit où vous l'avez vu, vos observations, ainsi que vos photos pour nous aider à avancer notre programme de recherche !
+        block_project:
+            title: Le projet
+            text: La présentation en détails de notre projet. Pour qui ? Où ? Pourquoi ? Comment participer ?
+        block_search:
+            title: Quel est cet oiseau ?
+            text: Vous recherchez des informations sur un oiseau ? Notre base de donnée est par ici !
+        block_contact:
+            title: Nous contacter
+            text: Vous avez besoin d'infos, vous avez des remarques ou tout simplement envie d'échanger ? N'hésitez pas à nous contacter !
+        block_profile:
+            title: Mon Espace
+            text: Retrouvez vos informations, ainsi que toutes vos observations et photos. C'est ici que vous pouvez changer votre adresse email et votre mot de passe.
+        block_register:
+            title: M'inscrire
+            text: Rejoignez-nous en deux clics et participez à notre plateforme collaborative !
+        block_login:
+            title: Me connecter
+            text: Connectez-vous afin d'accéder à toutes les fonctionnalités de la plateforme.
+        p5: Retrouvez toutes vos informations, l'historique de vos observations, vos photos, et vos oiseaux favoris
 
     login:
         title: Connexion
