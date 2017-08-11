@@ -1,84 +1,80 @@
-/*Header*/
-#header-middle-text {
-	padding-top: 85px;
-}
-
-#header-birds-text {
-	padding-top: 15px;
-}
-
-#image-right {
-	border-right: 1px solid #DFDCD2;
-	padding-right: 50px;
-
-}
-
-#images {
-	height: 250px;
-}
-
-#navigationLogin {
+#header {
 	background-color: #FEFAEE;
-	border-color: #FEFAEE;
+	border-bottom: 1px solid #ccc;
 }
 
-.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus  {
-	color: #777;
-	text-decoration: underline;
-	text-decoration-color: #B1DFF1;
+#header_images {
+	width: 100%;
+	max-height: 200px;
 }
-
-#logo {
-	padding-top: 30px;
-	padding-left: 20px;
+#header_images div, #header_images button {
+	z-index: 10;
 }
-
-#navigationLogin {
-	z-index:1;
+#header_images img {
+	width: 100%;
 }
-
-header {
+#header_images #header_middle-text {
+	margin-top: 50px;
+}
+#header_images #header_birds-text {
+	margin-top: 10px;
+}
+#header_images .navbar-toggle {
 	background-color: #FEFAEE;
-	height: 300px;
+	border: 1px solid #ccc;
+}
+#header_images button span {
+	border: 1px solid #ccc;
 }
 
-/*NavBar*/
-li {
-	width: 150px;
+#header .navbar {
+	background-color: inherit;
+	border: none;
+	margin-bottom: 0;
+}
+#header .navbar ul {
+	margin-top: 20px;
+	margin-right: 5px;
+}
+#header .navbar ul li.active {
+	border-bottom: 5px solid rgb(177, 224, 241);
+	background-color: inherit;
+}
+#header .navbar ul a {
+	font-size: 1.1em;
 }
 
-li #alink {
-	background-color: #FEFAEE;
-}
 
-a {
-	font-size: 1.2em;
-}
 
-#links {
-	border:none;
-}
 
-#icon-bar {
-	background-color: #DFDCD2;
-}
+
 
 @media all and (max-width: 767px) {
-
-	#logo {
-		display: flex;
-		justify-content: center;
+	#header {
+		min-height: 200px;
 	}
 
-	#header-middle-text {
-		display: none;
+	#header_images {
+		border-bottom: 1px solid #ccc;
+	}
+	#header_images .navbar-toggle {
+		margin-top: 100px;
+	}
+	#header_images #logo img {
+		height: 150px;
+		width: auto;
+		margin-left: 50px;
 	}
 
-	#header-birds-text {
-		display: none;
+	#header .navbar {
+		text-align: right;
 	}
-
-	#image-right {
-		display: none;
+	#header .navbar .nav {
+		margin-top: 0;
+	}
+}
+@media all and (max-width: 479px) {
+	#header_images #logo img {
+		margin-left: 30px;
 	}
 }

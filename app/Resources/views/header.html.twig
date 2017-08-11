@@ -1,66 +1,80 @@
-    
-<header>
-	<div id="images">
-		<div id="logo" class="col-sm-3">
-			{% image 'http://assets.fhuszti.tech/nao/logo.png' %}
-				 <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/logo.png' }}" alt="{{'core.site.icon'|trans}}" class="hidden-xs" />
-			{% endimage %}
-		</div>
-		<div id="header-middle-text" class="col-sm-4">
-			{% image 'http://assets.fhuszti.tech/nao/logo.png' %}
-				 <img  class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/header/header-middle-text.png' }}" alt="{{'core.site.icon'|trans}}" class="hidden-xs" />
-			{% endimage %}
-		</div>
-		<div id="header-birds-text" class="col-sm-5">
-			{% image 'http://assets.fhuszti.tech/nao/logo.png' %}
-				 <img id="image-right" class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/header/header-birds-text.png' }}" alt="{{'core.site.icon'|trans}}" class="hidden-xs" />
-			{% endimage %}
-		</div>
-	</div>
-	 <nav class="navbar navbar-inverse" id="navigationLogin">
-        <div class="container-fluid" id="logo2">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" id="links">
-                    <span id="icon-bar" class="f icon-bar"></span>
-                    <span id="icon-bar" class="f icon-bar"></span>
-                    <span id="icon-bar" class="f icon-bar"></span>
-                </button>
-                <p class="navbar-brand"></p>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="link">
-                    	<a id="alink" href="{{ path('core_home') }}" title="{{ 'core.header.links.project.title'|trans }}">
-			      			{{ 'core.header.links.project.link'|trans|upper }}
-			    		</a>
-                    </li> 
-                    <li class="link">
-                    	<a id="alink" href="{{ path('core_home') }}" title="{{ 'core.footer.links.search.title'|trans }}">
-			      			{{ 'core.header.links.observation.link'|trans|upper }}
-			    		</a>
-                    </li>
-                    <li class="link">
-                    	<a id="alink" href="{{ path('core_home') }}" title="{{ 'core.footer.links.search.title'|trans }}">
-			      			{{ 'core.header.links.search.link'|trans|upper }}
-			    		</a>
-                    </li>
-                    <li class="link">
-                    	<a id="alink" href="{{ path('core_home') }}" title="{{ 'core.footer.links.contact.title'|trans }}">
-			      			{{ 'core.header.links.contact.link'|trans|upper }}
-			    		</a>
-                    </li>
-                    <li class="link">
-                    	<a id="alink" href="{{ path('core_home') }}" title="{{ 'core.footer.links.registration.title'|trans }}">
-			      			{{ 'core.header.links.registration.link'|trans|upper }}
-			    		</a>
-                    </li>
-                    <li class="link">
-                    	<a id="alink" href="{{ path('core_home') }}" title="{{ 'core.footer.links.login.title'|trans }}">
-			      			{{ 'core.header.links.login.link'|trans|upper }}
-			    		</a>
-                    </li>
-                </ul>
-            </div>
+<header id="header">
+    <div class="navbar-header" id="header_images">
+        <div id="logo" class="col-xs-12 col-sm-3">
+            <a href="{{ path('core_home') }}" title="{{ 'core.site.logo'|trans }}" class="navbar-brand">
+                {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+                    <img src="{{ asset_url }}" alt="{{'core.site.logo'|trans}}" />
+                {% endimage %}
+            </a>
         </div>
-    </nav>
+
+        <div id="header_middle-text" class="hidden-xs col-sm-4 col-sm-push-1">
+            {% image 'http://assets.fhuszti.tech/nao/header/header-middle-text.png' %}
+                <img src="{{ asset_url }}" alt="{{'core.site.logo'|trans}}" />
+            {% endimage %}
+        </div>
+
+        <div id="header_birds-text" class="hidden-xs col-sm-4 col-sm-push-1">
+            {% image 'http://assets.fhuszti.tech/nao/header/header-birds-text.png' %}
+                <img src="{{ asset_url }}" alt="{{'core.site.logo'|trans}}" />
+            {% endimage %}
+        </div>
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+
+    <div class="collapse navbar-collapse">
+        <nav class="navbar navbar-default" role="navigation">
+            <!-- actual menu list -->
+            <ul class="nav navbar-nav navbar-right">
+                <li{% if projectPage is defined %} class="active"{% endif %}>
+                    <a href="{{ path('core_home') }}" title="{{ 'core.header.project.link'|trans }}">
+                        {{ 'core.header.project.value'|trans|upper }}
+                    </a>
+                </li>
+                <li{% if observationPage is defined %} class="active"{% endif %}>
+                    <a href="{{ path('core_home') }}" title="{{ 'core.header.observation.link'|trans }}">
+                        {{ 'core.header.observation.value'|trans|upper }}
+                    </a>
+                </li>
+                <li{% if searchPage is defined %} class="active"{% endif %}>
+                    <a href="{{ path('core_home') }}" title="{{ 'core.header.search.link'|trans }}">
+                        {{ 'core.header.search.value'|trans|upper }}
+                    </a>
+                </li>
+                <li{% if contactPage is defined %} class="active"{% endif %}>
+                    <a href="{{ path('core_home') }}" title="{{ 'core.header.contact.link'|trans }}">
+                        {{ 'core.header.contact.value'|trans|upper }}
+                    </a>
+                </li>
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <li{% if profilePage is defined %} class="active"{% endif %}>
+                        <a href="{{ path('fos_user_profile_show') }}" title="{{ 'core.header.profile.link'|trans }}">
+                            {{ 'core.header.profile.value'|trans|upper }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fos_user_security_logout') }}" title="{{ 'core.header.logout.link'|trans }}">
+                            {{ 'core.header.logout.value'|trans|upper }}
+                        </a>
+                    </li>
+                {% else %}
+                    <li{% if registerPage is defined %} class="active"{% endif %}>
+                        <a href="{{ path('fos_user_registration_register') }}" title="{{ 'core.header.registration.link'|trans }}">
+                            {{ 'core.header.registration.value'|trans|upper }}
+                        </a>
+                    </li>
+                    <li{% if loginPage is defined %} class="active"{% endif %}>
+                        <a href="{{ path('fos_user_security_login') }}" title="{{ 'core.header.login.link'|trans }}">
+                            {{ 'core.header.login.value'|trans|upper }}
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
 </header>

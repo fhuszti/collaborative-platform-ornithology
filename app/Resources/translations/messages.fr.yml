@@ -59,28 +59,30 @@ core:
                 title: Agence WebAgency
 
     header: 
-        links:
-            project:
-                link: Le projet
-                title: Le projet
-            observation: 
-                link: Observation
-                title: Observation
-            search: 
-                link: Recherche
-                title: Recherche
-            contact: 
-                link: Contact
-                title: Contact
-            registration: 
-                link: Inscription
-                title: Inscription
-            login: 
-                link: Connexion
-                title: Connexion
-            logout:
-                link: Deconnexion
-                title: Deconnexion
+        project:
+            link: En savoir plus sur le projet
+            value: Le projet
+        observation: 
+            link: Partagez une observation
+            value: Observation
+        search: 
+            link: Recherchez un oiseau
+            value: Recherche
+        contact: 
+            link: Contactez-nous
+            value: Contact
+        registration: 
+            link: S'inscrire
+            value: Inscription
+        login: 
+            link: Se connecter
+            value: Connexion
+        profile:
+            link: Accéder à votre espace
+            value: Mon Espace
+        logout:
+            link: Se déconnecter
+            value: Déconnexion
 
     login:
         title: Connexion
