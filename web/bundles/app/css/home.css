@@ -1,0 +1,99 @@
+/*Bloc home*/
+.divLink {
+	height: 400px;
+	border: 1px solid black;
+	margin-bottom: 75px;
+	box-shadow: 1px 1px  #313133;
+}
+
+.titleBlocHome {
+	text-align: center;
+	background-color: #F4F4F4;
+	height: 100px;
+	opacity: 0.9;
+	padding-top: 15px;
+}
+
+#navCollapse{
+	 z-index: 1000;
+}
+
+#wrapper {
+	width: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.blocTextHome {
+	text-align: center;
+	background-color: #F4F4F4;
+	height: 200px;
+	opacity: 0.9;
+	padding: 0px 45px 0px 45px;
+	line-height: 35px;
+}
+
+#mainBlocHome {
+	padding: 75px 25px 75px 25px;
+	background-image: url( "http://assets.fhuszti.tech/nao/home/home-bg.png" );
+	background-size: cover;
+}
+
+.navbar-header {
+	height: 0px;
+}
+
+#slider {
+	padding: 0px;
+}
+
+.icon {
+	display: flex;
+	justify-content: center;
+	height: 100px;
+	background-color: #ABDCF3;
+	padding: 10px 0px 10px 0px;
+}
+
+#line {
+	border: none;
+	border-bottom: 1px solid black;
+	margin: 0px 30px 0px 30px;
+	padding-top: 25px;
+}
+
+@media all and (max-width: 1024px) {
+	#slider {
+		display: none;
+	}
+
+	.divLink {
+		display: flex;
+		flex-direction: column-reverse;
+		height: 200px;
+	}
+
+	.icon {
+		height: 150px;
+		background-color: #F4F4F4;
+		opacity: 0.8;
+		padding: 10px 0px 10px 0px;
+	}
+
+	.titleBlocHome {
+		height: 50px;
+		opacity: 1;
+		background-color: #ABDCF3;
+	}
+
+	hr {
+		display: none;
+	}
+
+	.blocTextHome {
+		display: none;
+	}
+}
+
