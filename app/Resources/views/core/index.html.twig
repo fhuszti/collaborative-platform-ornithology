@@ -1,4 +1,6 @@
 {% extends 'layout.html.twig' %}
+{% set homePage = true %}
+
 {% block stylesheets %}
     {% stylesheets filter='cssrewrite, ?scssphp'
                 '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'
@@ -152,4 +154,3 @@
         </div>
     </div>
 {% endblock %}
-{% set homepage = true %}
