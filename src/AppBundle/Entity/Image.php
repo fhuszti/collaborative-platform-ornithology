@@ -25,13 +25,13 @@ class Image
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     * @ORM\Column(name="url", type="string", length=255, nullable=false)
      */
     private $url;
 
      /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Observation",mappedBy="image", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
     private $observation;
@@ -96,7 +96,7 @@ class Image
      *
      * @return Image
      */
-    public function setObservation(\AppBundle\Entity\Observation $observation = null)
+    public function setObservation(\AppBundle\Entity\Observation $observation)
     {
         $this->observation = $observation;
 
