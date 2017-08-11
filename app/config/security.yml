@@ -34,3 +34,4 @@ security:
         - { path: ^/inscription, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/observation, roles: ROLE_USER }
+        - { path: ^/deconnexion, roles: ROLE_USER }

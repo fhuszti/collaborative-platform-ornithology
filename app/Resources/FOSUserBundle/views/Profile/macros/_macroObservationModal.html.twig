@@ -1,0 +1,44 @@
+{% macro observation_modal(modal_id, observation) %}
+	<div class="modal fade" id="{{ modal_id }}">
+	  	<div class="modal-dialog">
+		    <div class="modal-content">
+		      	<div class="modal-body profile_obs-modal-body">
+		      		<button type="button" class="close" data-dismiss="modal">x</button>
+
+		      		<div class="row">
+			      		<div class="col-xs-12 col-sm-5 profile_obs-modal-left-panel">
+			      			{% if observation.image is not empty %}
+			      				<img src="{{ observation.image.url }}" alt="{{ 'core.site.alt_img'|trans }}" />
+			      			{% endif %}
+
+			      			<ul>
+			      				<li>
+			      					{{ observation.bird.commonName }}
+			      				</li>
+			      				<li>
+			      					{{ observation.date|date("d/m/Y") }}
+			      				</li>
+			      				<li>
+			      					{{ observation.country }}
+			      				</li>
+			      			</ul>
+			      		</div>
+
+			      		<div class="col-xs-12 col-sm-7 profile_obs-modal-right-panel" data-lattitude="{{ observation.lattitude }}" data-longitude="{{ observation.longitude }}">
+			      		</div>
+		      		</div>
+
+		      		<div class="row">
+			      		<div class="col-xs-12 profile_obs-modal-comment-panel">
+			      			{% if observation.comment is not null %}
+			      				<hr />
+			      				{{ observation.comment|nl2br }}
+			      			{% endif %}
+			      		</div>
+		      		</div>
+		      	</div>
+		    </div>
+	  	</div>
+	</div>
+{% endmacro %}
+

@@ -1,5 +1,10 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
+{% import "@FOSUser/Profile/macros/_macroInfosModal.html.twig" as macroInfosModal %}
+{% import "@FOSUser/Profile/macros/_macroObservationDisplay.html.twig" as macroObservationDisplay %}
+{% import "@FOSUser/Profile/macros/_macroObservationModal.html.twig" as macroObservationModal %}
+{% import "@FOSUser/Profile/macros/_macroBirdModal.html.twig" as macroBirdModal %}
+
 {% block title %}
     {{ 'core.profile.title'|trans }} - {{ parent() }}
 {% endblock %}
@@ -8,7 +13,8 @@
     {{ parent() }}
 
     {% stylesheets filter='cssrewrite, ?scssphp'
-        'bundles/app/css/profile.css' %}
+        'bundles/app/css/profile.css'
+        'bundles/app/css/jquery.bsPhotoGallery.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css">
     {% endstylesheets %}
 {% endblock %}
@@ -20,8 +26,11 @@
 {% block javascripts %}
     {{ parent() }}
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEL05YUkkeIBtLXDKcrZyM4kIkgbEOYS8"></script>
+
     {% javascripts filter='?jsqueeze'
-        'bundles/app/js/profile.js' %}
+        'bundles/app/js/profile.js'
+        'bundles/app/js/jquery.bsPhotoGallery.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}

@@ -47,12 +47,82 @@ body {
 	cursor: pointer;
 }
 
+#profile_block2-content {
+	padding: 0 0 30px;
+}
+#profile_block2-content .active>a {
+	background-color: inherit;
+}
+#profile_block2-content .row {
+	margin: 0;
+}
+#profile_block2-content .nav li {
+	padding: 0;
+}
+#profile_block2-content .nav li>a {
+	padding: 20px 10px;
+}
+#profile_block2-content .nav li>a img {
+	margin-bottom: 10px;
+}
+#profile_block2-content .tab-content {
+	margin-top: 20px;
+}
+#profile_block2-content .observation-row {
+	border-top: 1px solid #eee;
+	line-height: 50px;
+	cursor: pointer;
+}
+#profile_block2-content .observation-row:hover, #profile_block2-content .observation-row:active, #profile_block2-content .observation-row:focus {
+	background-color: #eee;
+}
+
+#profile_block2-content .modal-content {
+	background-color: rgb(187, 223, 180);
+}
+#profile_block2-content .profile_obs-modal-body>div:first-of-type {
+	margin-top: 30px;
+}
+.profile_obs-modal-left-panel img {
+	width: 100%;
+	margin-bottom: 10px;
+}
+.profile_obs-modal-left-panel ul {
+	list-style-type: none;
+	font-size: 1.4em;
+}
+.profile_obs-modal-right-panel {
+	height: 250px;
+}
+.profile_obs-modal-right-panel, .profile_obs-modal-right-panel * {
+    overflow: visible;
+}
+.profile_obs-modal-comment-panel {
+	word-wrap: break-word;
+}
+
+#profile_block3-content {
+	padding: 30px 20px;
+}
+#profile_block3-content ul.gallery {
+	list-style-type: none;
+	padding-left: 0;
+}
+#profile_block3-content ul.gallery .text {
+	font-size: 0.8em;
+}
 
 
 
 
 
 
+
+@media (max-width: 479px) {
+	#profile_block2-content .nav li>a {
+		font-size: 0.7em;
+	}
+}	
 @media (max-width: 767px) {
 	#content, #wrapper {
 		padding-left: 0;
@@ -62,5 +132,25 @@ body {
 	#profile_block1-content-infos>.row img {
 		height: 40px;
 		margin-top: 0;
+	}
+
+	#profile_block2-content .nav-justified > li {
+	    display: table-cell;
+	    width: 1%;
+	}
+	#profile_block2-content .nav-justified > li > a  {
+	    border-bottom: 1px solid #ddd !important;
+	    border-radius: 4px 4px 0 0 !important;
+	    margin-bottom: 0 !important;
+	}
+	#profile_block2-content .observation-row {
+		line-height: 30px;
+	}
+	.profile_obs-modal-body .profile_obs-modal-left-panel {
+		margin-top: 0;
+	}
+
+	#profile_block3-content {
+		padding: 30px 10px;
 	}
 }

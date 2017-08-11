@@ -70,7 +70,23 @@ core:
                 edit: Modifier
         block2:
             header: Observations
-            content: 
+            content:
+                tab1: Validées
+                tab2: En attente
+                tab3: Refusées
+                button: En voir plus
+                img_icon: Cette observation contient une photo
+                empty:
+                    observation:
+                        sentence: Aucune observation ici pour le moment.
+                        link: 
+                            title: Vers la page d'Observation
+                            value: Soumettez-en une !
+                    photo:
+                        sentence: Aucune photo ici pour le moment.
+                        link: 
+                            title: Vers la page d'Observation
+                            value: Soumettez une observation et une photo !
         block3:
             header: Photos
             content: 
