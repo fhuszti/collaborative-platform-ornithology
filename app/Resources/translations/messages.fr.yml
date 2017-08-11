@@ -35,3 +35,99 @@ core:
                 link: WebAgency
                 title: Agence WebAgency
 
+    header: 
+        project:
+            link: En savoir plus sur le projet
+            value: Le projet
+        observation: 
+            link: Partagez une observation
+            value: Observation
+        search: 
+            link: Recherchez un oiseau
+            value: Recherche
+        contact: 
+            link: Contactez-nous
+            value: Contact
+        registration: 
+            link: S'inscrire
+            value: Inscription
+        login: 
+            link: Se connecter
+            value: Connexion
+        profile:
+            link: Accéder à votre espace
+            value: Mon Espace
+        logout:
+            link: Se déconnecter
+            value: Déconnexion
+
+    login:
+        title: Connexion
+        register_button: Créer un compte
+        email:
+            label: Adresse email
+            placeholder: exemple@email.fr
+        password:
+            label: Mot de passe
+            placeholder: Votre mot de passe
+        remember_me: Se souvenir de moi
+        submit: Se connecter
+        forgotten_pass: Mot de passe oublié ?
+        modal:
+            title: Réinitialiser son mot de passe
+            content: Nous allons vous envoyer un email afin de confirmer votre identité, puis vous pourrez créer un nouveau mot de passe.
+            button: Valider
+
+    register:
+        title: Inscription
+        submit: Créer mon compte
+
+    profile:
+        title: Mon Espace
+        block1:
+            header: Profil
+            content:
+                title: Informations
+                surname: Nom
+                firstname: Prénom
+                email: Adresse email
+                password: Mot de passe
+                edit: Modifier
+        block2:
+            header: Observations
+            content:
+                tab1: Validées
+                tab2: En attente
+                tab3: Refusées
+                button: En voir plus
+                img_icon: Cette observation contient une photo
+                empty:
+                    observation:
+                        sentence: Aucune observation ici pour le moment.
+                        link: 
+                            title: Vers la page d'Observation
+                            value: Soumettez-en une !
+                    photo:
+                        sentence: Aucune photo ici pour le moment.
+                        link: 
+                            title: Vers la page d'Observation
+                            value: Soumettez une observation et une photo !
+        block3:
+            header: Photos
+            content: 
+        modal:
+            email:
+                title: Changer d'adresse email
+            password:
+                title: Changer de mot de passe
+
+    validation:
+        user:
+            firstname:
+                blank: Veuillez saisir votre prénom.
+                min: Votre prénom ne peut contenir moins de 2 caractères.
+                max: Votre prénom ne peut contenir plus de 255 caractères.
+            surname:
+                blank: Veuillez saisir votre nom.
+                min: Votre nom ne peut contenir moins de 2 caractères.
+                max: Votre nom ne peut contenir plus de 255 caractères.
