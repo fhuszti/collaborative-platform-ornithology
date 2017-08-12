@@ -45,6 +45,4 @@ class ContactController extends Controller
 		'form' => $formBuilder->createView()
 		));
     }
-
-    }
 }

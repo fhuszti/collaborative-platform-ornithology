@@ -26,7 +26,7 @@ class ContactType extends AbstractType
       ))
       ->add('message', TextType::class, array(
             'label' => 'MESSAGE*'
-      ))
+      ));
   }
 
   public function configureOptions(OptionsResolver $resolver)
