@@ -26,13 +26,16 @@ class ContactType extends AbstractType
       ))
       ->add('message', TextType::class, array(
             'label' => 'MESSAGE*'
+      ))
+       ->add('save', SubmitType::class, array(
+            'label' => 'Soumettre',
       ));
   }
 
   public function configureOptions(OptionsResolver $resolver)
   {
     $resolver->setDefaults(array(
-      'data_class' => 'AppBundle\Entity\Image'
+      'data_class' => 'AppBundle\Entity\Contact'
     ));
   }
 }

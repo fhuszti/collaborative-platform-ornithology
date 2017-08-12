@@ -4,7 +4,7 @@ core:
     prefix:   /
 
 App:
-    resource: "@AppBundle/Controller/ObservationController.php"
+    resource: "@AppBundle/Controller/"
     type:     annotation
     prefix:   /
 
