@@ -36,6 +36,13 @@ class Observation
     private $lattitude;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="country",  type="string", length=255)
+     */
+    private $country;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="date")
@@ -132,6 +139,30 @@ class Observation
     public function getLattitude()
     {
         return $this->lattitude;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     *
+     * @return Observation
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+        return $this;
+    }
+
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 
     /**

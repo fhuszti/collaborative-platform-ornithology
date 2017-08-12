@@ -11,6 +11,7 @@ function initialize() {
         position: google.maps.ControlPosition.BOTTOM_LEFT
     }
   };
+  
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
     var marker = new google.maps.Marker({
       draggable: true,

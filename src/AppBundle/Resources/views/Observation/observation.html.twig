@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
-  <div id="containerPageObs" class="col-lg-12">
+  <div id="containerPageObs" class="col-sm-12">
     <div class="row">
-      <div id="title" class="col-lg-offset-1 col-lg-8">
+      <div id="title" class="col-sm-offset-1 col-sm-8">
         <div id="k">
           <p>Observation</p>
           <div id="imgObs">
@@ -23,11 +23,11 @@
             {% endimage %}
           </div>
         </div>
-        <hr id="underline"  class="col-lg-8"/>
+        <hr id="underline"  class="col-sm-8"/>
       </div>
     </div>
     <div class="row">
-      <div id="containerObservation" class="col-lg-offset-1 col-lg-8">
+      <div id="containerObservation" class="col-sm-offset-1 col-sm-8">
         <div id="firstCorner" class="cornerSeparation">
           {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
             <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/separator-angle.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
@@ -58,6 +58,7 @@
         {{ form_errors(form) }}
         {{ form_row(form.longitude, { 'label_attr': {'class': 'longitude'} }) }}
         {{ form_row(form.lattitude, { 'label_attr': {'class': 'lattitude'} }) }}
+        {{ form_row(form.country, { 'label_attr': {'class': 'country'} }) }}
         <div id="birdName">
           <div class="row">
             <div class="cornerSeparation">
@@ -139,7 +140,7 @@
           {{ form_rest(form) }}
           {{ form_end(form) }}
       </div>
-      <div id="thanks" class="col-lg-offset-1 col-lg-8">
+      <div id="thanks" class="col-sm-offset-1 col-sm-8">
         <p>Merci !</p>
         <p>Votre observation vient d'être envoyée, elle va être soumise à validation par nos profesionnels avant édition sur notre site.</p>
         <p>Vous serez notifié de sa validation dans vorte espace personnel.</p>
@@ -159,16 +160,19 @@
   <script src="{{asset('bundles/app/js/marker.js') }}"></script>
   <script src="{{asset('bundles/app/js/map.js') }}"></script>
   <script src="{{asset('bundles/app/js/ajax.js') }}"></script>
+  <script src="{{asset('bundles/app/js/geocoding.js') }}"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClMpsB5o4zV5aVVxdivP39F_QuXZ5RSEM&libraries=places&callback=initAutocomplete"
          async defer></script>
   <script type="text/javascript">
     $("form").on("submit",function(e) {
       e.preventDefault();
       var form = $(this);
-      var values = {};   
-      $.each( form.serializeArray(), function(i, field) { 
+      var values = {};
 
-       values[field.name] = field.value;   });
+      $.each( form.serializeArray(), function(i, field) { 
+       values[field.name] = field.value;   
+     });
+
         $.ajax({
           url : '{{ path('app_observation') }}',
           type : 'POST', 
@@ -176,10 +180,11 @@
           success :function(e) {
             $("#containerObservation").hide(1000,function(){
             $("#thanks").show(1000);
-          });
-      }
+            });
+          }
+        });
       });
-    });
+    
     </script>
 <!--     <script>
 $(document).ready(function(){
