@@ -14,6 +14,16 @@ body {
 	background-color: rgba(200, 229, 238, 0.95);
 	border: 1px outset #eee;
 }
+#register_content #register_bird {
+	background-image: url('http://assets.fhuszti.tech/nao/register/register-bird.png');
+	background-size: 160px;
+	background-repeat: no-repeat;
+	height: 180px;
+	width: 160px;
+	position: absolute;
+	right: 20px;
+	bottom: 10px;
+}
 #register_content form {
 	margin-top: 70px;
 	padding-left: 50px;
@@ -44,6 +54,13 @@ body {
 		padding-left: 20px;
 		padding-right: 20px;
 	}
+	#register_content #register_bird {
+		background-size: 120px;
+		height: 140px;
+		width: 120px;
+		right: 10px;
+		bottom: 20px;
+	}
 	#register_content form {
 		padding-left: 0;
 		padding-right: 0;
@@ -67,5 +84,10 @@ body {
 	}
 	#register_content form input:not([type="submit"]) {
 		width: 100%;
+	}
+}
+@media (max-width: 479px) {
+	#register_content #register_bird {
+		display: none;
 	}
 }
