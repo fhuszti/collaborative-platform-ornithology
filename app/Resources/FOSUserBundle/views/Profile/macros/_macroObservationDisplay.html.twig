@@ -1,10 +1,10 @@
 {% macro observation_display(observation) %}
-	<div class="col-xs-12 observation-row" data-toggle="modal" href="#profile_obs-modal-{{ observation.id }}">
+	<div class="col-xs-12 observation-row" href="#profile_obs-modal" data-toggle="modal"{% if observation.image is not empty %} data-image="{{ observation.image.url }}"{% endif %} data-name="{{ observation.bird.commonName|capitalize }}" data-date="{{ observation.date|date("d/m/Y") }}" data-country="{{ observation.country|capitalize }}"{% if observation.comment is not empty %} data-comment="{{ observation.comment|capitalize }}"{% endif %} data-lattitude="{{ observation.lattitude }}" data-longitude="{{ observation.longitude }}">
     	<div class="hidden-xs col-sm-11">
     		{{ observation.bird.commonName }} - {{ observation.date|date("d/m/Y") }} - {{ observation.country }}
    		</div>
    		<div class="visible-xs col-xs-10">
-    		{{ observation.bird.commonName }}<br />
+            {{ observation.bird.commonName }}<br />
     		{{ observation.date|date("d/m/Y") }} - {{ observation.country }}
    		</div>
 

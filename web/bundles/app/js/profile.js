@@ -1,28 +1,73 @@
 $(function() {
 	
-	function initMap(canvas, mapCenter) {
-        var marker = new google.maps.Marker({
-            position: mapCenter
-        });
+	function initMap() {
+        var canvas = $('#gmaps_canvas');
 
+        //j'utilise des coordonnées "en dur" juste pour essayer de le faire fonctionner
+        //quand tout fonctionnera, les coordonnées devront être un paramètre qui change à chaque appel de la modale
         var mapOptions = {
-            center: mapCenter,
+            center: new google.maps.LatLng(-34.397, 150.644),
             zoom: 8
         };
 
         var map = new google.maps.Map(canvas, mapOptions);
-        marker.setMap(map);
+
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(-34.397, 150.644),
+            map: map
+        });
     }
 
-	function manageMaps() {
-		var mapModals = $('#profile_block2-content .modal');
+	function manageObservationModal() {
+		var observations = $('#profile_block2-content .observation-row');
 
-        mapModals.each(function(index, elmt) {
-            $(elmt).on('shown.bs.modal', function() {
-                var canvas = $(this).find('.profile_obs-modal-right-panel'),
-                	lat = canvas.data('lattitude'),
-                	lng = canvas.data('longitude');
-            	initMap(canvas, new google.maps.LatLng(lat,lng));
+        observations.each(function(index, elmt) {
+            $(elmt).on('click', function(e) {
+            	e.preventDefault();
+
+            	//get the observation data
+            	var image = $(this).data('image') ? $(this).data('image') : null,
+            		name = $(this).data('name'),
+            		date = $(this).data('date'),
+            		country = $(this).data('country'),
+            		comment = $(this).data('comment') ? $(this).data('comment') : null,
+            		lat = $(this).data('lattitude'),
+            		lng = $(this).data('longitude');
+
+            	//modal window elements
+            	var modal = $('#profile_obs-modal'),
+            		modal_left = modal.find('.profile_obs-modal-left-panel'),
+            		modal_right = $('#gmaps_canvas'),
+            		modal_comment = modal.find('.profile_obs-modal-comment-panel'),
+            		ul = $('<ul></ul>'),
+            		obsDiv = $(e.target);
+
+            	//we reset everything in case the modal has been opened and is filled with content already
+            	modal_left.html('');
+            	modal_right.html('');
+            	modal_comment.html('');
+
+            	//add the image if there is one
+            	if (image !== null) {
+	            	$('<img src="'+image+'" alt="'+name+'" />').appendTo(modal_left);
+	            }
+
+	            //add the informations list
+	            $('<li>'+name+'</li>').appendTo(ul);
+	            $('<li>'+date+'</li>').appendTo(ul);
+	            $('<li>'+country+'</li>').appendTo(ul);
+	            ul.appendTo(modal_left);
+
+	            //add the comment if there is one
+            	if (comment !== null) {
+	            	//<br> obligatoire, sinon le commentaire ne s'affiche pas
+	            	$('<hr />'+comment+'<br />').appendTo(modal_comment);
+	            }
+
+				//initialise the map once the modal is fully loaded and visible after a click on an observation
+				modal.on('shown.bs.modal', function () {
+					initMap();
+				});
             });
         });
 	}
@@ -89,11 +134,21 @@ $(function() {
 
 
 
-	manageMaps();
-	modalOpening();
+	//initialise la galerie photos
+	function initGallery() {
+		$('ul.gallery').bsPhotoGallery({
+		    "classes" : "col-xs-6 col-sm-4 col-md-3",
+		    "hasModal" : true
+		});
+	}
 
-	$('ul.gallery').bsPhotoGallery({
-	    "classes" : "col-xs-6 col-sm-4 col-md-3",
-	    "hasModal" : true
-	});
+
+
+
+
+
+
+	manageObservationModal();
+	modalOpening();
+	initGallery();
 });
