@@ -35,13 +35,6 @@ class ObservationController extends Controller
 
 			if ($request->isMethod('POST')) {
 				$formBuilder->handleRequest($request);
-				// $data = $formBuilder->getData();
-				// $encoders = array(new XmlEncoder(), new JsonEncoder()); 
-				// $normalizers = array(new ObjectNormalizer()); 
-				// $serializer = new Serializer($normalizers, $encoders);
-				// $jsonContent = $serializer->serialize($data, 'json');
-				 
-				// return  new JsonResponse($jsonContent);
 
 				if ($formBuilder->isValid()) {
 					$observation->getImage()->upload();      

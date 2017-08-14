@@ -184,40 +184,27 @@ var formData = new FormData(form);
       });
     
     </script>
-<!-- <script>
-$(document).ready(function(){
-  $('#observation_birdName').keyup(function() {
-    var value = $(this).val();
-    console.log(value);
-      if(value === '' || value.length < 3) {
-        $('#results').empty();
-      }
-      else {
+  <script>
+    $('#observation_birdName').autocomplete({
+      source : function(requete, reponse){
+        var value = $('#observation_birdName').val();
+        if(value === '' || value.length < 3) {
+        $('#observation_birdName').empty();
+      } else {
         $.ajax({
-           url : '{{ path('search') }}', 
-           type : 'GET', 
-           data : 'search=' + value,
-
-           success: function(reponse) { 
-          $('#results').empty();
-            // if (reponse.error) {
-            //   $('#results').prepend('<p>{{ 'core.find.msg.nofind'|trans }}</p>');
-            // }
-            // else {
-          Object.keys(reponse).forEach(function(key) {
-              $('#results').prepend('<p class="list-group-item theFind">'+ reponse[key].name +'</a>');
-          });
-            }
-            // },
-             // error: function() { 
-             //    $('#results').empty();
-             //    $('#results').html('<p>{{ 'core.find.msg.error'|trans }}</p>');
-             //    }
+          type:"GET",
+          url : '{{ path('search') }}',
+          data : 'search=' + value,
+          success : function(donnee){
+          console.log(donnee);
+          reponse($.map(donnee, function(objet){
+            return objet.name;
+          }));
+          }
         });
-      }
-  });
-});
-</script> -->
+      }}
+    });
+  </script>
   </body>
 </html>
 
