@@ -44,60 +44,28 @@ class ObservationController extends Controller
 				// return  new JsonResponse($jsonContent);
 
 				if ($formBuilder->isValid()) {
-					// $observation->getImage()->upload();      
+					$observation->getImage()->upload();      
 					$observation->setSeen(0);
 					$em = $this->getDoctrine()->getManager();
 					$em->persist($observation);
 					$em->flush();
 
 
-					// if (null !==  $observation->getImage()) {
-					// 	$dir = '%kernel.project_dir%/web/uploads/images/';
-					// 	$image = $observation->getImage()->getImage();
-					// 	\Tinify\setKey("YN-tD6vaVHxYTx8XcfBLKFrlzXwwxgLi");
-					// 	$source = \Tinify\fromFile($dir.$image);
-					// 	$source->toFile($dir."/optimized/".$image);
-					// 	unlink('%kernel.project_dir%/web/uploads/images/'.$image ) ; 
-					// }
+					if (null !==  $observation->getImage()) {
+						$dir = '%kernel.project_dir%/web/uploads/images/';
+						$image = $observation->getImage()->getImage();
+						\Tinify\setKey("YN-tD6vaVHxYTx8XcfBLKFrlzXwwxgLi");
+						$source = \Tinify\fromFile($dir.$image);
+						$source->toFile($dir."/optimized/".$image);
+						unlink('%kernel.project_dir%/web/uploads/images/'.$image ) ; 
+					}
 						return new JsonResponse(array('status'=>'success'));
 				}
 			}
 			// return $this->redirectToRoute('');
 		}
-
-	
-
 		return $this->render('AppBundle:Observation:observation.html.twig', array(
 		'form' => $formBuilder->createView()
 		));
-    }
-
-	/**
-	 * @Route("/observation", name="search")
-	 */
-    public function searchAction(Request $request)
-    {
-      if ($request->isXmlHttpRequest()) {
-         $search = $request->query->get('search');
-         $data = $this->getDoctrine()
-         ->getRepository(Bird::class)
-         ->MyFindBy($search);
-        //  if ($data) {
-        //      foreach ($data as $bird) {
-        //         $url = $this->get('router')->generate(
-        //             'bird', // 1er argument : le nom de la route
-        //             array('id' => $bird->getId())    // 2e argument : les valeurs des paramètres
-        //         );
-        //         $output[] = array('link' => $url, 'name' => $bird->getCommonName());
-        //      }
-        //      return new JsonResponse($output);
-        // }
-        // else {
-        //     return new JsonResponse(array('error' => 'true'));
-        // }
-      }
-      else {
-        throw new NotFoundHttpException('Ce n\'est pas une requette ajax');
-      }
     }
 }
