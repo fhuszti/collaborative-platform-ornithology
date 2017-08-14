@@ -103,6 +103,23 @@ core:
             content: Nous allons vous envoyer un email afin de confirmer votre identité, puis vous pourrez créer un nouveau mot de passe.
             button: Valider
 
+    reset_pass:
+        email:
+            subject: 'Bienvenue %username% !'
+            message: |
+                Bonjour %username% !
+
+                Pour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%
+                
+                Ce lien ne peut être utilisé qu'une seule fois pour valider votre compte.
+
+                Cordialement,
+                Nos Amis les Oiseaux
+        check_email: |
+            Un e-mail a été envoyé. Il contient un lien sur lequel il vous faudra cliquer pour réinitialiser votre mot de passe.
+
+            Si vous ne recevez pas un email, vérifiez votre dossier spam ou essayez à nouveau.
+
     register:
         title: Inscription
         submit: Créer mon compte

@@ -1,22 +1,22 @@
 $(function() {
 	
-	function initMap() {
-        var canvas = $('#gmaps_canvas');
-
-        //j'utilise des coordonnées "en dur" juste pour essayer de le faire fonctionner
-        //quand tout fonctionnera, les coordonnées devront être un paramètre qui change à chaque appel de la modale
-        var mapOptions = {
-            center: new google.maps.LatLng(-34.397, 150.644),
-            zoom: 8
-        };
-
-        var map = new google.maps.Map(canvas, mapOptions);
-
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(-34.397, 150.644),
-            map: map
-        });
-    }
+	function initMap(param = null) {
+		if (param == null) {
+			param = {lat: 36.8451807, lng: 10.1031312};
+		}
+	  	
+	  	var map = new google.maps.Map(document.getElementById('gmaps_canvas'), {
+	    	zoom: 8,
+	    	center: param
+	  	});
+	  	
+	  	google.maps.event.trigger(map, "resize");
+	  	
+	  	var marker = new google.maps.Marker({
+	    	position: param,
+	    	map: map
+	  	});
+	}
 
 	function manageObservationModal() {
 		var observations = $('#profile_block2-content .observation-row');
@@ -66,7 +66,9 @@ $(function() {
 
 				//initialise the map once the modal is fully loaded and visible after a click on an observation
 				modal.on('shown.bs.modal', function () {
-					initMap();
+					if (typeof google === 'object' && typeof google.maps === 'object') {
+					 	initMap( {lat: parseFloat(lat), lng: parseFloat(lng)} );
+					}
 				});
             });
         });
@@ -146,7 +148,7 @@ $(function() {
 
 
 
-
+	$.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCEL05YUkkeIBtLXDKcrZyM4kIkgbEOYS8");
 
 	manageObservationModal();
 	modalOpening();

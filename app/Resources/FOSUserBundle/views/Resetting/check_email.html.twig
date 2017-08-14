@@ -1,9 +1,5 @@
-{% extends "@FOSUser/layout.html.twig" %}
-
-{% trans_default_domain 'FOSUserBundle' %}
-
 {% block fos_user_content %}
-<p>
-{{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
-</p>
+	<p>
+		{{ 'core.reset_pass.check_email'|trans|nl2br }}
+	</p>
 {% endblock %}
