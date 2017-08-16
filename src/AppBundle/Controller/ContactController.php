@@ -32,9 +32,8 @@ class ContactController extends Controller
 
 				if ($formBuilder->isValid()) {
       
-					$observation->setSeen(0);
 					$em = $this->getDoctrine()->getManager();
-					$em->persist($observation);
+					$em->persist($contact);
 					$em->flush();
 					return new JsonResponse(array('status'=>'success'));
 				}

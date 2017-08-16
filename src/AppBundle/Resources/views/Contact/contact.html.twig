@@ -1,3 +1,4 @@
+
 {% extends 'layout.html.twig' %}
 {% set homepage = true %}
 {% block stylesheets %}
@@ -66,12 +67,12 @@
 </div>
 
 {% block script %}
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
     $("form").on("submit",function(e) {
       e.preventDefault();
       var form = $(this);
       var values = {};
-console.log(values);
       $.each( form.serializeArray(), function(i, field) { 
        values[field.name] = field.value;   
      });

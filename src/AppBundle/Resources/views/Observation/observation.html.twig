@@ -9,6 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyB1Z4LA0_Q-qH3Sfq-vIr3lShYnIwS1KUw&libraries=places">
     </script> 
+    <script src="{{asset('bundles/app/js/autocomplete.js') }}"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
@@ -129,7 +130,7 @@
             <div class="col-sm-offset-1 col-sm-2">
               {{ form_widget(form.image) }}
             </div>
-            <div id="imageBlock" class="col-sm-offset-2 col-sm-4">
+            <div id="imageBlock" class="col-sm-offset-2 col-sm-3">
               <img id="aperçuImage" src="#" alt="" />
             </div>   
           </div>
@@ -154,62 +155,20 @@
       </div>
     </div>
   </div>
+  <script src="{{asset('bundles/app/js/autocomplete.js') }}"></script>
   <script src="{{asset('bundles/app/js/datepicker.js') }}"></script>
   <script src="{{asset('bundles/app/js/previewImage.js') }}"></script>
   <script src="{{asset('bundles/app/js/geolocation.js') }}"></script>
   <script src="{{asset('bundles/app/js/marker.js') }}"></script>
   <script src="{{asset('bundles/app/js/map.js') }}"></script>
-  <script src="{{asset('bundles/app/js/ajax.js') }}"></script>
   <script src="{{asset('bundles/app/js/geocoding.js') }}"></script>
+  <script> 
+  var pathControllerObservation = '{{ path('app_observation') }}';
+  var pathControllerSearch = '{{ path('search') }}';
+  </script>
+  <script src="{{asset('bundles/app/js/ajax.js') }}"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClMpsB5o4zV5aVVxdivP39F_QuXZ5RSEM&libraries=places&callback=initAutocomplete"
          async defer></script>
-  <script type="text/javascript">
-    $("form").on("submit",function(e) {
-      e.preventDefault();
-      var form = $('form')[0]; // You need to use standard javascript object here
-var formData = new FormData(form);
-
-        $.ajax({
-          url : '{{ path('app_observation') }}',
-          type : 'POST', 
-          data : formData,
-           contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
-    processData: false,
-          success :function(e) {
-            $("#containerObservation").hide(1000,function(){
-            $("#thanks").show(1000);
-            });
-          }
-        });
-      });
-    
-    </script>
-  <script>
-    $('#observation_birdName').autocomplete({
-      source : function(requete, reponse){
-        var value = $('#observation_birdName').val();
-        if(value === '' || value.length < 3) {
-        $('#observation_birdName').empty();
-      } else {
-        $.ajax({
-          type:"GET",
-          url : '{{ path('search') }}',
-          data : 'search=' + value,
-          success : function(donnee){
-          console.log(donnee);
-          reponse($.map(donnee, function(objet){
-            return objet.name;
-          }));
-          }
-        });
-      }}
-    });
-  </script>
   </body>
 </html>
 
-
-<!-- {{ form_start(form, { 'attr': {'onsubmit':'validateForm();'} }) }} -->
-
-
-   <!-- 'observation_longitude=' + longitude + '&observation_lattitude=' + lattitude + '&observation_birdName=' + birdName + '&observation_date=' + date + '&observation_comment=' + comment + '&observation_image_file=' + image,    -->

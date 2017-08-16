@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Observation
@@ -60,6 +61,11 @@ class Observation
      * @var string
      *
      * @ORM\Column(name="bird_name", type="string", length=255)
+     * @Assert\Length(
+     *      min = 2, max = 50,
+     *      minMessage = "Votre nom doit faire minimum {{ limit }} caractères ",
+     *      maxMessage = "Votre nom doit faire maximum {{ limit }} caractères"
+     * )
      */
     private $bird_name;
 
