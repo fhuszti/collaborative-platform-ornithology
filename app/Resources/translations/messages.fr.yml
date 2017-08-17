@@ -2,6 +2,31 @@ core:
     site:
         title: Nos Amis les Oiseaux
         logo: Nos Amis les Oiseaux
+    header: 
+        project:
+            link: En savoir plus sur le projet
+            value: Le projet
+        observation: 
+            link: Partagez une observation
+            value: Observation
+        search: 
+            link: Recherchez un oiseau
+            value: Recherche
+        contact: 
+            link: Contactez-nous
+            value: Contact
+        registration: 
+            link: S'inscrire
+            value: Inscription
+        login: 
+            link: Se connecter
+            value: Connexion
+        profile:
+            link: Accéder à votre espace
+            value: Mon Espace
+        logout:
+            link: Se déconnecter
+            value: Déconnexion
     find:
         input_find: Tapez le nom de l'oiseau
         button_find: Rechercher

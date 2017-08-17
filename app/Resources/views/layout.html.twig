@@ -22,11 +22,11 @@
                 '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
                 'bundles/app/css/main.css'
                 'bundles/app/css/second-menu.css'
+                'bundles/app/css/header.css'
                 'bundles/app/css/footer.css' %}
                 <link rel="stylesheet" href="{{ asset_url }}" type="text/css">
             {% endstylesheets %}
         {% endblock %}
-
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,12 +41,12 @@
             {{ include('header.html.twig') }}
 
             <div class="container" id="wrapper">
-                <div id="content" role="main"{% if homepage is not defined %} class="col-sm-10"{% endif %}>
+                <div id="content" role="main"{% if homePage is not defined %} class="col-sm-10"{% endif %}>
                     {% block body %}
                     {% endblock %}
                 </div>
 
-                {% if homepage is not defined %}
+                {% if homePage is not defined %}
                     <div class="hidden-xs col-sm-2" id="second-menu">
                         {{ include('second-menu.html.twig') }}
                     </div>
@@ -57,7 +57,7 @@
         </div>
 
         {% block javascripts %}
-            {% javascripts
+            {% javascripts filter='?jsqueeze'
                 '//code.jquery.com/jquery-3.2.1.min.js'
                 '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'
                 '//code.jquery.com/ui/1.12.1/jquery-ui.js' %}

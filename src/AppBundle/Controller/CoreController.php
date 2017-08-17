@@ -30,12 +30,11 @@ class CoreController extends Controller
 	{
 	    $defaultData = array('message' => 'find here');
 	    $form = $this->createFormBuilder($defaultData)
-	        ->add('myfind', TextType::class, array(
+	        ->add('mySearch', TextType::class, array(
 
               'attr' => array(
-                  'placeholder' => 'core.find.input_find',
+                  'placeholder' => 'core.find.input_find','class' => 'form-control search-input input-lg',
               )))
-	        ->add('find', SubmitType::class,  array( 'label' => 'core.find.button_find',))
 	        ->getForm();
 
 	    $form->handleRequest($request);

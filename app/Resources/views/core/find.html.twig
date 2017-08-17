@@ -1,23 +1,52 @@
 {% extends 'layout.html.twig' %}
 {% set homepage = true %}
+{% block stylesheets %}
+	{{ parent() }}
+    {% stylesheets filter='cssrewrite, ?scssphp'
+    'bundles/app/css/search.css'
+        'bundles/app/css/jcarousel.responsive.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css">
+    {% endstylesheets %}
+{% endblock %}
 {% block body %}
-<div class="container" id="container_fiche" style="display:none;">
-</div>
-<div class="container" id="container_find">
+<div class="col-xs-12 nao_title">
+	<div class="col-xs-10 col-sm-6">
+		<h1>RECHERCHE</h1>
+	</div>
 
-	{{ form_start(form) }}
-	{{ form_widget(form.myfind) }}
-	{{ form_end(form) }}
-	<br/>
-  <div class="list-group" id="results">
-  </div>
+	<div class="hidden-xs col-sm-2 nao_title-icon">
+		{% image 'http://assets.fhuszti.tech/nao/second-menu/search.png' %}
+			<img src="{{ asset_url }}" alt="" />
+		{% endimage %}
+	</div>
+</div>
+<div class="col-xs-12" id="search_content">
+	<div id="container_fiche" style="display:none;">
+	</div>
+	<div id="container_find">
+
+		{{ form_start(form) }}
+	    <div class="input-group">
+		{{ form_widget(form.mySearch) }}
+		<div class="input-group-btn">
+	      <button class="btn btn-lg btn-default search-btn" type="button">
+	        <i class="glyphicon glyphicon-search"></i>
+	      </button>
+		</div>
+		</div>
+		{{ form_end(form) }}
+
+
+	  <div class="list-group search-list" id="results">
+	  </div>
+	</div>
 </div>
 {% endblock %}
 {% block script %}
 <script>
 
 $(document).ready(function(){
-	$('#form_myfind').keyup(function() {
+	$('#form_mySearch').keyup(function() {
 	  var value = $(this).val();
 	  	if(value === '' || value.length < 3) {
 	  		$('#results').empty();

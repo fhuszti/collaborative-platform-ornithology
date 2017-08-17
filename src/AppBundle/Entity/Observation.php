@@ -37,6 +37,13 @@ class Observation
     private $lattitude;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="country",  type="string", length=255)
+     */
+    private $country;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="date")
@@ -44,7 +51,6 @@ class Observation
     private $date;
 
     /**
-     * @var string
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", inversedBy="observation", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
@@ -54,9 +60,9 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bird", inversedBy="observations")
      */
-    private $name;
+    private $bird;
 
     /**
      * @var string
@@ -66,25 +72,19 @@ class Observation
     private $comment;
 
     /**
-     * @var 
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="observations", cascade={"persist"})
-     * @Assert\Valid()
+     * @ORM\Column(name="seen", type="boolean")
      */
-    private $user;
+    private $seen;
 
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bird", inversedBy="observations")
+     * @ORM\Column(name="status", type="boolean", nullable=true)
      */
-    private $bird;
-
-
-
-
+    private $status;
       
-
 
     /**
      * Get id
@@ -96,10 +96,8 @@ class Observation
         return $this->id;
     }
 
+
     /**
-     * Set loc
-     *
-     * @param string $longitude
      *
      * @return Observation
      */
@@ -130,9 +128,9 @@ class Observation
     public function setLattitude($lattitude)
     {
         $this->lattitude = $lattitude;
-
         return $this;
     }
+
 
     /**
      * Get lattiude
@@ -142,6 +140,30 @@ class Observation
     public function getLattitude()
     {
         return $this->lattitude;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     *
+     * @return Observation
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+        return $this;
+    }
+
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 
     /**
@@ -166,30 +188,6 @@ class Observation
     public function getDate()
     {
         return $this->date;
-    }
-
-    /**
-     * Set birdName
-     *
-     * @param string $birdName
-     *
-     * @return Observation
-     */
-    public function setBirdName($birdName)
-    {
-        $this->birdName = $birdName;
-
-        return $this;
-    }
-
-    /**
-     * Get birdName
-     *
-     * @return string
-     */
-    public function getBirdName()
-    {
-        return $this->birdName;
     }
 
     /**
@@ -234,26 +232,74 @@ class Observation
     }
 
     /**
-     * Set user
+     * Set seen
      *
-     * @param \UserBundle\Entity\User $user
+     * @param boolean $seen
      *
      * @return Observation
      */
-    public function setUser(\UserBundle\Entity\User $user = null)
+    public function setSeen($seen)
     {
-        $this->user = $user;
+        $this->seen = $seen;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Get seen
      *
-     * @return \UserBundle\Entity\User
+     * @return boolean
      */
-    public function getUser()
+    public function getSeen()
     {
-        return $this->user;
+        return $this->seen;
+    }
+
+    /**
+     * Set satus
+     *
+     * @param boolean $satus
+     *
+     * @return Observation
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get satus
+     *
+     * @return boolean
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set bird
+     *
+     * @param \AppBundle\Entity\Bird $bird
+     *
+     * @return Observation
+     */
+    public function setBird(\AppBundle\Entity\Bird $bird = null)
+    {
+        $this->bird = $bird;
+
+        return $this;
+    }
+
+    /**
+     * Get bird
+     *
+     * @return \AppBundle\Entity\Bird
+     */
+    public function getBird()
+    {
+        return $this->bird;
     }
 }
