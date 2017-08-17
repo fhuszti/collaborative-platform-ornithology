@@ -45,7 +45,7 @@
 				<div class="col-xs-12 col-col-sm-offset-1 col-sm-4">
 					{{ form_label(form.message) }}
 				 {% image 'http://assets.fhuszti.tech/nao/logo.png' %}
-                <img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/pelican.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+                <img id="pelican" class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/pelican.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
               {% endimage %}
 				</div>
 				<div class="col-xs-12 col-sm-offset-1 col-sm-4">
@@ -58,11 +58,35 @@
 			{{ form_rest(form) }}
 			{{ form_end(form) }}
 		</div>
+		<div class="col-xs-12 col-sm-offset-1 col-sm-8" id="thanks">
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12 col-sm-offset-1 col-sm-8" id="blocAdress">
-
-		</div>
+			<div id="adress">
+				<p>ASSOCIATION NOS AMIS LES OISEAUX<p>
+				<p>156 BOULEVARD BONNE NOUVELLE<p>
+				<p>75 010 PARIS CEDEX<p>
+			</div>
+		<div class="row">
+			<div id="locIcon" class="col-sm-4">
+				{% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+				<img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/blue-loc-icon.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+				{% endimage %}
+	        </div>
+	        <div id="phoneNumber" class="col-sm-4">
+	        	<p>01.78.35.90.56</p>
+	        </div>
+	        <div id="email" class="col-sm-4">
+	        	<p>nosalisoiseaux@gmail.fr</p>
+	        </div>
+        </div>
+        <div id="separatorLine">
+			{% image 'http://assets.fhuszti.tech/nao/logo.png' %}
+			<img class="img-responsive" src="{{ 'http://assets.fhuszti.tech/nao/separator-line.png' }}" alt="{{'core.logo.alt'|trans}}" class="hidden-xs" />
+			{% endimage %}
+        </div>
+        </div>
 	</div>
 </div>
 
@@ -82,12 +106,17 @@
           type : 'POST', 
           data : values,
           success :function(e) {
-            $("#containerFormContact").hide(1000,function(){
-            $("#thanks").show(1000);
-            });
+           $('#containerformContact').animate({ height: '0px' }, 1000, function() {
+                $(this).hide(0, function() {
+                $('#thanks').animate({ height: '400px' }, 1000);
+                });
+             });
           }
         });
       });
-    </script>
+    </script> 
+    <script> var pathControllerContact = '{{ path('app_contact') }}';</script>
+    <script src="{{asset('bundles/app/js/Contact/formValidation.js') }}"></script>
+    <script src="{{asset('bundles/app/js/Contact/ajax.js') }}"></script>
 {% endblock %}
 {% endblock %}
