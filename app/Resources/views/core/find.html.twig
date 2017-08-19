@@ -42,9 +42,11 @@
 	</div>
 </div>
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
 {% block script %}
 <script>
-
 $(document).ready(function(){
 	$('#form_mySearch').keyup(function() {
 	  var value = $(this).val();
@@ -63,7 +65,14 @@ $(document).ready(function(){
 	     	    }
 	     	    else {
 					Object.keys(reponse).forEach(function(key) {
-					    $('#results').prepend('<a href="'+ reponse[key].link +'" class="list-group-item theFind">'+ reponse[key].name +'</a>');
+
+						if (key == 0) {
+							$('#results').append('<a href="'+ reponse[key].link +'" class="list-group-item theFind w3-green w3-opacity-3">'+ reponse[key].name +'</a>');
+						}
+						else {
+
+					    	$('#results').append('<a href="'+ reponse[key].link +'" class="list-group-item theFind">'+ reponse[key].name +'</a>');
+					    }
 					});
 	     	    }
 	          },
@@ -79,10 +88,12 @@ $(document).ready(function(){
 
 $("#results").on("click", "a.theFind", function(){
 	var href = $(this).attr('href');
-    $('#container_find').hide('slow');
+    $('#container_find,.nao_title').hide('slow');
+    $('body').css({'background-image': 'url(http://assets.fhuszti.tech/nao/search/search-bg.jpg)'});
     $('#container_fiche').load(href);
     $('#container_fiche').show('slow');
     return false;
 });
+
 </script>
 {% endblock %}

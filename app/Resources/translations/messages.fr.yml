@@ -42,6 +42,8 @@ core:
             common_name: Nom(s) Commun(s)
         observation:
             title: OBSERVATIONS
+        photo:
+            title: PHOTOS
     second-menu:
         observation: Laisser une observation
         search: Rechercher un oiseau
