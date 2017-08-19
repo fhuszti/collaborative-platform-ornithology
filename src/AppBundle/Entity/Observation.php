@@ -46,29 +46,31 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", inversedBy="observation", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $image;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="comment", type="string", length=255, nullable=true)
      */
     private $comment;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=true)
+     */
+    private $status;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", inversedBy="observation", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     * @Assert\Valid()
+     */
+    private $image;
+
+    /**
      * @var 
      *
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="observations", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      * @Assert\Valid()
      */
     private $user;
@@ -76,7 +78,9 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bird", inversedBy="observations")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bird", inversedBy="observations", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $bird;
 
@@ -169,30 +173,6 @@ class Observation
     }
 
     /**
-     * Set birdName
-     *
-     * @param string $birdName
-     *
-     * @return Observation
-     */
-    public function setBirdName($birdName)
-    {
-        $this->birdName = $birdName;
-
-        return $this;
-    }
-
-    /**
-     * Get birdName
-     *
-     * @return string
-     */
-    public function getBirdName()
-    {
-        return $this->birdName;
-    }
-
-    /**
      * Set comment
      *
      * @param string $comment
@@ -215,17 +195,39 @@ class Observation
     {
         return $this->comment;
     }
+
     /**
-     * Constructor
+     * Set status
+     *
+     * @param boolean $status
+     *
+     * @return Observation
      */
-    public function __construct()
+    public function setStatus($status)
     {
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->status = $status;
+
+        return $this;
     }
 
-    public function setImage($file)
+    /**
+     * Get status
+     *
+     * @return bool
+     */
+    public function getStatus()
     {
-        $this->image = $file;
+        return $this->status;
+    }
+
+    public function setImage(\AppBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        if ( !is_null($image) )
+            $image->setObservation($this);
+
+        return $this;
     }
 
     public function getImage()
@@ -255,5 +257,31 @@ class Observation
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set bird
+     *
+     * @param \AppBundle\Entity\Bird $bird
+     *
+     * @return Observation
+     */
+    public function setBird(\AppBundle\Entity\Bird $bird)
+    {
+        $this->bird = $bird;
+
+        $bird->addObservation($this);
+
+        return $this;
+    }
+
+    /**
+     * Get bird
+     *
+     * @return \AppBundle\Entity\Bird
+     */
+    public function getBird()
+    {
+        return $this->bird;
     }
 }
