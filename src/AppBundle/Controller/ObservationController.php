@@ -31,8 +31,6 @@ class ObservationController extends Controller
 		$observation = new Observation();
 		$formBuilder = $this->get('form.factory')->create(ObservationType::class, $observation);
 
-		if ($request->isXmlHttpRequest()) {
-
 			if ($request->isMethod('POST')) {
 				$formBuilder->handleRequest($request);
 
@@ -58,7 +56,7 @@ class ObservationController extends Controller
 				}
 			}
 			// return $this->redirectToRoute('');
-		}
+		
 		return $this->render('AppBundle:Observation:observation.html.twig', array(
 		'form' => $formBuilder->createView()
 		));

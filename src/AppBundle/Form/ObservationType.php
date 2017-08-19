@@ -34,7 +34,7 @@ class ObservationType extends AbstractType
       ->add('country', TextType::class, array(
             'label' => 'country'
       ))
-      ->add('birdName', TextType::class, array(
+      ->add('bird_name', TextType::class, array(
             'label' => 'NOM DE L\'OISEAU'
       ))
       ->add('image', ImageType::class, array(
