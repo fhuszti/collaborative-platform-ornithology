@@ -40,7 +40,7 @@ class Image
     const PATH = '%kernel.project_dir%/web/uploads/images';
 
     public function upload()
-    {
+    {   
         $name = md5(uniqid()).'.'.$this->file->getClientOriginalName();
         $this->file->move(self::PATH, $name);
         $this->image = $name;

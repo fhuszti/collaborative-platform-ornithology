@@ -13,3 +13,7 @@ home:
         p5: Retrouvez toutes vos informations, l'historique de vos observations, vos photos, et vos oiseaux favoris
         p6: Besoins d'infos, remarques, envie d'échanger, n'hésitez pas à nous contacter !
 
+observation:
+    locationTitle: LOCALITE * Déplacer le marqueur sur la carte pour localiser le lieu de l'observation
+    buttonGeolocation: me geolocaliser
+    buttonMap: localiser sur une carte

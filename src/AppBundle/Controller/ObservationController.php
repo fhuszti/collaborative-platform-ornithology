@@ -37,14 +37,16 @@ class ObservationController extends Controller
 				$formBuilder->handleRequest($request);
 
 				if ($formBuilder->isValid()) {
-					$observation->getImage()->upload();      
+					if (!empty($observation->getImage())) {
+						$observation->getImage()->upload();      
+					}
 					$observation->setSeen(0);
 					$em = $this->getDoctrine()->getManager();
 					$em->persist($observation);
 					$em->flush();
 
 
-					if (null !==  $observation->getImage()) {
+					if (Null != $observation->getImage()) {
 						$dir = '%kernel.project_dir%/web/uploads/images/';
 						$image = $observation->getImage()->getImage();
 						\Tinify\setKey("YN-tD6vaVHxYTx8XcfBLKFrlzXwwxgLi");
