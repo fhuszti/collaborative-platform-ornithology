@@ -4,6 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use AppBundle\Validator\BirdName;
 
 /**
  * Observation
@@ -66,6 +68,7 @@ class Observation
      *      minMessage = "Votre nom doit faire minimum {{ limit }} caractères ",
      *      maxMessage = "Votre nom doit faire maximum {{ limit }} caractères"
      * )
+     * @BirdName()
      */
     private $bird_name;
 

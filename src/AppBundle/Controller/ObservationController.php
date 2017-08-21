@@ -8,7 +8,7 @@ use AppBundle\Form\ObservationType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use AppBundle\Entity\Observation;
-use AppBundle\Service\FileUploader;
+use AppBundle\Service\Optimizer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormBuilder;
@@ -26,7 +26,7 @@ class ObservationController extends Controller
      * @Route("/observation", name="app_observation")
 	 * @Method({"GET", "POST"})
      */
-    public function formAction(Request $request, FileUploader $fileUploader)
+     public function formAction(Request $request, Optimizer $optimizer)
     {
 		$observation = new Observation();
 		$formBuilder = $this->get('form.factory')->create(ObservationType::class, $observation);
@@ -45,12 +45,7 @@ class ObservationController extends Controller
 
 
 					if (Null != $observation->getImage()) {
-						$dir = '%kernel.project_dir%/web/uploads/images/';
-						$image = $observation->getImage()->getImage();
-						\Tinify\setKey("YN-tD6vaVHxYTx8XcfBLKFrlzXwwxgLi");
-						$source = \Tinify\fromFile($dir.$image);
-						$source->toFile($dir."/optimized/".$image);
-						unlink('%kernel.project_dir%/web/uploads/images/'.$image ) ; 
+						$optimizer->optimize($observation);
 					}
 						return new JsonResponse(array('status'=>'success'));
 				}
