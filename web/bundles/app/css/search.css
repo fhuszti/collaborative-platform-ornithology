@@ -37,8 +37,19 @@ body {
 	border: 1px outset #eee;
 	min-height: 755px;
 }
- #container_fiche {
- 	padding:20px;
- }
- .w3-green,.w3-hover-green:hover{color:#000!important;background-color:#87d37c!important}
- .w3-opacity-3,.w3-hover-opacity:hover{opacity:0.80}
+.w3-green,.w3-hover-green:hover{color:#000!important;background-color:#87d37c!important}
+.w3-opacity-3,.w3-hover-opacity:hover{opacity:0.80}
+
+@media (max-width: 767px) {
+  #search_content {
+	margin-top: 0px;
+	height: auto;
+	}
+	#wrapper{
+		margin: 0px;
+		padding: 0px
+	}
+	#content {
+		padding: 0px;
+	}
+}

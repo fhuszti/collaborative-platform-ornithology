@@ -10,10 +10,13 @@
 		  <span class="glyphicon glyphicon-arrow-left"></span>
 		</a>
 	</p> 
+<div class="row w3-margin-bottom">
 	<div class="col-xs-12 col-sm-6">
-		{% image 'http://assets.fhuszti.tech/nao/second-menu/search.png' %}
-			<img src="{{ asset_url }}" alt="" />
-		{% endimage %}
+		{% if bird.observations[0].image.image is defined %}
+			<img src="{{ bird.observations[0].image.image }}" alt="" class ="img-responsive"/>
+		{% else %}
+			<p>Aucune Image</p>
+		{% endif %}
 	</div>
 
 	<div class="col-xs-12 col-sm-6 nao_title-icon">
@@ -26,6 +29,7 @@
 			{{ 'core.bird.desc.common_name'|trans }} : {{ bird.commonName }} <br/>
 		</p>
 	</div>
+</div>
 <div id="maps"></div>
 
 <div class="bird_title">
@@ -44,7 +48,7 @@
 		{% endif %}
 		<div class="observation">
 			<p>
-			{{ ob.country }} <b>{{ ob.date|localizeddate('none', 'none', null, null, 'd MMMM Y') }}</b><br />
+			<b>{{ ob.date|localizeddate('none', 'none', null, null, 'd MMMM Y') }}</b> - {{ ob.country }}<br />
 			{{ ob.comment }}
 			</p>
 			<hr class="hr_bird">
@@ -75,7 +79,8 @@
                 <p class="jcarousel-pagination"></p>
         </div>
 
-
+{% else %}
+	<p>Il n'éxiste aucune images liées à cet oiseau</p>
 {% endif %}
 </div>
 

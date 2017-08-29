@@ -68,7 +68,7 @@ a {
     max-width: 100%;
     height: auto !important;
 }
-
+.w3-margin-top{margin-top:16px!important}.w3-margin-bottom{margin-bottom:16px!important}
 
 @media (max-width: 767px) {
   #wrapper {

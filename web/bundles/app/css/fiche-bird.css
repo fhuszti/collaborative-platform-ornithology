@@ -24,3 +24,11 @@
     display:none;
     font-family: 'Open sans semi bold';
 }
+ #container_fiche {
+ 	padding:30px;
+ }
+@media (max-width: 767px) {
+  #container_fiche {
+    padding: 5px;
+  }
+}
