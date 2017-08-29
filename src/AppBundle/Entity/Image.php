@@ -25,20 +25,31 @@ class Image
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
-    private $image;
+    private $url;
 
      /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Observation",mappedBy="image")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Observation",mappedBy="image", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
+     * @Assert\Valid()
      */
     private $observation;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bird", inversedBy="images", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
+     */
+    private $bird;
 
     /**
      * @var 
      *
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="images", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      * @Assert\Valid()
      */
     private $user;
@@ -55,27 +66,27 @@ class Image
     }
 
     /**
-     * Set image
+     * Set url
      *
-     * @param string $image
+     * @param string $url
      *
      * @return Image
      */
-    public function setImage($image)
+    public function setUrl($url)
     {
-        $this->image = $image;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get image
+     * Get url
      *
      * @return string
      */
-    public function getImage()
+    public function getUrl()
     {
-        return $this->image;
+        return $this->url;
     }
 
     /**
@@ -87,7 +98,7 @@ class Image
      */
     public function setObservation(\AppBundle\Entity\Observation $observation = null)
     {
-        $this->Observation = $observation;
+        $this->observation = $observation;
 
         return $this;
     }
@@ -99,7 +110,33 @@ class Image
      */
     public function getObservation()
     {
-        return $this->Observation;
+        return $this->observation;
+    }
+
+    /**
+     * Set bird
+     *
+     * @param \AppBundle\Entity\Bird $bird
+     *
+     * @return Image
+     */
+    public function setBird(\AppBundle\Entity\Bird $bird)
+    {
+        $this->bird = $bird;
+
+        $bird->addImage($this);
+
+        return $this;
+    }
+
+    /**
+     * Get bird
+     *
+     * @return \AppBundle\Entity\Bird
+     */
+    public function getBird()
+    {
+        return $this->bird;
     }
 
     /**

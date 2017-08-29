@@ -1,0 +1,81 @@
+body {
+	background-image: url( "http://assets.fhuszti.tech/nao/contact/contact-bg.jpg" );
+	background-size: cover;
+	width: 100%;
+}
+
+#containerformContact {
+	background-color: #CEE5C9;
+	height: 600px;
+}
+
+#f {
+	margin-top: 150px;
+}
+
+#blocAdress {
+	background-color: #EBEAE9;
+	height: 200px;
+	margin-bottom: 150px;
+}
+
+.field {
+	margin-top: 50px;
+}
+
+input {
+	width: 100%;
+}
+
+#contact_message {
+	height: 150px;
+}
+
+#save {
+	display: flex;
+	justify-content: flex-end;
+}
+
+/*Bloc adresse*/
+#phoneNumber, #email {
+	height: 50px;
+	display: flex;
+	align-items: flex-end;
+}
+
+p {
+ 	margin-bottom: 0px;
+}
+
+#separatorLine {
+	display: flex;
+	justify-content: center;
+	margin-top: 25px;
+}
+
+#adress {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+#thanks {
+	background-color: #CEE5C9;
+	height: 0px;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#textThanks p {
+	margin-bottom: 25px;
+}
+
+
+@media all and (max-width: 768px) {
+	#pelican {
+		height: 25px;
+	}
+
+	#blocAdress {
+		height: 300px;
+	}
+}
