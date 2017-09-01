@@ -11,6 +11,10 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\Bird;
+use AppBundle\Entity\Contact;
+use AppBundle\Form\ContactType;
+use AppBundle\Services\Mail;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CoreController extends Controller
 {
@@ -63,4 +67,41 @@ class CoreController extends Controller
 
 	    return $this->render('core/bird.html.twig', array('bird' => $bird));
 	}
+	/**
+     * @Route("/contact", name="app_contact")
+     * @Method({"GET", "POST"})
+     */
+    public function contactAction(Request $request)
+    {
+		$contact = new Contact();
+		$formBuilder = $this->get('form.factory')->create(ContactType::class, $contact);
+			if ($request->isMethod('POST')) {
+				$formBuilder->handleRequest($request);
+				if ($formBuilder->isValid()) {
+      
+					$em = $this->getDoctrine()->getManager();
+					$em->persist($contact);
+					$em->flush();
+		              $mail = $this->get(Mail::class);
+		              $mailer_admin = $this->container->getParameter('mailer_user');
+		              $mail->send(
+		                $contact->getEmail(), $mailer_admin,
+		                'Prise de contact depuis la Platforme',
+		                $this->renderView('mail/contact.html.twig',array('contact' => $contact))
+		                );
+		              if ($request->isXmlHttpRequest()) { 
+		              	  return new JsonResponse(array('status'=>'success'));
+		              }
+		              else {
+
+			              $session = $request->getSession();
+			              $session->getFlashBag()->add('contact-notice', 'Votre message vient d\'être envoyé, nous vous répondrons dans les plus brefs délais.');
+	    				  return $this->redirect($this->generateUrl('app_contact'));
+    				}
+				}
+			}
+		return $this->render('core/contact.html.twig', array(
+		'form' => $formBuilder->createView()
+		));
+    }
 }
