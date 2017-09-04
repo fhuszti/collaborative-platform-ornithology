@@ -5,10 +5,11 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Form\ObservationType;
+use AppBundle\Service\Optimizer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use AppBundle\Entity\Observation;
-use AppBundle\Service\Optimizer;
+use AppBundle\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormBuilder;
@@ -26,29 +27,35 @@ class ObservationController extends Controller
      * @Route("/observation", name="app_observation")
 	 * @Method({"GET", "POST"})
      */
-     public function formAction(Request $request, Optimizer $optimizer)
+    public function formAction(Request $request, FileUploader $fileUploader, Optimizer $optimizer)
     {
 		$observation = new Observation();
 		$formBuilder = $this->get('form.factory')->create(ObservationType::class, $observation);
 
 			if ($request->isMethod('POST')) {
 				$formBuilder->handleRequest($request);
+				$image = $observation->getImage()->getFile();
+				if (!$formBuilder->isValid()) {
+					return new JsonResponse(array(
+						'result' => 0,
+						'data' => $this->getErrorMessages($formBuilder),
+						'message' => 'Invalid form',  
+					));
 
-				if ($formBuilder->isValid()) {
-					if (!empty($observation->getImage())) {
-						$observation->getImage()->upload();      
+				} else {
+
+					if (Null != $image) {
+						$observation->getImage()->upload();
+						$optimizer->optimize($observation);      
 					}
 					$observation->setSeen(0);
 					$em = $this->getDoctrine()->getManager();
 					$em->persist($observation);
 					$em->flush();
+					
+					return new JsonResponse(array('status'=>'success'));
+				}				  
 
-
-					if (Null != $observation->getImage()) {
-						$optimizer->optimize($observation);
-					}
-						return new JsonResponse(array('status'=>'success'));
-				}
 			}
 			// return $this->redirectToRoute('');
 		
@@ -56,4 +63,21 @@ class ObservationController extends Controller
 		'form' => $formBuilder->createView()
 		));
     }
+
+   function getErrorMessages(\Symfony\Component\Form\Form $formBuilder) 
+    {
+        $errors = array();
+        foreach ($formBuilder->getErrors() as $key => $error) {
+            $errors[] = $error->getMessage();
+        }
+
+        foreach ($formBuilder->all() as $child) {
+            if (!$child->isValid()) {
+                $errors[$child->getName()] = $this->getErrorMessages($child);
+            }
+        }
+
+        return $errors;
+    }
 }
+

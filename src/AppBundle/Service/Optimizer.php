@@ -15,7 +15,7 @@ class Optimizer
 		\Tinify\setKey("YN-tD6vaVHxYTx8XcfBLKFrlzXwwxgLi");
 		$source = \Tinify\fromFile($dir.$image);
 		$source->toFile($dir."/optimized/".$image);
-		// $source->store(array(
+		// $source->store(array(http://assets.fhuszti.tech/nao/observations/observations-bg-mobile.jpg
 		// 	"service" => "s3",
 		// 	"aws_access_key_id" => "AKIAIRMWF4FAADUDYH6Q",
 		// 	"aws_secret_access_key" => "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",

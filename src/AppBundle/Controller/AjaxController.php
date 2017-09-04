@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -27,7 +25,6 @@ class AjaxController extends Controller
          ->MyFindBy($search);
          if ($data) {
              foreach ($data as $bird) {
-            
               $output[] = array( 'name' => $bird->getCommonName());
              }
              return new JsonResponse($output);

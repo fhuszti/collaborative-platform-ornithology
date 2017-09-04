@@ -63,12 +63,6 @@ class Observation
      * @var string
      *
      * @ORM\Column(name="bird_name", type="string", length=255)
-     * @Assert\Length(
-     *      min = 2, max = 50,
-     *      minMessage = "Votre nom doit faire minimum {{ limit }} caractères ",
-     *      maxMessage = "Votre nom doit faire maximum {{ limit }} caractères"
-     * )
-     * @BirdName()
      */
     private $bird_name;
 
@@ -92,20 +86,26 @@ class Observation
      * @ORM\Column(name="status", type="boolean", nullable=true)
      */
     private $status;
-      
 
+    public function __construct() 
+    {
+        $this->bird_id = new \Datetime();
+    }
+      
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
 
-
     /**
+     * Set longitude
+     *
+     * @param string $longitude
      *
      * @return Observation
      */
@@ -127,7 +127,7 @@ class Observation
     }
 
     /**
-     * Set lattiude
+     * Set lattitude
      *
      * @param string $lattitude
      *
@@ -136,12 +136,12 @@ class Observation
     public function setLattitude($lattitude)
     {
         $this->lattitude = $lattitude;
+
         return $this;
     }
 
-
     /**
-     * Get lattiude
+     * Get lattitude
      *
      * @return string
      */
@@ -160,9 +160,9 @@ class Observation
     public function setCountry($country)
     {
         $this->country = $country;
+
         return $this;
     }
-
 
     /**
      * Get country
@@ -199,6 +199,54 @@ class Observation
     }
 
     /**
+     * Set birdName
+     *
+     * @param string $birdName
+     *
+     * @return Observation
+     */
+    public function setBirdName($birdName)
+    {
+        $this->bird_name = $birdName;
+
+        return $this;
+    }
+
+    /**
+     * Get birdName
+     *
+     * @return string
+     */
+    public function getBirdName()
+    {
+        return $this->bird_name;
+    }
+
+    /**
+     * Set birdId
+     *
+     * @param string $birdId
+     *
+     * @return Observation
+     */
+    public function setBirdId($birdId)
+    {
+        $this->bird_id = $birdId;
+
+        return $this;
+    }
+
+    /**
+     * Get birdId
+     *
+     * @return string
+     */
+    public function getBirdId()
+    {
+        return $this->bird_id;
+    }
+
+    /**
      * Set comment
      *
      * @param string $comment
@@ -220,23 +268,6 @@ class Observation
     public function getComment()
     {
         return $this->comment;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    public function setImage($file)
-    {
-        $this->image = $file;
-    }
-
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**
@@ -264,9 +295,9 @@ class Observation
     }
 
     /**
-     * Set satus
+     * Set status
      *
-     * @param boolean $satus
+     * @param boolean $status
      *
      * @return Observation
      */
@@ -278,7 +309,7 @@ class Observation
     }
 
     /**
-     * Get satus
+     * Get status
      *
      * @return boolean
      */
@@ -288,26 +319,26 @@ class Observation
     }
 
     /**
-     * Set birdName
+     * Set image
      *
-     * @param string $birdName
+     * @param \AppBundle\Entity\Image $image
      *
      * @return Observation
      */
-    public function setBirdName($birdName)
+    public function setImage(\AppBundle\Entity\Image $image = null)
     {
-        $this->bird_name = $birdName;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get birdName
+     * Get image
      *
-     * @return string
+     * @return \AppBundle\Entity\Image
      */
-    public function getBirdName()
+    public function getImage()
     {
-        return $this->bird_name;
+        return $this->image;
     }
 }

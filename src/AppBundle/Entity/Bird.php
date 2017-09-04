@@ -60,7 +60,7 @@ class Bird
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {

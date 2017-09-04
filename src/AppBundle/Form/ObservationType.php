@@ -24,6 +24,7 @@ class ObservationType extends AbstractType
             'label' => 'DATE*',
             'html5' => false,
             'widget' => 'single_text',
+            'format' => 'dd-mm-yyyy',
       ))
       ->add('longitude', TextType::class, array(
             'label' => 'longitude'
@@ -39,7 +40,6 @@ class ObservationType extends AbstractType
       ))
       ->add('image', ImageType::class, array(
             'label' => 'PHOTO',
-            // 'required' => false
       ))
       ->add('save', SubmitType::class, array(
             'label' => 'Soumettre',

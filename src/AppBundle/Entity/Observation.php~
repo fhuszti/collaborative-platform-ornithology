@@ -1,0 +1,97 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use AppBundle\Validator\BirdName;
+
+/**
+ * Observation
+ *
+ * @ORM\Table(name="observation")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ObservationRepository")
+ */
+class Observation
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longitude", type="string", length=255)
+     */
+    private $longitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lattitude", type="string", length=255)
+     */
+    private $lattitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country",  type="string", length=255)
+     */
+    private $country;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date")
+     */
+    private $date;
+
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", inversedBy="observation", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bird_name", type="string", length=255)
+     */
+    private $bird_name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bird_id", type="string", length=255)
+     */
+    private $bird_id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="string", length=255, nullable=true)
+     */
+    private $comment;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="seen", type="boolean")
+     */
+    private $seen;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=true)
+     */
+    private $status;
+      
+}
