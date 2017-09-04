@@ -38,29 +38,29 @@ class Bird
     /**
      * @var string
      *
-     * @ORM\Column(name="latinName", type="string", length=255)
+     * @ORM\Column(name="latin_name", type="string", length=255)
      */
-    private $latinName;
+    private $latin_name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="fullName", type="string", length=255)
+     * @ORM\Column(name="full_name", type="string", length=255)
      */
-    private $fullName;
+    private $full_name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="commonName", type="string", length=255)
+     * @ORM\Column(name="common_name", type="string", length=255)
      */
-    private $commonName;
+    private $common_name;
 
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -124,7 +124,7 @@ class Bird
      */
     public function setLatinName($latinName)
     {
-        $this->latinName = $latinName;
+        $this->latin_name = $latinName;
 
         return $this;
     }
@@ -136,7 +136,7 @@ class Bird
      */
     public function getLatinName()
     {
-        return $this->latinName;
+        return $this->latin_name;
     }
 
     /**
@@ -148,7 +148,7 @@ class Bird
      */
     public function setFullName($fullName)
     {
-        $this->fullName = $fullName;
+        $this->full_name = $fullName;
 
         return $this;
     }
@@ -160,7 +160,7 @@ class Bird
      */
     public function getFullName()
     {
-        return $this->fullName;
+        return $this->full_name;
     }
 
     /**
@@ -172,7 +172,7 @@ class Bird
      */
     public function setCommonName($commonName)
     {
-        $this->commonName = $commonName;
+        $this->common_name = $commonName;
 
         return $this;
     }
@@ -184,7 +184,6 @@ class Bird
      */
     public function getCommonName()
     {
-        return $this->commonName;
+        return $this->common_name;
     }
 }
-
