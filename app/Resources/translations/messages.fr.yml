@@ -29,7 +29,31 @@ core:
         logout:
             link: Se déconnecter
             value: Déconnexion
-
+    find:
+        input_find: Tapez le nom de l'oiseau
+        button_find: Rechercher
+        msg:
+            nofind: Aucuns résultats ne correspond à cette recherche
+            error: Une erreur est survenue, veuillez réessayer
+    bird:
+        desc:
+            family: Famille
+            rang: Rang
+            name_latin: Nom latin
+            full_name: Nom complet
+            common_name: Nom(s) Commun(s)
+        observation:
+            title: OBSERVATIONS
+        photo:
+            title: PHOTOS
+    second-menu:
+        observation: Laisser une observation
+        search: Rechercher un oiseau
+        contact: Nous contacter
+        register: S'inscrire
+        profile: Voir son profil
+        login: Se connecter
+        logout: Se déconnecter
     footer:
         left_links:
             search:
@@ -52,6 +76,13 @@ core:
             agency:
                 link: WebAgency
                 title: Agence WebAgency
+    contact:
+        form:
+            name: Nom
+            mail: Email
+            subject: Objet
+            message: Message
+            send: Envoyer
 
     second-menu:
         observation: Laisser une observation

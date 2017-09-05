@@ -2,6 +2,10 @@ core:
     resource: "@AppBundle/Controller/CoreController.php"
     type:     annotation
     prefix:   /
+app:
+    resource: "@AppBundle/Controller/AjaxController.php"
+    type:     annotation
+    prefix:   /ajax
 
 user:
     resource: "@UserBundle/Controller/"

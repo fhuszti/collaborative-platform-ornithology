@@ -5,8 +5,23 @@ body {
 }
 
 #containerformContact {
+	margin-top: 45px;
+	padding: 30px;
+	font-size: 1.2em;
 	background-color: #CEE5C9;
-	height: 600px;
+	opacity:0.90;
+	border: 0px;
+	min-height: 600px;
+}
+#containerformContact label {
+	margin-left: 20%;
+	margin-top:3%;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+#containerformContact .form-group {
+	margin-bottom: 35px!important;
+>>>>>>> find
 }
 
 #f {
@@ -15,7 +30,8 @@ body {
 
 #blocAdress {
 	background-color: #EBEAE9;
-	height: 200px;
+	min-height: 200px;
+>>>>>>> find
 	margin-bottom: 150px;
 }
 
@@ -32,8 +48,8 @@ input {
 }
 
 #save {
-	display: flex;
-	justify-content: flex-end;
+	text-align: right;
+>>>>>>> find
 }
 
 /*Bloc adresse*/
@@ -50,17 +66,25 @@ p {
 #separatorLine {
 	display: flex;
 	justify-content: center;
-	margin-top: 25px;
-}
 
+}
+#separatorLine img {
+
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+>>>>>>> find
 #adress {
 	margin-top: 25px;
 	margin-bottom: 25px;
 }
 
-#thanks {
+#textThanks {
 	background-color: #CEE5C9;
 	height: 0px;
+	margin-top:20%;
+	font-size: 20pt;
+>>>>>>> find
 	flex-direction: column;
 	justify-content: center;
 }
@@ -72,10 +96,18 @@ p {
 
 @media all and (max-width: 768px) {
 	#pelican {
-		height: 25px;
+		height: 50px;
 	}
 
 	#blocAdress {
-		height: 300px;
+		min-height: 300px;
 	}
+	#containerformContact label {
+	margin-left: 0;
+	margin-top:0;
+	}
+	#containerformContact .form-group {
+	margin-bottom: 15px!important;
+}
+>>>>>>> find
 }
