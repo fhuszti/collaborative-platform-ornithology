@@ -187,3 +187,8 @@ core:
                 blank: Veuillez saisir votre nom.
                 min: Votre nom ne peut contenir moins de 2 caractères.
                 max: Votre nom ne peut contenir plus de 255 caractères.
+
+observation:
+    locationTitle: LOCALITE * Déplacer le marqueur sur la carte pour localiser le lieu de l'observation
+    buttonGeolocation: me geolocaliser
+    buttonMap: localiser sur une carte

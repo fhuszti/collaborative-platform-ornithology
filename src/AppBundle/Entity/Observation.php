@@ -57,6 +57,12 @@ class Observation
     /**
      * @var string
      *
+     * @ORM\Column(name="birdName", type="string", length=255)
+     */
+    private $birdName;
+    /**
+     * @var string
+     *
      * @ORM\Column(name="comment", type="string", length=255, nullable=true)
      */
     private $comment;
@@ -261,5 +267,29 @@ class Observation
     public function getBird()
     {
         return $this->bird;
+    }
+
+    /**
+     * Set birdName
+     *
+     * @param string $birdName
+     *
+     * @return Observation
+     */
+    public function setBirdName($birdName)
+    {
+        $this->birdName = $birdName;
+
+        return $this;
+    }
+
+    /**
+     * Get birdName
+     *
+     * @return string
+     */
+    public function getBirdName()
+    {
+        return $this->birdName;
     }
 }

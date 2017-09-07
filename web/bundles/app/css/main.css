@@ -115,4 +115,13 @@ textarea.parsley-error {
   #wrapper {
     margin-bottom: 30px;
   }
+
+  .nao_title {
+    display: none;
+  }
+
+  #wrapper, #content {
+    margin: 0px;
+    padding: 0px;
+  }
 }

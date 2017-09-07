@@ -2,8 +2,8 @@
 
 namespace AppBundle\Entity;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Image
@@ -25,35 +25,45 @@ class Image
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
-    private $url;
+    private $image;
 
      /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Observation",mappedBy="image", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Observation",inversedBy="image")
      * @ORM\JoinColumn(nullable=true)
-     * @Assert\Valid()
      */
     private $observation;
-
-    /**
-     * @var string
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bird", inversedBy="images", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     * @Assert\Valid()
-     */
-    private $bird;
 
     /**
      * @var 
      *
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="images", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
-     * @Assert\Valid()
      */
     private $user;
 
+    private $file;
+
+    const PATH = '%kernel.project_dir%/web/uploads/images';
+
+    public function upload()
+    {   
+        $name = md5(uniqid()).'.'.$this->file->getClientOriginalName();
+        $this->file->move(self::PATH, $name);
+        $this->image = $name;
+        return;
+    }
+
+    public function getFile()
+    {
+    return $this->file;
+    }
+
+    public function setFile(UploadedFile $file = null)
+    {
+    $this->file = $file;
+    }
 
     /**
      * Get id
@@ -66,27 +76,27 @@ class Image
     }
 
     /**
-     * Set url
+     * Set image
      *
-     * @param string $url
+     * @param string $image
      *
      * @return Image
      */
-    public function setUrl($url)
+    public function setImage($image)
     {
-        $this->url = $url;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get url
+     * Get image
      *
      * @return string
      */
-    public function getUrl()
+    public function getImage()
     {
-        return $this->url;
+        return $this->image;
     }
 
     /**
@@ -98,7 +108,7 @@ class Image
      */
     public function setObservation(\AppBundle\Entity\Observation $observation = null)
     {
-        $this->observation = $observation;
+        $this->Observation = $observation;
 
         return $this;
     }
@@ -110,56 +120,6 @@ class Image
      */
     public function getObservation()
     {
-        return $this->observation;
-    }
-
-    /**
-     * Set bird
-     *
-     * @param \AppBundle\Entity\Bird $bird
-     *
-     * @return Image
-     */
-    public function setBird(\AppBundle\Entity\Bird $bird)
-    {
-        $this->bird = $bird;
-
-        $bird->addImage($this);
-
-        return $this;
-    }
-
-    /**
-     * Get bird
-     *
-     * @return \AppBundle\Entity\Bird
-     */
-    public function getBird()
-    {
-        return $this->bird;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \UserBundle\Entity\User $user
-     *
-     * @return Image
-     */
-    public function setUser(\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \UserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
+        return $this->Observation;
     }
 }
