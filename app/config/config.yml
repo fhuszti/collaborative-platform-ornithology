@@ -91,6 +91,12 @@ fos_user:
     service:
         mailer: fos_user.mailer.twig_swift
     use_username_form_type: false
+    change_password:
+        form:
+            type: UserBundle\Form\Type\EditPasswordType
+    profile:
+        form:
+            type: UserBundle\Form\Type\EditEmailType
     registration:
         form:
             type: UserBundle\Form\Type\RegistrationType

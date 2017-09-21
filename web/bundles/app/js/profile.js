@@ -84,9 +84,10 @@ $(function() {
 	function emailModal() {
 		//when clicking on the Edit icon
 		$('#profile_email-link').on('click', function(e){
-			
-			//just load the reset request form into the modal body
-			$('#profile_email-modal-body').load($(e.target).data('action'), function() {
+			var url_path = $(e.target).data('action');
+
+			//just load the email edit form into the modal body
+			$('#profile_email-modal-body').load(url_path, function() {
 				
 				//add a submit event to the modal form that was just loaded inside the body
 				$('#profile_email-modal-body form').on('submit', function(e){
@@ -97,6 +98,26 @@ $(function() {
 					$('#profile_email-modal-button>span:first-child').addClass('btn-loading');
 
 					//AJAX call using POST
+					//we fetch the data using FormData and send it as it is
+	                var formData = new FormData(e.target);
+	                
+	                //processData needs to be set to false to prevent jQuery from trying to convert it to string
+	                //contentType needs to be set to false so jQuery doesn't add a Content-type header (otherwise boundary string will be missing)
+	                $.ajax({
+	                    type: 'POST',
+	                    url: url_path,
+	                    data: formData,
+	                    processData: false,
+	                    contentType: false
+	                })
+	                .done(function(data, textStatus, jqXHR) {
+	                    //if there is an error with the form, it is added to data
+	                    //as a div with class='alert alert-danger'
+	                    if ( data.indexOf('alert alert-danger col-xs-12 form-error-custom') !== -1 )
+	                    	$('#profile_email-modal-body').html(data);
+	                   	else
+	                   		location.reload(true);
+	                });
 				});
 			});
 		});
@@ -106,9 +127,10 @@ $(function() {
 	function passwordModal() {
 		//when clicking on the Edit icon
 		$('#profile_pass-link').on('click', function(e){
-			
+			var url_path = $(e.target).data('action');
+
 			//just load the reset request form into the modal body
-			$('#profile_pass-modal-body').load($(e.target).data('action'), function() {
+			$('#profile_pass-modal-body').load(url_path, function() {
 				
 				//add a submit event to the modal form that was just loaded inside the body
 				$('#profile_pass-modal-body form').on('submit', function(e){
@@ -119,6 +141,27 @@ $(function() {
 					$('#profile_pass-modal-button>span:first-child').addClass('btn-loading');
 
 					//AJAX call using POST
+					//we fetch the data using FormData and send it as it is
+	                var formData = new FormData(e.target);
+	                
+	                //processData needs to be set to false to prevent jQuery from trying to convert it to string
+	                //contentType needs to be set to false so jQuery doesn't add a Content-type header (otherwise boundary string will be missing)
+	                $.ajax({
+	                    type: 'POST',
+	                    url: url_path,
+	                    data: formData,
+	                    processData: false,
+	                    contentType: false
+	                })
+	                .done(function(data, textStatus, jqXHR) {
+	                    //if there is an error with the form, it is added to data
+	                    //as a div with class='alert alert-danger col-xs-12 form-error-custom'
+	                    //so we check for that
+	                    if ( data.indexOf('alert alert-danger col-xs-12 form-error-custom') !== -1 )
+	                    	$('#profile_pass-modal-body').html(data);
+	                   	else
+	                   		location.reload(true);
+	                });
 				});
 			});
 		});

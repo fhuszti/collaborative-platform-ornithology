@@ -117,12 +117,7 @@ body {
 
 
 
-
-@media (max-width: 479px) {
-	#profile_block2-content .nav li>a {
-		font-size: 0.7em;
-	}
-}	
+	
 @media (max-width: 767px) {
 	#content, #wrapper {
 		padding-left: 0;
@@ -152,5 +147,10 @@ body {
 
 	#profile_block3-content {
 		padding: 30px 10px;
+	}
+}
+@media (max-width: 479px) {
+	#profile_block2-content .nav li>a {
+		font-size: 0.7em;
 	}
 }
