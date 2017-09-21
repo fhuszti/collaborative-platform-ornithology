@@ -47,6 +47,15 @@ body {
 	cursor: pointer;
 }
 
+#profile_email-modal .modal-content, #profile_pass-modal .modal-content {
+	background-color: rgb(187, 223, 180);
+}
+#profile_email-modal form, #profile_pass-modal form {
+	text-align: center;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
 #profile_block2-content {
 	padding: 0 0 30px;
 }
@@ -127,6 +136,14 @@ body {
 	#profile_block1-content-infos>.row img {
 		height: 40px;
 		margin-top: 0;
+	}
+	#profile_email-modal form, #profile_pass-modal form {
+		text-align: left;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	#profile_email-modal-submit-group, #profile_pass-modal-submit-group {
+		text-align: center;
 	}
 
 	#profile_block2-content .nav-justified > li {
