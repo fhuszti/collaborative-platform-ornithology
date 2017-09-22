@@ -1,6 +1,9 @@
 {% extends 'layout.html.twig' %}
 {% set adminPage = true %}
 
+{% import "admin/macros/_macroObservationDisplay.html.twig" as macroObservationDisplay %}
+{% import "admin/macros/_macroObservationModal.html.twig" as macroObservationModal %}
+
 {% block stylesheets %}
     {{ parent() }}
 
@@ -35,11 +38,30 @@
 	  	
 	  	<div class="tab-content">
 	      	<div class="tab-pane active" id="users">
-	      		Texte d'accueil
+	      		<ul>
+	      			{% for user in users %}
+		      			<li>
+		      				{{ user.firstName|capitalize }} {{ user.surname|capitalize }}
+		      			</li>
+	      			{% else %}
+	      				<li>Aucun utilisateur n'existe pour le moment.</li>
+	      			{% endfor %}
+	      		</ul>
 	      	</div>
 	      	<div class="tab-pane" id="observations">
-	      		Tous les livres
+	      		{% include 'admin/blocks/observations/observations.html.twig' %}
 	      	</div>
 	  	</div>
 	</div>
+
+	{{ macroObservationModal.observation_modal() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts filter='?jsqueeze'
+        'bundles/app/js/admin.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
