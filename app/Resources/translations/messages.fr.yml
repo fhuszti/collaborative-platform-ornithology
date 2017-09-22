@@ -86,6 +86,9 @@ core:
             text: Connectez-vous afin d'accéder à toutes les fonctionnalités de la plateforme.
         p5: Retrouvez toutes vos informations, l'historique de vos observations, vos photos, et vos oiseaux favoris
 
+    admin:
+        title: Administration
+
     login:
         title: Connexion
         register_button: Créer un compte

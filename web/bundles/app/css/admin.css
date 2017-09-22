@@ -1,0 +1,42 @@
+body {
+	background-image: url("http://assets.fhuszti.tech/nao/login/login-bg.jpg");
+  	background-size: cover;
+  	background-position: center center;
+  	background-repeat: no-repeat;
+}
+
+#admin_content {
+	position: relative;
+	margin-top: 45px;
+	padding: 0 0 20px;
+	font-size: 1.2em;
+	background-color: rgb(255, 255, 255);
+  	background-color: rgba(255, 255, 255, 0.7);
+	border: 1px outset #eee;
+}
+
+
+
+
+
+@media (max-width: 991px) {
+	#login_content {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+@media (max-width: 767px) {
+	#content, #wrapper {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	h1 {
+		font-size: 2em;
+		padding-left: 0;
+	}
+
+	#admin_content .nav-justified>li {
+		display: table-cell;
+		width: 1%;
+	}
+}

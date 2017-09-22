@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+{% set adminPage = true %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% stylesheets filter='cssrewrite, ?scssphp'
+        'bundles/app/css/admin.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+	<div class="col-xs-12 nao_title">
+		<div class="col-xs-10 col-sm-6">
+			<h1>{{ 'core.admin.title'|trans|upper }}</h1>
+		</div>
+
+		<div class="hidden-xs col-sm-2 nao_title-icon">
+		{% image 'http://assets.fhuszti.tech/nao/second-menu/profile.png' %}
+				<img src="{{ asset_url }}" alt="{{ 'core.admin.title'|trans }}" />
+			{% endimage %}
+		</div>
+	</div>
+
+	<div class="col-xs-12" id="admin_content">
+		<ul class="nav nav-pills nav-justified">
+	      	<li class="active">
+	      		<a href="#users" data-toggle="tab">Utilisateurs</a>
+	      	</li>
+	      	<li>
+	      		<a href="#observations" data-toggle="tab">Observations</a>
+	      	</li>
+	  	</ul>
+	  	
+	  	<div class="tab-content">
+	      	<div class="tab-pane active" id="users">
+	      		Texte d'accueil
+	      	</div>
+	      	<div class="tab-pane" id="observations">
+	      		Tous les livres
+	      	</div>
+	  	</div>
+	</div>
+{% endblock %}

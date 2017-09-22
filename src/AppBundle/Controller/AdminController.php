@@ -9,11 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class AdminController extends Controller
 {
     /**
-     * @Route("/admin", name="admin_home")
+     * @Route("/", name="admin_home")
      * @Method("GET")
      */
     public function indexAction()
     {
-        return $this->render('core/index.html.twig');
+        return $this->render('admin/index.html.twig');
     }
 }
