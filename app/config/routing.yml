@@ -8,6 +8,11 @@ admin:
     type:     annotation
     prefix:   /admin
 
+observation:
+    resource: "@AppBundle/Controller/ObservationController.php"
+    type:     annotation
+    prefix:   /admin/obs
+
 fos_user_security:
     resource: "@UserBundle/Resources/config/routing/security.xml"
 

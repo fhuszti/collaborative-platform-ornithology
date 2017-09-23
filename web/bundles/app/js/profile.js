@@ -1,23 +1,29 @@
 $(function() {
 	
+	//init google maps
 	function initMap(param = null) {
+		//default parameter if non given
 		if (param == null) {
 			param = {lat: 36.8451807, lng: 10.1031312};
 		}
 	  	
+	  	//generate the map
 	  	var map = new google.maps.Map(document.getElementById('gmaps_canvas'), {
 	    	zoom: 8,
 	    	center: param
 	  	});
 	  	
+	  	//responsive map
 	  	google.maps.event.trigger(map, "resize");
 	  	
+	  	//generate the marker at the right position
 	  	var marker = new google.maps.Marker({
 	    	position: param,
 	    	map: map
 	  	});
 	}
 
+	//manage the observation modal display
 	function manageObservationModal() {
 		var observations = $('#profile_block2-content .observation-row');
 

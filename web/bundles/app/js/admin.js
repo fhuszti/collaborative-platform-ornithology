@@ -1,23 +1,51 @@
 $(function() {
 	
+	//generate a different button depending on the actual state of the observation
+	function generateStateBtn(state, id, admin_url) {
+		var button;
+
+		switch (state) {
+			//bootstrap == verbose
+			case 'valid':
+				button = $('<button class="btn btn-success"><span class="glyphicon glyphicon-ok-circle"></span> Validée</button><button class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button><ul class="dropdown-menu"><li><a href="'+admin_url+'obs/await/'+id+'" class="alert-warning"><span class="glyphicon glyphicon-refresh"></span> Mettre en attente</a></li><li><a href="'+admin_url+'obs/refuse/'+id+'" class="alert-danger"><span class="glyphicon glyphicon-remove-circle"></span> Refuser</a></li></ul>');
+				break;
+
+			case 'refused':
+				button = $('<button class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle"></span> Refusée</button><button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button><ul class="dropdown-menu"><li><a href="'+admin_url+'obs/validate/'+id+'" class="alert-success"><span class="glyphicon glyphicon-ok-circle"></span> Valider</a></li><li><a href="'+admin_url+'obs/await/'+id+'" class="alert-warning"><span class="glyphicon glyphicon-refresh"></span> Mettre en attente</a></li></ul>');
+				break;
+
+			default:
+				button = $('<button class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span> En attente</button><button class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button><ul class="dropdown-menu"><li><a href="'+admin_url+'obs/validate/'+id+'" class="alert-success"><span class="glyphicon glyphicon-ok-circle"></span> Valider</a></li><li><a href="'+admin_url+'obs/refuse/'+id+'" class="alert-danger"><span class="glyphicon glyphicon-remove-circle"></span> Refuser</a></li></ul>');
+				break;
+		}
+
+		return button;
+	}
+
+	//init google maps
 	function initMap(param = null) {
+		//default parameter if non given
 		if (param == null) {
 			param = {lat: 36.8451807, lng: 10.1031312};
 		}
 	  	
+	  	//generate the map
 	  	var map = new google.maps.Map(document.getElementById('gmaps_canvas'), {
 	    	zoom: 8,
 	    	center: param
 	  	});
 	  	
+	  	//responsive map
 	  	google.maps.event.trigger(map, "resize");
 	  	
+	  	//generate the marker at the right position
 	  	var marker = new google.maps.Marker({
 	    	position: param,
 	    	map: map
 	  	});
 	}
 
+	//manage the observation modal display
 	function manageObservationModal() {
 		var observations = $('#observations .observation-row');
 
@@ -27,6 +55,9 @@ $(function() {
 
             	//get the observation data
             	var image = $(this).data('image') ? $(this).data('image') : null,
+            		state = $(this).data('state'),
+            		id = $(this).data('id'),
+            		admin_url = $(this).data('url'),
             		name = $(this).data('name'),
             		date = $(this).data('date'),
             		country = $(this).data('country'),
@@ -36,6 +67,7 @@ $(function() {
 
             	//modal window elements
             	var modal = $('#admin_obs-modal'),
+            		modal_state = $('#admin_obs-modal-state'),
             		modal_left = modal.find('.admin_obs-modal-left-panel'),
             		modal_right = $('#gmaps_canvas'),
             		modal_comment = modal.find('.admin_obs-modal-comment-panel'),
@@ -43,9 +75,13 @@ $(function() {
             		obsDiv = $(e.target);
 
             	//we reset everything in case the modal has been opened and is filled with content already
+            	modal_state.html('');
             	modal_left.html('');
             	modal_right.html('');
             	modal_comment.html('');
+
+            	var state_btn = generateStateBtn( state, id, admin_url );
+            	state_btn.appendTo(modal_state);
 
             	//add the image if there is one
             	if (image !== null) {
