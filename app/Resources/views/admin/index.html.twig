@@ -2,7 +2,9 @@
 {% set adminPage = true %}
 
 {% import "admin/macros/_macroObservationDisplay.html.twig" as macroObservationDisplay %}
+{% import "admin/macros/_macroUserDisplay.html.twig" as macroUserDisplay %}
 {% import "admin/macros/_macroObservationModal.html.twig" as macroObservationModal %}
+{% import "admin/macros/_macroUserDeleteModal.html.twig" as macroUserDeleteModal %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -38,15 +40,11 @@
 	  	
 	  	<div class="tab-content">
 	      	<div class="tab-pane active" id="users">
-	      		<ul>
-	      			{% for user in users %}
-		      			<li>
-		      				{{ user.firstName|capitalize }} {{ user.surname|capitalize }}
-		      			</li>
-	      			{% else %}
-	      				<li>Aucun utilisateur n'existe pour le moment.</li>
-	      			{% endfor %}
-	      		</ul>
+	      		{% for user in users %}
+	      			{{ macroUserDisplay.user_display(user) }}
+      			{% else %}
+      				<div class="col-xs-12">Aucun utilisateur n'existe pour le moment.</div>
+      			{% endfor %}
 	      	</div>
 	      	<div class="tab-pane" id="observations">
 	      		{% include 'admin/blocks/observations/observations.html.twig' %}
@@ -55,6 +53,7 @@
 	</div>
 
 	{{ macroObservationModal.observation_modal() }}
+	{{ macroUserDeleteModal.user_delete_modal() }}
 {% endblock %}
 
 {% block javascripts %}

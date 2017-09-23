@@ -13,6 +13,11 @@ observation:
     type:     annotation
     prefix:   /admin/obs
 
+user:
+    resource: "@UserBundle/Controller/UserController.php"
+    type:     annotation
+    prefix:   /admin/user
+
 fos_user_security:
     resource: "@UserBundle/Resources/config/routing/security.xml"
 

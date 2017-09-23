@@ -15,6 +15,13 @@ body {
 	border: 1px outset #eee;
 }
 
+#users {
+	margin-top: 20px;
+}
+.user_button-row {
+	text-align: right;
+}
+
 #observations {
 	padding: 0 0 30px;
 }
@@ -36,8 +43,8 @@ body {
 #observations .tab-content {
 	margin-top: 20px;
 }
-#observations .observation-row {
-	border-top: 1px solid #eee;
+#observations .observation-row, #users .user-row {
+	border-bottom: 1px solid #ccc;
 	line-height: 50px;
 	cursor: pointer;
 }
@@ -45,7 +52,7 @@ body {
 	background-color: #eee;
 }
 
-#admin_obs-modal .modal-content {
+#admin_obs-modal .modal-content, #admin_user-delete-modal .modal-content, #admin_user-edit-modal .modal-content {
 	background-color: rgb(187, 223, 180);
 }
 #admin_obs-modal-state ul {
@@ -110,6 +117,18 @@ body {
 	}
 }
 @media (max-width: 479px) {
+	.col-xxs-12 {
+		width: 100%;
+	}
+
+	#users .user-row {
+		line-height: 30px;
+		padding-bottom: 10px;
+	}
+	.user_button-row {
+		text-align: left;
+	}
+
 	#observations .nav li>a {
 		font-size: 0.7em;
 	}

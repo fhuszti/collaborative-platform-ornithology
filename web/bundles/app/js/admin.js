@@ -114,7 +114,36 @@ $(function() {
 
 
 
+	//manage the route the confirm delete button is gonna point to
+	function manageUserDeleteConfirm() {
+		var buttons = $('.user_button-row .btn-danger'),
+			confirm = $('#admin_user-delete-modal-confirm'),
+			current_href = confirm.attr('href'),
+			new_href;
+
+		//if current href already is the full need href, we cut the ID at the end
+		if ( current_href.indexOf('user/delete') !== -1 ) {
+			current_href = current_href.substring( 0, current_href.lastIndexOf('/') + 1 );
+		}
+		//else we complete the href with user/delete/
+		else {
+			current_href = current_href+'user/delete/';
+		}
+
+		buttons.each(function(index, elmt) {
+			$(elmt).on('click', function(e) {
+				new_href = current_href+''+$(e.target).data('id');
+				confirm.attr('href', new_href);
+			});
+		});
+	}
+
+
+
+
+
 	$.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCEL05YUkkeIBtLXDKcrZyM4kIkgbEOYS8");
 
 	manageObservationModal();
+	manageUserDeleteConfirm();
 });

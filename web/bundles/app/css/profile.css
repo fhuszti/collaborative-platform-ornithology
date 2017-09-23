@@ -78,7 +78,7 @@ body {
 	margin-top: 20px;
 }
 #profile_block2-content .observation-row {
-	border-top: 1px solid #eee;
+	border-bottom: 1px solid #ccc;
 	line-height: 50px;
 	cursor: pointer;
 }
