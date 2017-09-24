@@ -4,6 +4,7 @@
 {% import "admin/macros/_macroObservationDisplay.html.twig" as macroObservationDisplay %}
 {% import "admin/macros/_macroUserDisplay.html.twig" as macroUserDisplay %}
 {% import "admin/macros/_macroObservationModal.html.twig" as macroObservationModal %}
+{% import "admin/macros/_macroUserEditModal.html.twig" as macroUserEditModal %}
 {% import "admin/macros/_macroUserDeleteModal.html.twig" as macroUserDeleteModal %}
 
 {% block stylesheets %}
@@ -53,6 +54,7 @@
 	</div>
 
 	{{ macroObservationModal.observation_modal() }}
+	{{ macroUserEditModal.user_edit_modal() }}
 	{{ macroUserDeleteModal.user_delete_modal() }}
 {% endblock %}
 

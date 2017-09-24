@@ -113,7 +113,6 @@ $(function() {
 
 
 
-
 	//manage the route the confirm delete button is gonna point to
 	function manageUserDeleteConfirm() {
 		var buttons = $('.user_button-row .btn-danger'),
@@ -130,10 +129,48 @@ $(function() {
 			current_href = current_href+'user/delete/';
 		}
 
+		//for each of the "delete" buttons
 		buttons.each(function(index, elmt) {
 			$(elmt).on('click', function(e) {
+				//on click we assign the user id to the path
+				//and we update the href of the confirmation button
 				new_href = current_href+''+$(e.target).data('id');
 				confirm.attr('href', new_href);
+			});
+		});
+	}
+
+
+
+
+	//load correct user edit form into the modal
+	function manageUserEditModal() {
+		var buttons = $('.user_button-row .btn-warning'),
+			modal_body = $('#admin_user-edit-modal-body'),
+			confirm = $('#admin_user-edit-modal-confirm'),
+			current_href = $(confirm).data('href'),
+			new_href;
+
+		//if current href already is the full need href, we cut the ID at the end
+		if ( current_href.indexOf('user/edit') !== -1 ) {
+			current_href = current_href.substring( 0, current_href.lastIndexOf('/') + 1 );
+		}
+		//else we complete the href with user/edit/
+		else {
+			current_href = current_href+'user/edit/';
+		}
+
+		//for each of the "edit" buttons
+		buttons.each(function(index, elmt) {
+			$(elmt).on('click', function(e) {
+				//on click we assign the user id to the path
+				//and we update the href of the confirmation button
+				new_href = current_href+''+$(e.target).data('id');
+		
+				//and we load the correct form inside the modal
+				modal_body.load(new_href, function() {
+
+				});
 			});
 		});
 	}
@@ -146,4 +183,5 @@ $(function() {
 
 	manageObservationModal();
 	manageUserDeleteConfirm();
+	manageUserEditModal();
 });
