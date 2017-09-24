@@ -88,6 +88,20 @@ core:
 
     admin:
         title: Administration
+        users: Utilisateurs
+        observations: Observations
+        no_user: Aucun utilisateur n'existe pour le moment.
+        close: Fermer
+        confirm: Confirmer
+        abort: Annuler
+        delete:
+            title: Supprimer l'utilisateur
+            question: |
+                Êtes-vous certain(e) de vouloir supprimer définitivement cet utilisateur ?
+                Cette action est irréversible.
+        edit:
+            title: Modifier l'utilisateur
+            info: Ne remplissez pas ces champs si vous ne souhaitez pas modifier le mot de passe actuel de l'utilisateur.
 
     login:
         title: Connexion

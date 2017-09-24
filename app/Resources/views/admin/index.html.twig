@@ -32,10 +32,10 @@
 	<div class="col-xs-12" id="admin_content">
 		<ul class="nav nav-pills nav-justified">
 	      	<li class="active">
-	      		<a href="#users" data-toggle="tab">Utilisateurs</a>
+	      		<a href="#users" data-toggle="tab">{{ 'core.admin.users'|trans }}</a>
 	      	</li>
 	      	<li>
-	      		<a href="#observations" data-toggle="tab">Observations</a>
+	      		<a href="#observations" data-toggle="tab">{{ 'core.admin.observations'|trans }}</a>
 	      	</li>
 	  	</ul>
 	  	
@@ -44,7 +44,7 @@
 	      		{% for user in users %}
 	      			{{ macroUserDisplay.user_display(user) }}
       			{% else %}
-      				<div class="col-xs-12">Aucun utilisateur n'existe pour le moment.</div>
+      				<div class="col-xs-12">{{ 'core.admin.no_user'|trans }}</div>
       			{% endfor %}
 	      	</div>
 	      	<div class="tab-pane" id="observations">
