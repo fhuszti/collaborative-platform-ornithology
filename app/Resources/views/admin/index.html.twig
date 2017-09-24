@@ -40,6 +40,12 @@
 	  	</ul>
 	  	
 	  	<div class="tab-content">
+	      	{% for message in app.session.flashbag.get('error') %}
+			    <div class="alert alert-danger">
+			        {{ message }}
+			    </div>
+			{% endfor %}
+
 	      	<div class="tab-pane active" id="users">
 	      		{% for user in users %}
 	      			{{ macroUserDisplay.user_display(user) }}

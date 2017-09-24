@@ -38,7 +38,11 @@ class UserController extends Controller
 
         $form->handleRequest($request);
         
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ( $form->isSubmitted() ) {
+            if ( $form->isValid() ) {
+                $um->updateUser($user);   
+            }
+            
             return $this->redirectToRoute('admin_home');
         }
         
