@@ -106,7 +106,7 @@ class Image
      *
      * @return Image
      */
-    public function setObservation(\AppBundle\Entity\Observation $observation = null)
+    public function setObservation(\AppBundle\Entity\Observation $observation)
     {
         $this->Observation = $observation;
 

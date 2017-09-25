@@ -18,59 +18,69 @@ class Observation
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
     /**
      * @var string
      *
      * @ORM\Column(name="longitude", type="string", length=255)
      */
     private $longitude;
+
     /**
      * @var string
      *
      * @ORM\Column(name="lattitude", type="string", length=255)
      */
     private $lattitude;
+
     /**
      * @var string
      *
      * @ORM\Column(name="country",  type="string", length=255)
      */
     private $country;
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="date")
      */
     private $date;
+
     /**
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", inversedBy="observation", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $image;
+
     /**
      *
      * @ORM\Column(name="bird_id", type="integer")
      */
     private $birdId;
+
     /**
      * @var string
      *
      * @ORM\Column(name="birdName", type="string", length=255)
      */
     private $birdName;
+
     /**
      * @var string
      *
      * @ORM\Column(name="comment", type="string", length=255, nullable=true)
      */
     private $comment;
+
     /**
      * @var string
      *
      * @ORM\Column(name="seen", type="boolean")
      */
     private $seen;
+
     /**
      * @var string
      *
@@ -87,6 +97,7 @@ class Observation
     {
         return $this->id;
     }
+
     /**
      *
      * @return Observation
@@ -96,6 +107,7 @@ class Observation
         $this->longitude = $longitude;
         return $this;
     }
+
     /**
      * Get longitude
      *
@@ -105,6 +117,7 @@ class Observation
     {
         return $this->longitude;
     }
+
     /**
      * Set lattiude
      *
@@ -117,6 +130,7 @@ class Observation
         $this->lattitude = $lattitude;
         return $this;
     }
+
     /**
      * Get lattiude
      *
@@ -126,6 +140,7 @@ class Observation
     {
         return $this->lattitude;
     }
+
     /**
      * Set country
      *
@@ -136,8 +151,10 @@ class Observation
     public function setCountry($country)
     {
         $this->country = $country;
+
         return $this;
     }
+
     /**
      * Get country
      *
@@ -147,6 +164,7 @@ class Observation
     {
         return $this->country;
     }
+
     /**
      * Set date
      *
@@ -180,6 +198,7 @@ class Observation
         $this->comment = $comment;
         return $this;
     }
+
     /**
      * Get comment
      *
@@ -189,17 +208,12 @@ class Observation
     {
         return $this->comment;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+
     public function setImage($file)
     {
         $this->image = $file;
     }
+    
     public function getImage()
     {
         return $this->image;

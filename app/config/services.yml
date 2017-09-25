@@ -33,9 +33,23 @@ services:
         resource: '../../src/UserBundle/Controller/'
         public: true
         tags: ['controller.service_arguments']
+    
     twig.extension.intl:
         class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
 
+    # override Regitration form for FOSUserBundle
+    UserBundle\Form\Type\RegistrationType:
+        tags:
+            - { name: form.type, alias: core_user_registration }
 
+    # override Profile form for FOSUserBundle
+    UserBundle\Form\Type\EditEmailType:
+        tags:
+            - { name: form.type, alias: core_user_profile }
+
+    # override Password form for FOSUserBundle
+    UserBundle\Form\Type\EditPasswordType:
+        tags:
+            - { name: form.type, alias: core_user_password }

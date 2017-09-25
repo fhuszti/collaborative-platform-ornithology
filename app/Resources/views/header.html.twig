@@ -53,23 +53,23 @@
                 </li>
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     <li{% if profilePage is defined %} class="active"{% endif %}>
-                        <a href="{{ path('core_home') }}" title="{{ 'core.header.profile.link'|trans }}">
+                        <a href="{{ path('fos_user_profile_show') }}" title="{{ 'core.header.profile.link'|trans }}">
                             {{ 'core.header.profile.value'|trans|upper }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ path('core_home') }}" title="{{ 'core.header.logout.link'|trans }}">
+                        <a href="{{ path('fos_user_security_logout') }}" title="{{ 'core.header.logout.link'|trans }}">
                             {{ 'core.header.logout.value'|trans|upper }}
                         </a>
                     </li>
                 {% else %}
                     <li{% if registerPage is defined %} class="active"{% endif %}>
-                        <a href="{{ path('core_home') }}" title="{{ 'core.header.registration.link'|trans }}">
+                        <a href="{{ path('fos_user_registration_register') }}" title="{{ 'core.header.registration.link'|trans }}">
                             {{ 'core.header.registration.value'|trans|upper }}
                         </a>
                     </li>
                     <li{% if loginPage is defined %} class="active"{% endif %}>
-                        <a href="{{ path('core_home') }}" title="{{ 'core.header.login.link'|trans }}">
+                        <a href="{{ path('fos_user_security_login') }}" title="{{ 'core.header.login.link'|trans }}">
                             {{ 'core.header.login.value'|trans|upper }}
                         </a>
                     </li>

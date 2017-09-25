@@ -4,6 +4,7 @@ namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use FOS\UserBundle\Model\User as FOSUser;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -13,11 +14,11 @@ use AppBundle\Entity\Observation;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
  * @UniqueEntity(fields={"email"})
  */
-class User implements UserInterface
+class User extends FOSUser
 {
     /**
      * @var int
@@ -26,12 +27,21 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
+     * 
+     * @Assert\NotBlank(message="core.validation.user.firstname.blank", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=2,
+     *     max=255,
+     *     minMessage="core.validation.user.firstname.min",
+     *     maxMessage="core.validation.user.firstname.max",
+     *     groups={"Registration", "Profile"}
+     * )
      */
     private $firstName;
 
@@ -39,36 +49,17 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="surname", type="string", length=255)
+     *
+     * @Assert\NotBlank(message="core.validation.user.surname.blank", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=2,
+     *     max=255,
+     *     minMessage="core.validation.user.surname.min",
+     *     maxMessage="core.validation.user.surname.max",
+     *     groups={"Registration", "Profile"}
+     * )
      */
     private $surname;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255)
-     */
-    private $password;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="salt", type="string", length=255)
-     */
-    private $salt;
-
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="roles", type="array")
-     */
-    private $roles = array();
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Observation", mappedBy="user", cascade={"persist"})
@@ -90,23 +81,14 @@ class User implements UserInterface
      */
     public function __construct()
     {
-        $this->roles = array();
+        parent::__construct();
+
         $this->observations = new ArrayCollection();
         $this->images = new ArrayCollection();
     }
 
 
 
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set firstName
@@ -167,6 +149,9 @@ class User implements UserInterface
     {
         $this->email = $email;
 
+        //we update the Username too
+        $this->setUsername($email);
+
         return $this;
     }
 
@@ -178,78 +163,6 @@ class User implements UserInterface
     public function getEmail()
     {
         return $this->email;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set salt
-     *
-     * @param string $salt
-     *
-     * @return User
-     */
-    public function setSalt($salt)
-    {
-        $this->salt = $salt;
-
-        return $this;
-    }
-
-    /**
-     * Get salt
-     *
-     * @return string
-     */
-    public function getSalt()
-    {
-        return $this->salt;
-    }
-
-    /**
-     * Set roles
-     *
-     * @param array $roles
-     *
-     * @return User
-     */
-    public function setRoles($roles)
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
-
-    /**
-     * Get roles
-     *
-     * @return array
-     */
-    public function getRoles()
-    {
-        return $this->roles;
     }
 
     /**
@@ -333,13 +246,6 @@ class User implements UserInterface
     public function getUsername()
     {
         return $this->email;
-    }
-
-    /**
-     * Mandatory, from UserInterface
-     */
-    public function eraseCredentials()
-    {
     }
 }
 
