@@ -12,8 +12,8 @@
 	</p> 
 <div class="row w3-margin-bottom">
 	<div class="col-xs-12 col-sm-6">
-		{% if bird.observations[0].image.url is defined %}
-			<img src="{{ bird.observations[0].image.url }}" alt="" class ="img-responsive"/>
+		{% if observations[0].image.image is defined %}
+			<img src="{{ asset('%25kernel.project_dir%25/web/uploads/images/optimized/') }}{{ observations[0].image.image }}" alt="" class ="img-responsive"/>
 		{% else %}
 			<p>Aucune Image</p>
 		{% endif %}
@@ -36,15 +36,14 @@
 <h1>{{ 'core.bird.observation.title'|trans }}</h1>
 </div>
 
-{% set observations = bird.observations %}
 {% set imgs = [] %}
 
 {% if observations is not empty %}
 	{% set gps = [] %}
 	{% for ob in observations %}
-		{% set gps = gps|merge(['{lat:' ~ ob.lattitude ~ ', lng: ' ~ ob.longitude ~ ' },']) %}
+		{% set gps = gps|merge(['{lat:' ~ ob.longitude ~ ', lng: ' ~ ob.lattitude ~ ' },']) %}
 		{% if ob.image is not empty %}
-			{% set imgs = imgs|merge([ob.image.url]) %}
+			{% set imgs = imgs|merge([ob.image.image]) %}
 		{% endif %}
 		<div class="observation">
 			<p>
@@ -68,7 +67,7 @@
                 <div class="jcarousel">
                     <ul>
                     	{% for key, imageUrl in imgs %}
-                        <li><img src="{{ imageUrl }}" alt="Image {{ key }}"></li>
+                        <li><img src="{{ asset('%25kernel.project_dir%25/web/uploads/images/optimized/') }}{{ imageUrl }}" alt="Image {{ key }}"></li>
                         {% endfor %}
                     </ul>
                 </div>

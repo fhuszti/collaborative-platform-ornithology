@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\Bird;
+use AppBundle\Entity\Observation;
 use AppBundle\Entity\Contact;
 use AppBundle\Form\ContactType;
 use AppBundle\Services\Mail;
@@ -28,7 +29,7 @@ class CoreController extends Controller
     }
 
     /**
-     * @Route("/find", name="find")
+     * @Route("/find/", name="find")
      */
     public function findAction(Request $request)
 	{
@@ -58,6 +59,9 @@ class CoreController extends Controller
 	    $bird = $this->getDoctrine()
 	        ->getRepository(Bird::class)
 	        ->find($id);
+        $observations = $this->getDoctrine()
+	        ->getRepository(Observation::class)
+	        ->findBy(array( 'birdId' => $id));
 
 	    if (!$bird) {
 	        throw $this->createNotFoundException(
@@ -65,7 +69,7 @@ class CoreController extends Controller
 	        );
 	    }
 
-	    return $this->render('core/bird.html.twig', array('bird' => $bird));
+	    return $this->render('core/bird.html.twig', array('bird' => $bird, 'observations' => $observations));
 	}
 	/**
      * @Route("/contact", name="app_contact")

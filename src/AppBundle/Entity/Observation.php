@@ -49,11 +49,10 @@ class Observation
      */
     private $image;
     /**
-     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bird", inversedBy="observations")
+     * @ORM\Column(name="bird_id", type="integer")
      */
-    private $bird;
+    private $birdId;
     /**
      * @var string
      *
@@ -247,27 +246,6 @@ class Observation
     {
         return $this->status;
     }
-    /**
-     * Set bird
-     *
-     * @param \AppBundle\Entity\Bird $bird
-     *
-     * @return Observation
-     */
-    public function setBird(\AppBundle\Entity\Bird $bird = null)
-    {
-        $this->bird = $bird;
-        return $this;
-    }
-    /**
-     * Get bird
-     *
-     * @return \AppBundle\Entity\Bird
-     */
-    public function getBird()
-    {
-        return $this->bird;
-    }
 
     /**
      * Set birdName
@@ -291,5 +269,29 @@ class Observation
     public function getBirdName()
     {
         return $this->birdName;
+    }
+
+    /**
+     * Set birdId
+     *
+     * @param integer $birdId
+     *
+     * @return Observation
+     */
+    public function setBirdId($birdId)
+    {
+        $this->birdId = $birdId;
+
+        return $this;
+    }
+
+    /**
+     * Get birdId
+     *
+     * @return integer
+     */
+    public function getBirdId()
+    {
+        return $this->birdId;
     }
 }

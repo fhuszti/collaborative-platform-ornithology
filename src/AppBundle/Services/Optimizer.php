@@ -5,6 +5,7 @@ use AppBundle\Entity\Observation;
 namespace AppBundle\Services;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Tinypng\Bundle\EventListener;
 
 class Optimizer
 {

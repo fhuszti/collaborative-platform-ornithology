@@ -7,6 +7,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -38,6 +40,9 @@ class ObservationType extends AbstractType
       ->add('birdName', TextType::class, array(
             'label' => 'NOM DE L\'OISEAU'
       ))
+      ->add('birdId',  HiddenType::class, array(
+        'label' => 'id' 
+        ))
       ->add('image', ImageType::class, array(
             'label' => 'PHOTO',
       ))

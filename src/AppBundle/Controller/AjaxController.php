@@ -14,7 +14,7 @@ class AjaxController extends Controller
 {
 
     /**
-     * @Route("/find/", name="search")
+     * @Route("/search/", name="search")
      */
     public function searchAction(Request $request)
     {
@@ -32,7 +32,7 @@ class AjaxController extends Controller
                     'bird', // 1er argument : le nom de la route
                     array('id' => $bird->getId())    // 2e argument : les valeurs des paramètres
                 );
-                $output[] = array('link' => $url, 'name' => $bird->getCommonName());
+                $output[] = array('link' => $url, 'name' => $bird->getCommonName(), 'id' => $bird->getId());
              }
              return new JsonResponse($output);
         }

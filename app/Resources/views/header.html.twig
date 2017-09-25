@@ -42,12 +42,12 @@
                     </a>
                 </li>
                 <li{% if searchPage is defined %} class="active"{% endif %}>
-                    <a href="{{ path('core_home') }}" title="{{ 'core.header.search.link'|trans }}">
+                    <a href="{{ path('find') }}" title="{{ 'core.header.search.link'|trans }}">
                         {{ 'core.header.search.value'|trans|upper }}
                     </a>
                 </li>
                 <li{% if contactPage is defined %} class="active"{% endif %}>
-                    <a href="{{ path('core_home') }}" title="{{ 'core.header.contact.link'|trans }}">
+                    <a href="{{ path('app_contact') }}" title="{{ 'core.header.contact.link'|trans }}">
                         {{ 'core.header.contact.value'|trans|upper }}
                     </a>
                 </li>

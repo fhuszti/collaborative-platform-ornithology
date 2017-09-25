@@ -11,20 +11,22 @@
         data : 'search=' + value,
         success : function(donnee){
         reponse($.map(donnee, function(objet){
-            return objet.name;
+            return {
+                    label: objet.name,
+                    value: objet.id
+                }
         }));
         }
       });
     }
   },
 
-  // select: function( event, ui){
-  //          $('#observation_bird_id').attr({value : ui.value});
-  //          console.log(event);
-  //          console.log(ui);
-  //       }
+  select: function( event, ui){
+    $('#observation_birdName').val(ui.item.label);
+    $('#observation_birdId').val(ui.item.value);
+    return false;
+  }
   });
-
 
 
 

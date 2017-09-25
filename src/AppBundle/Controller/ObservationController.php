@@ -9,6 +9,7 @@ use AppBundle\Services\Optimizer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use AppBundle\Entity\Observation;
+use AppBundle\Entity\Bird;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormBuilder;
@@ -32,7 +33,11 @@ class ObservationController extends Controller
 		$formBuilder = $this->get('form.factory')->create(ObservationType::class, $observation);
 
 			if ($request->isMethod('POST')) {
+
+
 				$formBuilder->handleRequest($request);
+
+
 				$image = $observation->getImage()->getFile();
 				if (!$formBuilder->isValid()) {
 					return new JsonResponse(array(
